@@ -66,6 +66,8 @@ namespace FastAndFuriousImageFileTagger
 
             imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
+            InitializeAutoCompletionForNewTagTextBox();
+
             if (imageFilesInCurrentDirectory.Count() != 0)
             {
 
@@ -86,7 +88,7 @@ namespace FastAndFuriousImageFileTagger
 
                 SetCurrentImageToPictureBox(pathAndFileName);
 
-                InitializeAutoCompletionForNewTagTextBox();
+                
 
             }
 
@@ -699,7 +701,6 @@ namespace FastAndFuriousImageFileTagger
         {
 
             Console.WriteLine("Getting File List from +'" + workingDirectory + "'");
-
 
             DirectoryInfo dinfo = new DirectoryInfo(workingDirectory);
 
