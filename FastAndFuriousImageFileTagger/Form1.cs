@@ -10,6 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/** FAST AND FURIOUS IMAGE FILE TAGGER 
+ * 
+ * Quickly add tags to your image filename
+ * 
+ * Done in 2019 in a few hours by dasparadoxon, programming by Tom Trottel
+ * 
+ */
+
 namespace FastAndFuriousImageFileTagger
 {
     public partial class FastAndFuriousImageTagger : Form
