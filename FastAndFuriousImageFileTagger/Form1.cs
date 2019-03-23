@@ -48,6 +48,12 @@ namespace FastAndFuriousImageFileTagger
 
         bool showOnlyNotTaggedFiles = true;
 
+        string userDataDirectory;
+
+        string tagFileName = "tagFile.txt";
+        
+
+
         // --- METHODS -------
 
         public FastAndFuriousImageTagger()
@@ -55,6 +61,8 @@ namespace FastAndFuriousImageFileTagger
             InitializeComponent();
 
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+
+            UserDataDirectoryHandling();
 
             imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
@@ -363,11 +371,53 @@ namespace FastAndFuriousImageFileTagger
             newTag_textBox.AutoCompleteCustomSource = tagAutoCompleteStringsCollection;
         }
 
+        private void UserDataDirectoryHandling()
+        {
+            userDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+            string fastAndFuriousImageFileTaggerDirectory = "FastAndFuriousImageFileTagger";
+
+            string fullPathToUserDirectory = userDataDirectory + Path.DirectorySeparatorChar + fastAndFuriousImageFileTaggerDirectory;
+
+            Console.WriteLine("Writing User Data Directory to : " + fullPathToUserDirectory);
+
+            try
+            {
+                // Determine whether the directory exists.
+                if (Directory.Exists(fullPathToUserDirectory))
+                {
+                    Console.WriteLine("That path exists already.");
+                   
+                }
+
+                // Try to create the directory.
+                DirectoryInfo di = Directory.CreateDirectory(fullPathToUserDirectory);
+                Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(fullPathToUserDirectory));
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+            }
+            finally { }
+
+            userDataDirectory = fullPathToUserDirectory;
+
+        }
+
         private List<String> LoadTagsFromTagFile()
         {
             List<String> tagList = new List<string>();
 
+            tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + tagFileName;
+
             Console.WriteLine("Loading Tags from : " + tagFileLocationAndFileName);
+
+            if (!File.Exists(tagFileLocationAndFileName))
+            {
+                using (StreamWriter w = File.AppendText(tagFileLocationAndFileName)) { }
+
+            }
 
             StreamReader inFile = new StreamReader(tagFileLocationAndFileName);
 
