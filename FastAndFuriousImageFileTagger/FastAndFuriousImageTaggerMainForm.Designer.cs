@@ -33,7 +33,7 @@
             this.NextImageButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.NumberOfImagesInDirectoryTextbox = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.tagOfCurrentFilePanel = new System.Windows.Forms.Panel();
             this.tagsForThisFile_checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.TagBoxLabel = new System.Windows.Forms.Label();
             this.NewTagPanel = new System.Windows.Forms.Panel();
@@ -42,19 +42,19 @@
             this.newTag_textBox = new System.Windows.Forms.TextBox();
             this.DirectoryChangeButton = new System.Windows.Forms.Button();
             this.onlyShowNonTaggedImages_CheckBox = new System.Windows.Forms.CheckBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.renameBasePanel = new System.Windows.Forms.Panel();
             this.RenameBaseNameButton = new System.Windows.Forms.Button();
             this.RenameTextBoxLabel = new System.Windows.Forms.Label();
             this.renameBase_textBox = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.directoryInformationPanel = new System.Windows.Forms.Panel();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.additionalOptions1Panel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.renameBasePanel.SuspendLayout();
+            this.directoryInformationPanel.SuspendLayout();
+            this.additionalOptions1Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousImageButton
@@ -98,16 +98,17 @@
             this.NumberOfImagesInDirectoryTextbox.TabIndex = 3;
             this.NumberOfImagesInDirectoryTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panel1
+            // tagOfCurrentFilePanel
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.tagsForThisFile_checkedListBox);
-            this.panel1.Controls.Add(this.TagBoxLabel);
-            this.panel1.Location = new System.Drawing.Point(327, 95);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(184, 278);
-            this.panel1.TabIndex = 4;
+            this.tagOfCurrentFilePanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.tagOfCurrentFilePanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tagOfCurrentFilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tagOfCurrentFilePanel.Controls.Add(this.tagsForThisFile_checkedListBox);
+            this.tagOfCurrentFilePanel.Controls.Add(this.TagBoxLabel);
+            this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(327, 95);
+            this.tagOfCurrentFilePanel.Name = "tagOfCurrentFilePanel";
+            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(184, 278);
+            this.tagOfCurrentFilePanel.TabIndex = 4;
             // 
             // tagsForThisFile_checkedListBox
             // 
@@ -130,6 +131,7 @@
             // 
             // NewTagPanel
             // 
+            this.NewTagPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.NewTagPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.NewTagPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewTagPanel.Controls.Add(this.AddTagButton);
@@ -210,18 +212,19 @@
             this.onlyShowNonTaggedImages_CheckBox.UseVisualStyleBackColor = true;
             this.onlyShowNonTaggedImages_CheckBox.Click += new System.EventHandler(this.onlyShowNonTaggedImagesCheckbox_clicked);
             // 
-            // panel3
+            // renameBasePanel
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.RenameBaseNameButton);
-            this.panel3.Controls.Add(this.RenameTextBoxLabel);
-            this.panel3.Controls.Add(this.renameBase_textBox);
-            this.panel3.Location = new System.Drawing.Point(12, 475);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(499, 60);
-            this.panel3.TabIndex = 6;
+            this.renameBasePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.renameBasePanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.renameBasePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.renameBasePanel.Controls.Add(this.RenameBaseNameButton);
+            this.renameBasePanel.Controls.Add(this.RenameTextBoxLabel);
+            this.renameBasePanel.Controls.Add(this.renameBase_textBox);
+            this.renameBasePanel.Location = new System.Drawing.Point(12, 475);
+            this.renameBasePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.renameBasePanel.Name = "renameBasePanel";
+            this.renameBasePanel.Size = new System.Drawing.Size(499, 60);
+            this.renameBasePanel.TabIndex = 6;
             // 
             // RenameBaseNameButton
             // 
@@ -269,18 +272,18 @@
             this.renameBase_textBox.Size = new System.Drawing.Size(297, 20);
             this.renameBase_textBox.TabIndex = 0;
             // 
-            // panel2
+            // directoryInformationPanel
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.DeleteButton);
-            this.panel2.Controls.Add(this.PreviousImageButton);
-            this.panel2.Controls.Add(this.NumberOfImagesInDirectoryTextbox);
-            this.panel2.Controls.Add(this.NextImageButton);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(309, 67);
-            this.panel2.TabIndex = 8;
+            this.directoryInformationPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.directoryInformationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.directoryInformationPanel.Controls.Add(this.DeleteButton);
+            this.directoryInformationPanel.Controls.Add(this.PreviousImageButton);
+            this.directoryInformationPanel.Controls.Add(this.NumberOfImagesInDirectoryTextbox);
+            this.directoryInformationPanel.Controls.Add(this.NextImageButton);
+            this.directoryInformationPanel.Location = new System.Drawing.Point(12, 12);
+            this.directoryInformationPanel.Name = "directoryInformationPanel";
+            this.directoryInformationPanel.Size = new System.Drawing.Size(309, 67);
+            this.directoryInformationPanel.TabIndex = 8;
             // 
             // DeleteButton
             // 
@@ -293,28 +296,28 @@
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_clicked);
             // 
-            // panel4
+            // additionalOptions1Panel
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.DirectoryChangeButton);
-            this.panel4.Controls.Add(this.onlyShowNonTaggedImages_CheckBox);
-            this.panel4.Location = new System.Drawing.Point(327, 12);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(184, 67);
-            this.panel4.TabIndex = 9;
+            this.additionalOptions1Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.additionalOptions1Panel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.additionalOptions1Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.additionalOptions1Panel.Controls.Add(this.DirectoryChangeButton);
+            this.additionalOptions1Panel.Controls.Add(this.onlyShowNonTaggedImages_CheckBox);
+            this.additionalOptions1Panel.Location = new System.Drawing.Point(327, 12);
+            this.additionalOptions1Panel.Name = "additionalOptions1Panel";
+            this.additionalOptions1Panel.Size = new System.Drawing.Size(184, 67);
+            this.additionalOptions1Panel.TabIndex = 9;
             // 
             // FastAndFuriousImageTagger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(526, 548);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.additionalOptions1Panel);
+            this.Controls.Add(this.directoryInformationPanel);
+            this.Controls.Add(this.renameBasePanel);
             this.Controls.Add(this.NewTagPanel);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tagOfCurrentFilePanel);
             this.Controls.Add(this.pictureBox1);
             this.MaximumSize = new System.Drawing.Size(1200, 1200);
             this.MinimumSize = new System.Drawing.Size(542, 582);
@@ -324,16 +327,16 @@
             this.Text = "Fast and Furious Image Tagger";
             this.Load += new System.EventHandler(this.FastAndFuriousImageTagger_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.tagOfCurrentFilePanel.ResumeLayout(false);
+            this.tagOfCurrentFilePanel.PerformLayout();
             this.NewTagPanel.ResumeLayout(false);
             this.NewTagPanel.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.renameBasePanel.ResumeLayout(false);
+            this.renameBasePanel.PerformLayout();
+            this.directoryInformationPanel.ResumeLayout(false);
+            this.directoryInformationPanel.PerformLayout();
+            this.additionalOptions1Panel.ResumeLayout(false);
+            this.additionalOptions1Panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -344,7 +347,7 @@
         private System.Windows.Forms.Button NextImageButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox NumberOfImagesInDirectoryTextbox;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel tagOfCurrentFilePanel;
         private System.Windows.Forms.Label TagBoxLabel;
         private System.Windows.Forms.CheckedListBox tagsForThisFile_checkedListBox;
         private System.Windows.Forms.Panel NewTagPanel;
@@ -353,12 +356,12 @@
         private System.Windows.Forms.Button AddTagButton;
         private System.Windows.Forms.Button DirectoryChangeButton;
         private System.Windows.Forms.CheckBox onlyShowNonTaggedImages_CheckBox;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel renameBasePanel;
         private System.Windows.Forms.Button RenameBaseNameButton;
         private System.Windows.Forms.Label RenameTextBoxLabel;
         private System.Windows.Forms.TextBox renameBase_textBox;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel directoryInformationPanel;
+        private System.Windows.Forms.Panel additionalOptions1Panel;
         private System.Windows.Forms.Button DeleteButton;
     }
 }
