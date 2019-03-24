@@ -306,19 +306,21 @@
             // 
             // FastAndFuriousImageTagger
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(526, 591);
+            this.ClientSize = new System.Drawing.Size(526, 548);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.NewTagPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
+            this.MaximumSize = new System.Drawing.Size(1200, 1200);
+            this.MinimumSize = new System.Drawing.Size(542, 582);
             this.Name = "FastAndFuriousImageTagger";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Fast and Furious Image Tagger";
             this.Load += new System.EventHandler(this.FastAndFuriousImageTagger_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FastAndFuriousImageTagger_KeyUp);
