@@ -34,8 +34,6 @@ namespace FastAndFuriousImageFileTagger
 
         public AutoCompleteStringCollection tagAutoCompleteStringsCollection;
 
-        //public string workingDirectory = @"C:\Users\dasparadoxon\Desktop";
-
         public string workingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         private string tagSeperator = "_";
@@ -53,8 +51,6 @@ namespace FastAndFuriousImageFileTagger
         string tagFileName = "tagFile.txt";
 
         Image startImage;
-
-
 
         // --- METHODS -------
 
@@ -162,15 +158,6 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
-        private void newTag_textBox_textChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine("New TagTextbox has changed : " + newTag_textBox.Text);
-
-            AddTagToImageTagCheckBox(newTag_textBox.Text);
-
-            AddTagToImageFile(newTag_textBox.Text, currentImageFileName);
-        }
-
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -229,14 +216,9 @@ namespace FastAndFuriousImageFileTagger
             }
         }
 
-        private void addTagButton_AddTag_clicked(object sender, EventArgs e)
+        private void AddTagButton_AddTag_clicked(object sender, EventArgs e)
         {
             AddTagToImageTagCheckBox(newTag_textBox.Text);
-        }
-
-        private void FastAndFuriousImageTagger_KeyUp(object sender, KeyEventArgs e)
-        {
-
         }
 
         private void RenameBaseNameButton_Click(object sender, EventArgs e)

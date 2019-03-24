@@ -148,7 +148,7 @@
             this.AddTagButton.TabIndex = 2;
             this.AddTagButton.Text = "Add Tag";
             this.AddTagButton.UseVisualStyleBackColor = true;
-            this.AddTagButton.Click += new System.EventHandler(this.addTagButton_AddTag_clicked);
+            this.AddTagButton.Click += new System.EventHandler(this.AddTagButton_AddTag_clicked);
             // 
             // NewTagLabel
             // 
@@ -323,7 +323,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Fast and Furious Image Tagger";
             this.Load += new System.EventHandler(this.FastAndFuriousImageTagger_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FastAndFuriousImageTagger_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
