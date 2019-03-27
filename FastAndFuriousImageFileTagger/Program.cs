@@ -19,4 +19,19 @@ namespace FastAndFuriousImageFileTagger
             Application.Run(new FastAndFuriousImageTagger());
         }
     }
+
+    public class CurrentSelectedImageFile
+    {
+        private string path;
+        private string name;
+
+        public CurrentSelectedImageFile(string path, string name)
+        {
+            this.path = path;
+            this.name = name;
+        }
+
+        public string Path { get => path; set => path = value; }
+        public string Name { get => name; set => name = value; }
+    }
 }

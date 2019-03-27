@@ -20,15 +20,34 @@ using System.Windows.Forms;
 
 namespace FastAndFuriousImageFileTagger
 {
+
     public partial class FastAndFuriousImageTagger : Form
     {
+        // IMAGES
+
+        CurrentSelectedImageFile currentSelectedImage;
+
+        private IEnumerable<string> imageFilesInCurrentDirectory;
+
+        // TAGGING SETUP
+
+        private string tagSeperator = "_";
+
+        private string tagStringFromBaseFileNameSeperator = "__";
+
+        static string tagFileName = "tagFile.txt";
+
+        string tagFileLocationAndFileName = AppDomain.CurrentDomain.BaseDirectory + Path.DirectorySeparatorChar + tagFileName;
+
+        // APP STATUS 
+
+        bool showOnlyNotTaggedFiles = true;
+
+        string userDataDirectory;
+
         private int imageIndex = 0;
 
-        public StringSplitOptions RemoveEmptyEntries { get; private set; }
-
-        private string currentImageFilePath;
-
-        private string currentImageFileName;
+        Image startImage;
 
         private FolderBrowserDialog folderBrowserDialog1;
 
@@ -36,27 +55,15 @@ namespace FastAndFuriousImageFileTagger
 
         public string workingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-        private string tagSeperator = "_";
-
-        private string tagStringFromBaseFileNameSeperator = "__";
-
-        private IEnumerable<string> imageFilesInCurrentDirectory;
-
-        string tagFileLocationAndFileName = AppDomain.CurrentDomain.BaseDirectory + Path.DirectorySeparatorChar + "tagFile.txt";
-
-        bool showOnlyNotTaggedFiles = true;
-
-        string userDataDirectory;
-
-        string tagFileName = "tagFile.txt";
-
-        Image startImage;
+        public StringSplitOptions RemoveEmptyEntries { get; private set; }
 
         // --- METHODS -------
 
         public FastAndFuriousImageTagger()
         {
             InitializeComponent();
+
+            currentSelectedImage = new CurrentSelectedImageFile("", "");
 
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 
@@ -67,6 +74,18 @@ namespace FastAndFuriousImageFileTagger
             imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
             InitializeAutoCompletionForNewTagTextBox();
+
+            SetUpCurrentImage();
+
+        }
+
+
+        private void SetUpCurrentImage(bool scanDirectory = false)
+        {
+            imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
+
+            if(scanDirectory)
+                ScanDirectoryAndUpdateImageIndexTextBox();
 
             if (imageFilesInCurrentDirectory.Count() != 0)
             {
@@ -80,81 +99,31 @@ namespace FastAndFuriousImageFileTagger
 
                 UpdateNumberOfImagesInDirectoryTextbox();
 
-                currentImageFilePath = directory;
+                currentSelectedImage = new CurrentSelectedImageFile(filename, directory);
 
-                currentImageFileName = filename;
-
-                string pathAndFileName = directory + "\\" + filename;
+                string pathAndFileName = directory + Path.DirectorySeparatorChar + filename;
 
                 SetCurrentImageToPictureBox(pathAndFileName);
 
-
-
             }
-
         }
+
 
         // EVENT HANDLER -------
 
         private void PreviousImageButtonClick(object sender, EventArgs e)
         {
-            imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
             imageIndex--;
 
-            ScanDirectoryAndUpdateImageIndexTextBox();
-
-            if (imageFilesInCurrentDirectory.Count() != 0)
-            {
-
-                string directory = Path.GetDirectoryName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
-                string filename = Path.GetFileName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
-
-                string pathAndFileName = directory
-                    + "\\" + filename;
-
-                SetCurrentImageToPictureBox(pathAndFileName);
-
-                UpdateBaseNameTextBox(filename);
-
-                ParseTagsAndPopulateTagListForImage(filename);
-
-                currentImageFilePath = directory;
-
-                currentImageFileName = filename;
-
-            }
+            SetUpCurrentImage(true);
         }
 
         private void NextImageButton_click(object sender, EventArgs e)
         {
-            imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
-
             imageIndex++;
 
-            ScanDirectoryAndUpdateImageIndexTextBox();
-
-            if (imageFilesInCurrentDirectory.Count() != 0)
-            {
-
-                string directory = Path.GetDirectoryName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
-                string filename = Path.GetFileName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
-
-                string pathAndFileName = directory
-                    + "\\" + filename;
-
-                SetCurrentImageToPictureBox(pathAndFileName);
-
-                UpdateBaseNameTextBox(filename);
-
-                ParseTagsAndPopulateTagListForImage(filename);
-
-                currentImageFilePath = directory;
-
-                currentImageFileName = filename;
-
-            }
-
+            SetUpCurrentImage(true);
 
         }
 
@@ -166,7 +135,7 @@ namespace FastAndFuriousImageFileTagger
 
                 AddTagToImageTagCheckBox(newTag_textBox.Text);
 
-                AddTagToImageFile(newTag_textBox.Text, currentImageFileName);
+                AddTagToImageFile(newTag_textBox.Text, currentSelectedImage.Name);
 
                 e.Handled = true;
             }
@@ -197,9 +166,9 @@ namespace FastAndFuriousImageFileTagger
 
                         ParseTagsAndPopulateTagListForImage(filename);
 
-                        currentImageFilePath = directory;
+                        currentSelectedImage.Path = directory;
 
-                        currentImageFileName = filename;
+                        currentSelectedImage.Name = filename;
 
                     }
                     else
@@ -227,11 +196,11 @@ namespace FastAndFuriousImageFileTagger
 
             string newFileName;
 
-            if (HasThisFileTags(currentImageFileName))
+            if (HasThisFileTags(currentSelectedImage.Name))
             {
                 Console.WriteLine("RenameBaseNameButton_Click : Current file has Tags");
 
-                string tags = GetTagStringOfFile(currentImageFileName);
+                string tags = GetTagStringOfFile(currentSelectedImage.Name);
 
                 string newBaseFileName = renameBase_textBox.Text;
 
@@ -243,11 +212,12 @@ namespace FastAndFuriousImageFileTagger
             else
                 newFileName = renameBase_textBox.Text;
 
-            RenameFile(currentImageFilePath + "//" + currentImageFileName, currentImageFilePath + "//" + newFileName);
+            RenameFile(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
+                currentSelectedImage.Path + Path.DirectorySeparatorChar + newFileName);
 
-            currentImageFileName = newFileName;
+            currentSelectedImage.Name = newFileName;
 
-            Console.WriteLine("RenameBaseNameButton_Click : New Current Image File Name : " + currentImageFileName);
+            Console.WriteLine("RenameBaseNameButton_Click : New Current Image File Name : " + currentSelectedImage.Name);
 
             // remove them but store them temp.
             // take the new base name and put them in front of it
@@ -285,7 +255,7 @@ namespace FastAndFuriousImageFileTagger
 
             // reassemble new filename
 
-            string newWholeFileName = GetBaseFileName(currentImageFileName);
+            string newWholeFileName = GetBaseFileName(currentSelectedImage.Name);
 
             newWholeFileName = newTagString + tagStringFromBaseFileNameSeperator + newWholeFileName;
 
@@ -299,9 +269,10 @@ namespace FastAndFuriousImageFileTagger
 
             Console.WriteLine("Fully new Filename from TagCheckBoxList : " + newWholeFileName);
 
-            RenameFile(currentImageFilePath + "//" + currentImageFileName, currentImageFilePath + "//" + newWholeFileName);
+            RenameFile(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
+                currentSelectedImage.Path + Path.DirectorySeparatorChar + newWholeFileName);
 
-            currentImageFileName = newWholeFileName;
+            currentSelectedImage.Name = newWholeFileName;
 
         }
 
@@ -329,11 +300,11 @@ namespace FastAndFuriousImageFileTagger
 
                 UpdateNumberOfImagesInDirectoryTextbox();
 
-                currentImageFilePath = directory;
+                currentSelectedImage.Path = directory;
 
-                currentImageFileName = filename;
+                currentSelectedImage.Name = filename;
 
-                string pathAndFileName = directory + "\\" + filename;
+                string pathAndFileName = directory + Path.DirectorySeparatorChar + filename;
 
                 SetCurrentImageToPictureBox(pathAndFileName);
 
@@ -561,7 +532,7 @@ namespace FastAndFuriousImageFileTagger
 
         private void AddTagToImageFile(string newTag, string fileName)
         {
-            Console.WriteLine("Trying to add new tag to file '" + fileName + "' in Directory '" + currentImageFilePath + "'");
+            Console.WriteLine("Trying to add new tag to file '" + fileName + "' in Directory '" + currentSelectedImage.Path + "'");
 
             if (fileName != null)
 
@@ -571,11 +542,11 @@ namespace FastAndFuriousImageFileTagger
 
                     finalFileName = newTag.ToUpper() + "__" + fileName;
 
-                    string finalPathAndFileName = CleanPath(currentImageFilePath + "\\" + finalFileName);
+                    string finalPathAndFileName = CleanPath(currentSelectedImage.Path + Path.DirectorySeparatorChar + finalFileName);
 
-                    System.IO.File.Move(currentImageFilePath + "\\" + fileName, finalPathAndFileName);
+                    System.IO.File.Move(currentSelectedImage.Path + Path.DirectorySeparatorChar + fileName, finalPathAndFileName);
 
-                    currentImageFileName = finalFileName;
+                    currentSelectedImage.Name = finalFileName;
 
                 }
                 else
@@ -584,11 +555,11 @@ namespace FastAndFuriousImageFileTagger
 
                     finalFileName = newTag.ToUpper() + "_" + fileName;
 
-                    string finalPathAndFileName = CleanPath(currentImageFilePath + "\\" + finalFileName);
+                    string finalPathAndFileName = CleanPath(currentSelectedImage.Path + Path.DirectorySeparatorChar + finalFileName);
 
-                    System.IO.File.Move(currentImageFilePath + "\\" + fileName, finalPathAndFileName);
+                    System.IO.File.Move(currentSelectedImage.Path + Path.DirectorySeparatorChar + fileName, finalPathAndFileName);
 
-                    currentImageFileName = finalFileName;
+                    currentSelectedImage.Name = finalFileName;
                 }
 
             newTag_textBox.Clear();
@@ -739,7 +710,7 @@ namespace FastAndFuriousImageFileTagger
 
             if (confirmResult == DialogResult.Yes)
             {
-                File.Delete(currentImageFilePath + "//" + currentImageFileName);
+                File.Delete(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name);
             }
             else
             {

@@ -313,12 +313,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(526, 548);
-            this.Controls.Add(this.additionalOptions1Panel);
-            this.Controls.Add(this.directoryInformationPanel);
-            this.Controls.Add(this.renameBasePanel);
             this.Controls.Add(this.NewTagPanel);
+            this.Controls.Add(this.additionalOptions1Panel);
+            this.Controls.Add(this.renameBasePanel);
             this.Controls.Add(this.tagOfCurrentFilePanel);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.directoryInformationPanel);
             this.MaximumSize = new System.Drawing.Size(1200, 1200);
             this.MinimumSize = new System.Drawing.Size(542, 582);
             this.Name = "FastAndFuriousImageTagger";
