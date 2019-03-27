@@ -177,7 +177,7 @@ namespace FastAndFuriousImageFileTagger
 
                 string newBaseFileName = renameBase_textBox.Text;
 
-                newFileName = tags + "__" + newBaseFileName;
+                newFileName = tags + tagStringFromBaseFileNameSeperator + newBaseFileName;
 
 
 
@@ -233,12 +233,12 @@ namespace FastAndFuriousImageFileTagger
             newWholeFileName = newTagString + tagStringFromBaseFileNameSeperator + newWholeFileName;
 
             // test for unnecessary tagFromBaseFile Delimiter and if, remove it
-            if (newWholeFileName.Substring(0, 2) == "__")
-                newWholeFileName = newWholeFileName.Replace("__", "");
+            if (newWholeFileName.Substring(0, 2) == tagStringFromBaseFileNameSeperator)
+                newWholeFileName = newWholeFileName.Replace(tagStringFromBaseFileNameSeperator, "");
 
             // correct length of tagFromBaseFile Delimiter if necessary
             if (newWholeFileName.Contains("___"))
-                newWholeFileName = newWholeFileName.Replace("___", "__");
+                newWholeFileName = newWholeFileName.Replace("___", tagStringFromBaseFileNameSeperator);
 
             Console.WriteLine("Fully new Filename from TagCheckBoxList : " + newWholeFileName);
 
@@ -457,7 +457,7 @@ namespace FastAndFuriousImageFileTagger
                 Console.WriteLine("No Tags found for this Image");
             else
             {
-                string[] tags = subStrings[0].Split('_');
+                string[] tags = subStrings[0].Split(tagSeperator[0]);
 
                 foreach (string str in tags)
                 {
@@ -513,11 +513,9 @@ namespace FastAndFuriousImageFileTagger
                 {
                     string finalFileName;
 
-                    finalFileName = newTag.ToUpper() + "__" + fileName;
+                    finalFileName = newTag.ToUpper() + tagStringFromBaseFileNameSeperator + fileName;
 
                     string finalPathAndFileName = CleanPath(currentSelectedImage.Path + Path.DirectorySeparatorChar + finalFileName);
-                    
-                    
 
                     System.IO.File.Move(currentSelectedImage.Path + Path.DirectorySeparatorChar + fileName, finalPathAndFileName);
 
@@ -528,7 +526,7 @@ namespace FastAndFuriousImageFileTagger
                 {
                     string finalFileName;
 
-                    finalFileName = newTag.ToUpper() + "_" + fileName;
+                    finalFileName = newTag.ToUpper() + tagSeperator + fileName;
 
                     string finalPathAndFileName = CleanPath(currentSelectedImage.Path + Path.DirectorySeparatorChar + finalFileName);
 
@@ -556,7 +554,7 @@ namespace FastAndFuriousImageFileTagger
 
                 string[] delimiterTags = new string[1];
 
-                delimiterTags[0] = "__";
+                delimiterTags[0] = tagStringFromBaseFileNameSeperator;
 
                 string[] subStrings = fileName.Split(delimiterTags, 5, RemoveEmptyEntries);
 
@@ -607,7 +605,7 @@ namespace FastAndFuriousImageFileTagger
 
             string[] delimiterTags = new string[1];
 
-            delimiterTags[0] = "__";
+            delimiterTags[0] = tagStringFromBaseFileNameSeperator;
 
             string[] subStrings = fullName.Split(delimiterTags, 5, RemoveEmptyEntries);
 
@@ -619,7 +617,7 @@ namespace FastAndFuriousImageFileTagger
 
             string[] delimiterTags = new string[1];
 
-            delimiterTags[0] = "__";
+            delimiterTags[0] = tagStringFromBaseFileNameSeperator;
 
             string[] subStrings = fullName.Split(delimiterTags, 5, RemoveEmptyEntries);
 
@@ -630,7 +628,7 @@ namespace FastAndFuriousImageFileTagger
         {
             string[] delimiterTags = new string[1];
 
-            delimiterTags[0] = "__";
+            delimiterTags[0] = tagStringFromBaseFileNameSeperator;
 
             string[] subStrings = fullFileName.Split(delimiterTags, 5, RemoveEmptyEntries);
 
@@ -668,7 +666,7 @@ namespace FastAndFuriousImageFileTagger
 
             if (showOnlyNotTaggedFiles)
                 filesWithEnum = Directory.EnumerateFiles(workingDirectory, "*.*", SearchOption.TopDirectoryOnly)
-                .Where(s => (s.EndsWith(".jpg") && !s.Contains("__")) || (s.EndsWith(".png") && !s.Contains("__")));
+                .Where(s => (s.EndsWith(".jpg") && !s.Contains(tagStringFromBaseFileNameSeperator)) || (s.EndsWith(".png") && !s.Contains("__")));
             else
                 filesWithEnum = Directory.EnumerateFiles(workingDirectory, "*.*", SearchOption.TopDirectoryOnly)
                .Where(s => s.EndsWith(".jpg") || s.EndsWith(".png"));
