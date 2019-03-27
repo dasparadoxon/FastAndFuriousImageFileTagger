@@ -163,6 +163,17 @@ namespace FastAndFuriousImageFileTagger
             AddTagToImageTagCheckBox(newTag_textBox.Text);
         }
 
+        private void DirectoryChangeButton_clicked(object sender, EventArgs e)
+        {
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Console.WriteLine("Setting working directory to : " + folderBrowserDialog1.SelectedPath);
+                workingDirectory = folderBrowserDialog1.SelectedPath;
+                ScanDirectoryAndUpdateImageIndexTextBox();
+            }
+        }
+
         private void RenameBaseNameButton_Click(object sender, EventArgs e)
         {
             // are there tags in the current active image ?
@@ -449,7 +460,7 @@ namespace FastAndFuriousImageFileTagger
 
             string[] delimiterTags = new string[1];
 
-            delimiterTags[0] = "__";
+            delimiterTags[0] = tagStringFromBaseFileNameSeperator;
 
             string[] subStrings = fileName.Split(delimiterTags, 5, RemoveEmptyEntries);
 
@@ -571,7 +582,7 @@ namespace FastAndFuriousImageFileTagger
         private string CleanPath(string toCleanPath, string replaceWith = "")
         {
             //get just the filename - can't use Path.GetFileName since the path might be bad!  
-            string[] pathParts = toCleanPath.Split(new char[] { '\\' });
+            string[] pathParts = toCleanPath.Split(new char[] { Path.DirectorySeparatorChar });
             string newFileName = pathParts[pathParts.Length - 1];
             //get just the path  
             string newPath = toCleanPath.Substring(0, toCleanPath.Length - newFileName.Length);
@@ -638,23 +649,6 @@ namespace FastAndFuriousImageFileTagger
             return true;
         }
 
-        private FileInfo[] GetFileListFromCurrentDirectory_old()
-        {
-
-            Console.WriteLine("Getting File List from +'" + workingDirectory + "'");
-
-
-            DirectoryInfo dinfo = new DirectoryInfo(workingDirectory);
-
-
-
-            var filesWithEnum = Directory.EnumerateFiles(workingDirectory, "*.*", SearchOption.TopDirectoryOnly)
-            .Where(s => (s.EndsWith(".jpg") && !s.Contains("__")) || (s.EndsWith(".png") && !s.Contains("__")));
-
-            return dinfo.GetFiles("*.jpg");
-
-        }
-
         private IEnumerable<string> GetFileListFromCurrentDirectory()
         {
 
@@ -708,16 +702,7 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
-        private void DirectoryChangeButton_clicked(object sender, EventArgs e)
-        {
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                Console.WriteLine("Setting working directory to : " + folderBrowserDialog1.SelectedPath);
-                workingDirectory = folderBrowserDialog1.SelectedPath;
-                ScanDirectoryAndUpdateImageIndexTextBox();
-            }
-        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
