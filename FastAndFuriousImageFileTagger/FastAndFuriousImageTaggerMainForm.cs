@@ -144,38 +144,11 @@ namespace FastAndFuriousImageFileTagger
             {
                 if (newTag_textBox.Text == " ")
                 {
-
-                    imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
-
                     imageIndex++;
 
-                    ScanDirectoryAndUpdateImageIndexTextBox();
+                    SetUpCurrentImage(true);
 
-                    if (imageFilesInCurrentDirectory.Count() != 0)
-                    {
-
-                        string directory = Path.GetDirectoryName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
-                        string filename = Path.GetFileName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
-
-                        string pathAndFileName = directory
-                            + "\\" + filename;
-
-                        SetCurrentImageToPictureBox(pathAndFileName);
-
-                        UpdateBaseNameTextBox(filename);
-
-                        ParseTagsAndPopulateTagListForImage(filename);
-
-                        currentSelectedImage.Path = directory;
-
-                        currentSelectedImage.Name = filename;
-
-                    }
-                    else
-                    {
-                        pictureBox1.Image = startImage;
-                        pictureBox1.Refresh();
-                    }
+                    // TODO : If there are no images left to process, set the initial image.
 
                     newTag_textBox.Clear();
 
@@ -543,6 +516,8 @@ namespace FastAndFuriousImageFileTagger
                     finalFileName = newTag.ToUpper() + "__" + fileName;
 
                     string finalPathAndFileName = CleanPath(currentSelectedImage.Path + Path.DirectorySeparatorChar + finalFileName);
+                    
+                    
 
                     System.IO.File.Move(currentSelectedImage.Path + Path.DirectorySeparatorChar + fileName, finalPathAndFileName);
 

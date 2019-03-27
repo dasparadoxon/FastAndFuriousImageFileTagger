@@ -25,7 +25,7 @@ namespace FastAndFuriousImageFileTagger
         private string path;
         private string name;
 
-        public CurrentSelectedImageFile(string path, string name)
+        public CurrentSelectedImageFile(string name, string path)
         {
             this.path = path;
             this.name = name;
