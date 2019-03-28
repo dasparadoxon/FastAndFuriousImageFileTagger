@@ -215,7 +215,7 @@ namespace FastAndFuriousImageFileTagger
 
                 string tags = GetTagStringOfFile(currentSelectedImage.Name);
 
-                string newBaseFileName = renameBase_textBox.Text;
+                string newBaseFileName = renameBase_textBox.Text + Path.GetExtension(currentSelectedImage.Name);
 
                 newFileName = tags + tagStringFromBaseFileNameSeperator + newBaseFileName;
 
@@ -223,7 +223,7 @@ namespace FastAndFuriousImageFileTagger
 
             }
             else
-                newFileName = renameBase_textBox.Text;
+                newFileName = renameBase_textBox.Text + Path.GetExtension(currentSelectedImage.Name);
 
             RenameFile(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
                 currentSelectedImage.Path + Path.DirectorySeparatorChar + newFileName);
@@ -639,7 +639,7 @@ namespace FastAndFuriousImageFileTagger
 
         private void UpdateBaseNameTextBox(string fullFileName)
         {
-            renameBase_textBox.Text = GetBaseFileName(fullFileName);
+            renameBase_textBox.Text = GetBaseFileName(Path.GetFileNameWithoutExtension(fullFileName));
         }
 
         private string GetBaseFileName(string fullName)
