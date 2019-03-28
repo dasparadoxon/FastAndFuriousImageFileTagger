@@ -584,6 +584,8 @@ namespace FastAndFuriousImageFileTagger
 
         private void RenameFile(string oldFileName, string newFileName)
         {
+            Console.WriteLine("Renaming File from '" + oldFileName + "' to '" + newFileName);
+
             System.IO.File.Move(oldFileName, newFileName);
         }
 
@@ -702,7 +704,9 @@ namespace FastAndFuriousImageFileTagger
         {
             long currentImageIndex = ImageIndex.Get();
 
-            string newIndexedBasefileName = "I" + currentImageIndex.ToString() ;
+            string extension = Path.GetExtension(currentSelectedImage.Name);
+
+            string newIndexedBasefileName = "I" + currentImageIndex.ToString() + extension;
 
             string newFileName;
 
@@ -716,16 +720,16 @@ namespace FastAndFuriousImageFileTagger
 
                 newFileName = tags + tagStringFromBaseFileNameSeperator + newBaseFileName;
 
-
-
             }
             else
-                newFileName = renameBase_textBox.Text;
+                newFileName = newIndexedBasefileName;
 
             RenameFile(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
                 currentSelectedImage.Path + Path.DirectorySeparatorChar + newFileName);
 
             currentSelectedImage.Name = newFileName;
+
+            UpdateBaseNameTextBox(currentSelectedImage.Name);
 
             ImageIndex.Increase();
 
@@ -766,8 +770,6 @@ namespace FastAndFuriousImageFileTagger
         {
 
         }
-
-
 
         private void label1_Click(object sender, EventArgs e)
         {

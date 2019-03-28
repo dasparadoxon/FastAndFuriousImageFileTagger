@@ -64,7 +64,7 @@
             // 
             // PreviousImageButton
             // 
-            this.PreviousImageButton.Location = new System.Drawing.Point(3, 3);
+            this.PreviousImageButton.Location = new System.Drawing.Point(3, 19);
             this.PreviousImageButton.Name = "PreviousImageButton";
             this.PreviousImageButton.Size = new System.Drawing.Size(75, 23);
             this.PreviousImageButton.TabIndex = 0;
@@ -74,7 +74,7 @@
             // 
             // NextImageButton
             // 
-            this.NextImageButton.Location = new System.Drawing.Point(229, 3);
+            this.NextImageButton.Location = new System.Drawing.Point(229, 19);
             this.NextImageButton.Name = "NextImageButton";
             this.NextImageButton.Size = new System.Drawing.Size(75, 23);
             this.NextImageButton.TabIndex = 1;
@@ -96,7 +96,7 @@
             // 
             // NumberOfImagesInDirectoryTextbox
             // 
-            this.NumberOfImagesInDirectoryTextbox.Location = new System.Drawing.Point(84, 6);
+            this.NumberOfImagesInDirectoryTextbox.Location = new System.Drawing.Point(84, 19);
             this.NumberOfImagesInDirectoryTextbox.Name = "NumberOfImagesInDirectoryTextbox";
             this.NumberOfImagesInDirectoryTextbox.ReadOnly = true;
             this.NumberOfImagesInDirectoryTextbox.Size = new System.Drawing.Size(142, 20);
@@ -282,7 +282,6 @@
             // 
             this.directoryInformationPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.directoryInformationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.directoryInformationPanel.Controls.Add(this.DeleteButton);
             this.directoryInformationPanel.Controls.Add(this.PreviousImageButton);
             this.directoryInformationPanel.Controls.Add(this.NumberOfImagesInDirectoryTextbox);
             this.directoryInformationPanel.Controls.Add(this.NextImageButton);
@@ -294,9 +293,9 @@
             // DeleteButton
             // 
             this.DeleteButton.ForeColor = System.Drawing.Color.Red;
-            this.DeleteButton.Location = new System.Drawing.Point(229, 39);
+            this.DeleteButton.Location = new System.Drawing.Point(412, 21);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.Size = new System.Drawing.Size(84, 23);
             this.DeleteButton.TabIndex = 4;
             this.DeleteButton.Text = "REMOVE";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -329,6 +328,7 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.DeleteButton);
             this.panel1.Controls.Add(this.button_index_rename);
             this.panel1.Location = new System.Drawing.Point(12, 624);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
