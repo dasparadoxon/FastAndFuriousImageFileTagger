@@ -189,13 +189,19 @@ namespace FastAndFuriousImageFileTagger
 
         private void MainForm_KeyDown_Event(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
+            if (e.KeyCode == Keys.F2)
 
             {
 
                 RenameBaseFilenameToIndexedBaseFilename();
 
 
+            }
+
+            if(e.KeyCode == Keys.F1)
+            {
+
+                renameBase_textBox.Select();
             }
         }
 
