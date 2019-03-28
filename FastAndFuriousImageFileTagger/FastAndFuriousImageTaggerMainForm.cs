@@ -23,6 +23,27 @@ namespace FastAndFuriousImageFileTagger
 
     public partial class FastAndFuriousImageTagger : Form
     {
+        private class ImageIndex
+        {
+            static public void Increase()
+            {
+
+                Properties.Settings.Default.imageIndex++;
+
+                Properties.Settings.Default.Save();
+
+            }
+
+            static public long  Get()
+            {
+                Console.WriteLine("Setting:" + Properties.Settings.Default["imageIndex"]);
+
+                return (long)Properties.Settings.Default["imageIndex"];
+            }
+        
+        }
+
+
         // IMAGES
 
         CurrentSelectedImageFile currentSelectedImage;
@@ -111,6 +132,12 @@ namespace FastAndFuriousImageFileTagger
 
         // EVENT HANDLER -------
 
+        // CHANGES THE BASEFILENAME TO A FILENAME USING THE APP INDEX COUNTER
+        private void Button_index_rename_click(object sender, EventArgs e)
+        {
+            RenameBaseFilenameToIndexedBaseFilename();
+        }
+
         private void PreviousImageButtonClick(object sender, EventArgs e)
         {
 
@@ -127,6 +154,8 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        // CHECKS IF IN THE NEW TAG BOX A SPACE IS PRESSED, WHICH THEN GOES TO THE NEXT IMAGE
+        // CHECKS IF ENTER IN THE NEW TAG BOX IS PRESSED, AND ADS THE TAG TO THE CURRENT PICTURE
         private void TextBoxKeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -669,6 +698,39 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        private void RenameBaseFilenameToIndexedBaseFilename()
+        {
+            long currentImageIndex = ImageIndex.Get();
+
+            string newIndexedBasefileName = "I" + currentImageIndex.ToString() ;
+
+            string newFileName;
+
+            if (HasThisFileTags(currentSelectedImage.Name))
+            {
+                Console.WriteLine("RenameBaseNameButton_Click : Current file has Tags");
+
+                string tags = GetTagStringOfFile(currentSelectedImage.Name);
+
+                string newBaseFileName = newIndexedBasefileName;
+
+                newFileName = tags + tagStringFromBaseFileNameSeperator + newBaseFileName;
+
+
+
+            }
+            else
+                newFileName = renameBase_textBox.Text;
+
+            RenameFile(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
+                currentSelectedImage.Path + Path.DirectorySeparatorChar + newFileName);
+
+            currentSelectedImage.Name = newFileName;
+
+            ImageIndex.Increase();
+
+        }
+
         private void DeleteImage()
         {
             var confirmResult = MessageBox.Show("Are you sure you want to delete this Image ?",
@@ -717,6 +779,9 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        private void onlyShowNonTaggedImages_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

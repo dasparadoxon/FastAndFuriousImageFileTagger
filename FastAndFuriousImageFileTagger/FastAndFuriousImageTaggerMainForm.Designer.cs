@@ -49,12 +49,17 @@
             this.directoryInformationPanel = new System.Windows.Forms.Panel();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.additionalOptions1Panel = new System.Windows.Forms.Panel();
+            this.button_index_rename = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
             this.directoryInformationPanel.SuspendLayout();
             this.additionalOptions1Panel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousImageButton
@@ -81,9 +86,9 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 95);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(309, 278);
+            this.pictureBox1.Size = new System.Drawing.Size(317, 309);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -101,28 +106,28 @@
             // tagOfCurrentFilePanel
             // 
             this.tagOfCurrentFilePanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.tagOfCurrentFilePanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tagOfCurrentFilePanel.BackColor = System.Drawing.SystemColors.Control;
             this.tagOfCurrentFilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tagOfCurrentFilePanel.Controls.Add(this.tagsForThisFile_checkedListBox);
             this.tagOfCurrentFilePanel.Controls.Add(this.TagBoxLabel);
-            this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(327, 95);
+            this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(337, 12);
             this.tagOfCurrentFilePanel.Name = "tagOfCurrentFilePanel";
-            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(184, 278);
+            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(160, 309);
             this.tagOfCurrentFilePanel.TabIndex = 4;
             // 
             // tagsForThisFile_checkedListBox
             // 
             this.tagsForThisFile_checkedListBox.FormattingEnabled = true;
-            this.tagsForThisFile_checkedListBox.Location = new System.Drawing.Point(13, 44);
+            this.tagsForThisFile_checkedListBox.Location = new System.Drawing.Point(13, 29);
             this.tagsForThisFile_checkedListBox.Name = "tagsForThisFile_checkedListBox";
-            this.tagsForThisFile_checkedListBox.Size = new System.Drawing.Size(159, 214);
+            this.tagsForThisFile_checkedListBox.Size = new System.Drawing.Size(130, 259);
             this.tagsForThisFile_checkedListBox.TabIndex = 1;
             this.tagsForThisFile_checkedListBox.SelectedIndexChanged += new System.EventHandler(this.AssignedTagWasDeactivated_TagsForThisFileListCheckBox);
             // 
             // TagBoxLabel
             // 
             this.TagBoxLabel.AutoSize = true;
-            this.TagBoxLabel.Location = new System.Drawing.Point(10, 17);
+            this.TagBoxLabel.Location = new System.Drawing.Point(10, 12);
             this.TagBoxLabel.Name = "TagBoxLabel";
             this.TagBoxLabel.Size = new System.Drawing.Size(118, 13);
             this.TagBoxLabel.TabIndex = 0;
@@ -131,22 +136,22 @@
             // 
             // NewTagPanel
             // 
-            this.NewTagPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewTagPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.NewTagPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.NewTagPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewTagPanel.Controls.Add(this.AddTagButton);
             this.NewTagPanel.Controls.Add(this.NewTagLabel);
             this.NewTagPanel.Controls.Add(this.newTag_textBox);
-            this.NewTagPanel.Location = new System.Drawing.Point(12, 396);
+            this.NewTagPanel.Location = new System.Drawing.Point(12, 453);
             this.NewTagPanel.Name = "NewTagPanel";
-            this.NewTagPanel.Size = new System.Drawing.Size(499, 64);
+            this.NewTagPanel.Size = new System.Drawing.Size(512, 64);
             this.NewTagPanel.TabIndex = 5;
             // 
             // AddTagButton
             // 
             this.AddTagButton.Location = new System.Drawing.Point(412, 22);
             this.AddTagButton.Name = "AddTagButton";
-            this.AddTagButton.Size = new System.Drawing.Size(75, 23);
+            this.AddTagButton.Size = new System.Drawing.Size(84, 23);
             this.AddTagButton.TabIndex = 2;
             this.AddTagButton.Text = "Add Tag";
             this.AddTagButton.UseVisualStyleBackColor = true;
@@ -183,17 +188,17 @@
             "scene",
             "sky",
             "horizon"});
-            this.newTag_textBox.Location = new System.Drawing.Point(81, 22);
+            this.newTag_textBox.Location = new System.Drawing.Point(104, 22);
             this.newTag_textBox.Name = "newTag_textBox";
-            this.newTag_textBox.Size = new System.Drawing.Size(320, 20);
+            this.newTag_textBox.Size = new System.Drawing.Size(297, 20);
             this.newTag_textBox.TabIndex = 0;
             this.newTag_textBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxKeyUp);
             // 
             // DirectoryChangeButton
             // 
-            this.DirectoryChangeButton.Location = new System.Drawing.Point(3, 3);
+            this.DirectoryChangeButton.Location = new System.Drawing.Point(13, 10);
             this.DirectoryChangeButton.Name = "DirectoryChangeButton";
-            this.DirectoryChangeButton.Size = new System.Drawing.Size(176, 23);
+            this.DirectoryChangeButton.Size = new System.Drawing.Size(160, 23);
             this.DirectoryChangeButton.TabIndex = 6;
             this.DirectoryChangeButton.Text = "Change Directory";
             this.DirectoryChangeButton.UseVisualStyleBackColor = true;
@@ -204,33 +209,34 @@
             this.onlyShowNonTaggedImages_CheckBox.AutoSize = true;
             this.onlyShowNonTaggedImages_CheckBox.Checked = true;
             this.onlyShowNonTaggedImages_CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.onlyShowNonTaggedImages_CheckBox.Location = new System.Drawing.Point(4, 32);
+            this.onlyShowNonTaggedImages_CheckBox.Location = new System.Drawing.Point(13, 39);
             this.onlyShowNonTaggedImages_CheckBox.Name = "onlyShowNonTaggedImages_CheckBox";
             this.onlyShowNonTaggedImages_CheckBox.Size = new System.Drawing.Size(168, 17);
             this.onlyShowNonTaggedImages_CheckBox.TabIndex = 7;
             this.onlyShowNonTaggedImages_CheckBox.Text = "Only show non-tagged images";
             this.onlyShowNonTaggedImages_CheckBox.UseVisualStyleBackColor = true;
+            this.onlyShowNonTaggedImages_CheckBox.CheckedChanged += new System.EventHandler(this.onlyShowNonTaggedImages_CheckBox_CheckedChanged);
             this.onlyShowNonTaggedImages_CheckBox.Click += new System.EventHandler(this.onlyShowNonTaggedImagesCheckbox_clicked);
             // 
             // renameBasePanel
             // 
-            this.renameBasePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.renameBasePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.renameBasePanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.renameBasePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.renameBasePanel.Controls.Add(this.RenameBaseNameButton);
             this.renameBasePanel.Controls.Add(this.RenameTextBoxLabel);
             this.renameBasePanel.Controls.Add(this.renameBase_textBox);
-            this.renameBasePanel.Location = new System.Drawing.Point(12, 475);
+            this.renameBasePanel.Location = new System.Drawing.Point(12, 539);
             this.renameBasePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.renameBasePanel.Name = "renameBasePanel";
-            this.renameBasePanel.Size = new System.Drawing.Size(499, 60);
+            this.renameBasePanel.Size = new System.Drawing.Size(512, 67);
             this.renameBasePanel.TabIndex = 6;
             // 
             // RenameBaseNameButton
             // 
-            this.RenameBaseNameButton.Location = new System.Drawing.Point(412, 16);
+            this.RenameBaseNameButton.Location = new System.Drawing.Point(412, 23);
             this.RenameBaseNameButton.Name = "RenameBaseNameButton";
-            this.RenameBaseNameButton.Size = new System.Drawing.Size(75, 23);
+            this.RenameBaseNameButton.Size = new System.Drawing.Size(84, 23);
             this.RenameBaseNameButton.TabIndex = 2;
             this.RenameBaseNameButton.Text = "Rename";
             this.RenameBaseNameButton.UseVisualStyleBackColor = true;
@@ -239,7 +245,7 @@
             // RenameTextBoxLabel
             // 
             this.RenameTextBoxLabel.AutoSize = true;
-            this.RenameTextBoxLabel.Location = new System.Drawing.Point(14, 21);
+            this.RenameTextBoxLabel.Location = new System.Drawing.Point(12, 26);
             this.RenameTextBoxLabel.Name = "RenameTextBoxLabel";
             this.RenameTextBoxLabel.Size = new System.Drawing.Size(84, 13);
             this.RenameTextBoxLabel.TabIndex = 1;
@@ -267,7 +273,7 @@
             "scene",
             "sky",
             "horizon"});
-            this.renameBase_textBox.Location = new System.Drawing.Point(104, 18);
+            this.renameBase_textBox.Location = new System.Drawing.Point(102, 23);
             this.renameBase_textBox.Name = "renameBase_textBox";
             this.renameBase_textBox.Size = new System.Drawing.Size(297, 20);
             this.renameBase_textBox.TabIndex = 0;
@@ -280,7 +286,7 @@
             this.directoryInformationPanel.Controls.Add(this.PreviousImageButton);
             this.directoryInformationPanel.Controls.Add(this.NumberOfImagesInDirectoryTextbox);
             this.directoryInformationPanel.Controls.Add(this.NextImageButton);
-            this.directoryInformationPanel.Location = new System.Drawing.Point(12, 12);
+            this.directoryInformationPanel.Location = new System.Drawing.Point(12, 16);
             this.directoryInformationPanel.Name = "directoryInformationPanel";
             this.directoryInformationPanel.Size = new System.Drawing.Size(309, 67);
             this.directoryInformationPanel.TabIndex = 8;
@@ -298,26 +304,58 @@
             // 
             // additionalOptions1Panel
             // 
-            this.additionalOptions1Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.additionalOptions1Panel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.additionalOptions1Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.additionalOptions1Panel.Controls.Add(this.DirectoryChangeButton);
             this.additionalOptions1Panel.Controls.Add(this.onlyShowNonTaggedImages_CheckBox);
-            this.additionalOptions1Panel.Location = new System.Drawing.Point(327, 12);
+            this.additionalOptions1Panel.Location = new System.Drawing.Point(335, 16);
             this.additionalOptions1Panel.Name = "additionalOptions1Panel";
-            this.additionalOptions1Panel.Size = new System.Drawing.Size(184, 67);
+            this.additionalOptions1Panel.Size = new System.Drawing.Size(189, 67);
             this.additionalOptions1Panel.TabIndex = 9;
+            // 
+            // button_index_rename
+            // 
+            this.button_index_rename.Location = new System.Drawing.Point(15, 21);
+            this.button_index_rename.Name = "button_index_rename";
+            this.button_index_rename.Size = new System.Drawing.Size(165, 23);
+            this.button_index_rename.TabIndex = 3;
+            this.button_index_rename.Text = "Index Rename";
+            this.button_index_rename.UseVisualStyleBackColor = true;
+            this.button_index_rename.Click += new System.EventHandler(this.Button_index_rename_click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button_index_rename);
+            this.panel1.Location = new System.Drawing.Point(12, 624);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(512, 66);
+            this.panel1.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.tagOfCurrentFilePanel);
+            this.panel2.Location = new System.Drawing.Point(12, 96);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(512, 336);
+            this.panel2.TabIndex = 10;
             // 
             // FastAndFuriousImageTagger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(526, 548);
+            this.ClientSize = new System.Drawing.Size(538, 705);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.NewTagPanel);
             this.Controls.Add(this.additionalOptions1Panel);
             this.Controls.Add(this.renameBasePanel);
-            this.Controls.Add(this.tagOfCurrentFilePanel);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.directoryInformationPanel);
             this.MaximumSize = new System.Drawing.Size(1200, 1200);
             this.MinimumSize = new System.Drawing.Size(542, 582);
@@ -337,6 +375,8 @@
             this.directoryInformationPanel.PerformLayout();
             this.additionalOptions1Panel.ResumeLayout(false);
             this.additionalOptions1Panel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -363,6 +403,9 @@
         private System.Windows.Forms.Panel directoryInformationPanel;
         private System.Windows.Forms.Panel additionalOptions1Panel;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button button_index_rename;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
