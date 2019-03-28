@@ -187,6 +187,18 @@ namespace FastAndFuriousImageFileTagger
             }
         }
 
+        private void MainForm_KeyDown_Event(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+
+            {
+
+                RenameBaseFilenameToIndexedBaseFilename();
+
+
+            }
+        }
+
         private void AddTagButton_AddTag_clicked(object sender, EventArgs e)
         {
             AddTagToImageTagCheckBox(newTag_textBox.Text);
@@ -785,5 +797,7 @@ namespace FastAndFuriousImageFileTagger
         {
 
         }
+
+
     }
 }

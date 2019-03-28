@@ -88,7 +88,7 @@
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(16, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(301, 309);
+            this.pictureBox1.Size = new System.Drawing.Size(289, 309);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -357,6 +357,7 @@
             this.Controls.Add(this.additionalOptions1Panel);
             this.Controls.Add(this.renameBasePanel);
             this.Controls.Add(this.directoryInformationPanel);
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1200, 1200);
             this.MinimumSize = new System.Drawing.Size(542, 582);
             this.Name = "FastAndFuriousImageTagger";
@@ -364,6 +365,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Fast and Furious Image Tagger";
             this.Load += new System.EventHandler(this.FastAndFuriousImageTagger_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown_Event);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tagOfCurrentFilePanel.ResumeLayout(false);
             this.tagOfCurrentFilePanel.PerformLayout();
