@@ -114,7 +114,7 @@ namespace FastAndFuriousImageFileTagger
                 string directory = Path.GetDirectoryName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
                 string filename = Path.GetFileName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
 
-                //UpdateBaseNameTextBox(filename);
+                UpdateBaseNameTextBox(filename);
 
                 ParseTagsAndPopulateTagListForImage(filename);
 
@@ -307,7 +307,7 @@ namespace FastAndFuriousImageFileTagger
                 string directory = Path.GetDirectoryName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
                 string filename = Path.GetFileName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
 
-                //UpdateBaseNameTextBox(filename);
+                UpdateBaseNameTextBox(filename);
 
                 ParseTagsAndPopulateTagListForImage(filename);
 
