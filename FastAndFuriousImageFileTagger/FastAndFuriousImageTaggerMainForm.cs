@@ -71,7 +71,7 @@ namespace FastAndFuriousImageFileTagger
 
             UserDataDirectoryHandling();
 
-            imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
+            //imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
             InitializeAutoCompletionForNewTagTextBox();
 
@@ -671,17 +671,20 @@ namespace FastAndFuriousImageFileTagger
 
         private void DeleteImage()
         {
-            var confirmResult = MessageBox.Show("Are you sure to delete this item ??",
-                                     "Confirm Delete!!",
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this Image ?",
+                                     "Confirm Removal",
                                      MessageBoxButtons.YesNo);
 
             if (confirmResult == DialogResult.Yes)
             {
                 File.Delete(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name);
+
+                SetUpCurrentImage();
+
             }
             else
             {
-                // If 'No', do something here.
+                
             }
         }
 
