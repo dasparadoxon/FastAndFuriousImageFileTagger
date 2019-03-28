@@ -84,6 +84,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(16, 12);
@@ -254,7 +255,6 @@
             // 
             // renameBase_textBox
             // 
-            this.renameBase_textBox.AcceptsReturn = true;
             this.renameBase_textBox.AutoCompleteCustomSource.AddRange(new string[] {
             "animal",
             "cute",
@@ -277,6 +277,7 @@
             this.renameBase_textBox.Name = "renameBase_textBox";
             this.renameBase_textBox.Size = new System.Drawing.Size(297, 20);
             this.renameBase_textBox.TabIndex = 0;
+            this.renameBase_textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Event_RenameBaseFile_KeyDown);
             // 
             // directoryInformationPanel
             // 

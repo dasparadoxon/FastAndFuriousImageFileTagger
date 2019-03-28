@@ -190,17 +190,12 @@ namespace FastAndFuriousImageFileTagger
         private void MainForm_KeyDown_Event(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F2)
-
             {
-
                 RenameBaseFilenameToIndexedBaseFilename();
-
-
             }
 
             if(e.KeyCode == Keys.F1)
             {
-
                 renameBase_textBox.Select();
             }
         }
@@ -342,6 +337,22 @@ namespace FastAndFuriousImageFileTagger
                 InitializeAutoCompletionForNewTagTextBox();
 
             }
+
+        }
+
+        private void Event_RenameBaseFile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                RenameBaseNameButton_Click(sender, e);
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                newTag_textBox.Select();
+
+            }
+
 
         }
 
