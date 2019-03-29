@@ -456,7 +456,7 @@ namespace FastAndFuriousImageFileTagger
 
         private void AddTagToAutoCompleteListIfNotPresent(string tagToAdd)
         {
-            if (!tagAutoCompleteStringsCollection.Contains(tagToAdd))
+            if (!tagAutoCompleteStringsCollection.Contains(tagToAdd) && tagToAdd.Length > 1)
             {
                 tagAutoCompleteStringsCollection.Add(tagToAdd);
             }
@@ -543,19 +543,22 @@ namespace FastAndFuriousImageFileTagger
 
         private void AddTagToImageTagCheckBox(string newTag)
         {
+            if(newTag.Length > 1) { 
 
-            string[] newTagWTF = new string[1];
+                string[] newTagWTF = new string[1];
 
-            newTagWTF[0] = newTag;
+                newTagWTF[0] = newTag;
 
-            tagsForThisFile_checkedListBox.Items.AddRange(newTagWTF);
+                tagsForThisFile_checkedListBox.Items.AddRange(newTagWTF);
 
-            for (int i = 0; i < tagsForThisFile_checkedListBox.Items.Count; i++)
-                tagsForThisFile_checkedListBox.SetItemCheckState(i, CheckState.Checked);
+                for (int i = 0; i < tagsForThisFile_checkedListBox.Items.Count; i++)
+                    tagsForThisFile_checkedListBox.SetItemCheckState(i, CheckState.Checked);
 
-            AddTagToAutoCompleteListIfNotPresent(newTag);
+                AddTagToAutoCompleteListIfNotPresent(newTag);
 
-            AddTagToTagFile(newTag);
+                AddTagToTagFile(newTag);
+
+            }
         }
 
         private void AddTagToTagFile(string newTag)
@@ -574,7 +577,7 @@ namespace FastAndFuriousImageFileTagger
         {
             Console.WriteLine("Trying to add new tag to file '" + fileName + "' in Directory '" + currentSelectedImage.Path + "'");
 
-            if (fileName != null)
+            if (fileName != null && newTag.Length > 1)
 
                 if (!ImageHasTags(fileName))
                 {
