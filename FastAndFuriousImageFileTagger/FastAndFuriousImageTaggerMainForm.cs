@@ -349,10 +349,7 @@ namespace FastAndFuriousImageFileTagger
                 e.Handled = true;
                 e.SuppressKeyPress = true;
 
-                newTag_textBox.Select();
-
-            }
-
+                newTag_textBox.Select();            }
 
         }
 
