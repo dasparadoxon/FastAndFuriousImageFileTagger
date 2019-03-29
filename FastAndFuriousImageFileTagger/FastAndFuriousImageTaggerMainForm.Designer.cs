@@ -170,9 +170,9 @@
             this.NewTagLabel.AutoSize = true;
             this.NewTagLabel.Location = new System.Drawing.Point(17, 25);
             this.NewTagLabel.Name = "NewTagLabel";
-            this.NewTagLabel.Size = new System.Drawing.Size(58, 13);
+            this.NewTagLabel.Size = new System.Drawing.Size(79, 13);
             this.NewTagLabel.TabIndex = 1;
-            this.NewTagLabel.Text = "NEW TAG";
+            this.NewTagLabel.Text = "NEW TAG (F3)";
             this.NewTagLabel.Click += new System.EventHandler(this.NewTagLabel_Click);
             // 
             // newTag_textBox
