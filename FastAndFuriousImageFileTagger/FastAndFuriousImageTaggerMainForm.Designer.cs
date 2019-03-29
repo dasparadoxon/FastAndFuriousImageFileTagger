@@ -34,6 +34,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.NumberOfImagesInDirectoryTextbox = new System.Windows.Forms.TextBox();
             this.tagOfCurrentFilePanel = new System.Windows.Forms.Panel();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.tagsForThisFile_checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.TagBoxLabel = new System.Windows.Forms.Label();
             this.NewTagPanel = new System.Windows.Forms.Panel();
@@ -43,13 +44,12 @@
             this.DirectoryChangeButton = new System.Windows.Forms.Button();
             this.onlyShowNonTaggedImages_CheckBox = new System.Windows.Forms.CheckBox();
             this.renameBasePanel = new System.Windows.Forms.Panel();
+            this.button_index_rename = new System.Windows.Forms.Button();
             this.RenameBaseNameButton = new System.Windows.Forms.Button();
             this.RenameTextBoxLabel = new System.Windows.Forms.Label();
             this.renameBase_textBox = new System.Windows.Forms.TextBox();
             this.directoryInformationPanel = new System.Windows.Forms.Panel();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button_index_rename = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
@@ -105,20 +105,30 @@
             this.tagOfCurrentFilePanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.tagOfCurrentFilePanel.BackColor = System.Drawing.SystemColors.Control;
             this.tagOfCurrentFilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tagOfCurrentFilePanel.Controls.Add(this.DeleteButton);
             this.tagOfCurrentFilePanel.Controls.Add(this.tagsForThisFile_checkedListBox);
             this.tagOfCurrentFilePanel.Controls.Add(this.TagBoxLabel);
             this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(335, 11);
             this.tagOfCurrentFilePanel.Name = "tagOfCurrentFilePanel";
-            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(160, 309);
+            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(160, 281);
             this.tagOfCurrentFilePanel.TabIndex = 4;
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.ForeColor = System.Drawing.Color.Red;
+            this.DeleteButton.Location = new System.Drawing.Point(349, 298);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(130, 23);
+            this.DeleteButton.TabIndex = 4;
+            this.DeleteButton.Text = "DELETE IMAGE";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_clicked);
             // 
             // tagsForThisFile_checkedListBox
             // 
             this.tagsForThisFile_checkedListBox.FormattingEnabled = true;
             this.tagsForThisFile_checkedListBox.Location = new System.Drawing.Point(13, 29);
             this.tagsForThisFile_checkedListBox.Name = "tagsForThisFile_checkedListBox";
-            this.tagsForThisFile_checkedListBox.Size = new System.Drawing.Size(130, 244);
+            this.tagsForThisFile_checkedListBox.Size = new System.Drawing.Size(130, 229);
             this.tagsForThisFile_checkedListBox.TabIndex = 1;
             this.tagsForThisFile_checkedListBox.SelectedIndexChanged += new System.EventHandler(this.AssignedTagWasDeactivated_TagsForThisFileListCheckBox);
             // 
@@ -140,9 +150,9 @@
             this.NewTagPanel.Controls.Add(this.AddTagButton);
             this.NewTagPanel.Controls.Add(this.NewTagLabel);
             this.NewTagPanel.Controls.Add(this.newTag_textBox);
-            this.NewTagPanel.Location = new System.Drawing.Point(12, 453);
+            this.NewTagPanel.Location = new System.Drawing.Point(12, 437);
             this.NewTagPanel.Name = "NewTagPanel";
-            this.NewTagPanel.Size = new System.Drawing.Size(512, 64);
+            this.NewTagPanel.Size = new System.Drawing.Size(513, 64);
             this.NewTagPanel.TabIndex = 5;
             // 
             // AddTagButton
@@ -225,11 +235,21 @@
             this.renameBasePanel.Controls.Add(this.RenameBaseNameButton);
             this.renameBasePanel.Controls.Add(this.RenameTextBoxLabel);
             this.renameBasePanel.Controls.Add(this.renameBase_textBox);
-            this.renameBasePanel.Location = new System.Drawing.Point(12, 539);
+            this.renameBasePanel.Location = new System.Drawing.Point(13, 507);
             this.renameBasePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.renameBasePanel.Name = "renameBasePanel";
             this.renameBasePanel.Size = new System.Drawing.Size(512, 100);
             this.renameBasePanel.TabIndex = 6;
+            // 
+            // button_index_rename
+            // 
+            this.button_index_rename.Location = new System.Drawing.Point(331, 55);
+            this.button_index_rename.Name = "button_index_rename";
+            this.button_index_rename.Size = new System.Drawing.Size(165, 23);
+            this.button_index_rename.TabIndex = 3;
+            this.button_index_rename.Text = "Index Rename (F2)";
+            this.button_index_rename.UseVisualStyleBackColor = true;
+            this.button_index_rename.Click += new System.EventHandler(this.Button_index_rename_click);
             // 
             // RenameBaseNameButton
             // 
@@ -291,21 +311,11 @@
             this.directoryInformationPanel.Size = new System.Drawing.Size(512, 67);
             this.directoryInformationPanel.TabIndex = 8;
             // 
-            // DeleteButton
-            // 
-            this.DeleteButton.ForeColor = System.Drawing.Color.Red;
-            this.DeleteButton.Location = new System.Drawing.Point(33, 279);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(84, 23);
-            this.DeleteButton.TabIndex = 4;
-            this.DeleteButton.Text = "REMOVE";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_clicked);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.DeleteButton);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.tagOfCurrentFilePanel);
             this.panel2.Location = new System.Drawing.Point(12, 96);
@@ -313,21 +323,11 @@
             this.panel2.Size = new System.Drawing.Size(512, 336);
             this.panel2.TabIndex = 10;
             // 
-            // button_index_rename
-            // 
-            this.button_index_rename.Location = new System.Drawing.Point(331, 55);
-            this.button_index_rename.Name = "button_index_rename";
-            this.button_index_rename.Size = new System.Drawing.Size(165, 23);
-            this.button_index_rename.TabIndex = 3;
-            this.button_index_rename.Text = "Index Rename (F2)";
-            this.button_index_rename.UseVisualStyleBackColor = true;
-            this.button_index_rename.Click += new System.EventHandler(this.Button_index_rename_click);
-            // 
             // FastAndFuriousImageTagger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(538, 705);
+            this.ClientSize = new System.Drawing.Size(538, 622);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.NewTagPanel);
             this.Controls.Add(this.renameBasePanel);

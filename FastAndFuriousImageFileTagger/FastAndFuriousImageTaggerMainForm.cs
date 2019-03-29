@@ -212,7 +212,8 @@ namespace FastAndFuriousImageFileTagger
             {
                 Console.WriteLine("Setting working directory to : " + folderBrowserDialog1.SelectedPath);
                 workingDirectory = folderBrowserDialog1.SelectedPath;
-                ScanDirectoryAndUpdateImageIndexTextBox();
+
+                SetUpCurrentImage(true);
             }
         }
 
