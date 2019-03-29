@@ -50,12 +50,19 @@
             this.renameBase_textBox = new System.Windows.Forms.TextBox();
             this.directoryInformationPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.MainMenuStripe = new System.Windows.Forms.MenuStrip();
+            this.tagMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.editTagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
             this.directoryInformationPanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.MainMenuStripe.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousImageButton
@@ -150,7 +157,7 @@
             this.NewTagPanel.Controls.Add(this.AddTagButton);
             this.NewTagPanel.Controls.Add(this.NewTagLabel);
             this.NewTagPanel.Controls.Add(this.newTag_textBox);
-            this.NewTagPanel.Location = new System.Drawing.Point(12, 437);
+            this.NewTagPanel.Location = new System.Drawing.Point(12, 454);
             this.NewTagPanel.Name = "NewTagPanel";
             this.NewTagPanel.Size = new System.Drawing.Size(513, 64);
             this.NewTagPanel.TabIndex = 5;
@@ -235,7 +242,7 @@
             this.renameBasePanel.Controls.Add(this.RenameBaseNameButton);
             this.renameBasePanel.Controls.Add(this.RenameTextBoxLabel);
             this.renameBasePanel.Controls.Add(this.renameBase_textBox);
-            this.renameBasePanel.Location = new System.Drawing.Point(13, 507);
+            this.renameBasePanel.Location = new System.Drawing.Point(13, 524);
             this.renameBasePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.renameBasePanel.Name = "renameBasePanel";
             this.renameBasePanel.Size = new System.Drawing.Size(512, 100);
@@ -306,7 +313,7 @@
             this.directoryInformationPanel.Controls.Add(this.PreviousImageButton);
             this.directoryInformationPanel.Controls.Add(this.NumberOfImagesInDirectoryTextbox);
             this.directoryInformationPanel.Controls.Add(this.NextImageButton);
-            this.directoryInformationPanel.Location = new System.Drawing.Point(12, 16);
+            this.directoryInformationPanel.Location = new System.Drawing.Point(13, 39);
             this.directoryInformationPanel.Name = "directoryInformationPanel";
             this.directoryInformationPanel.Size = new System.Drawing.Size(512, 67);
             this.directoryInformationPanel.TabIndex = 8;
@@ -318,25 +325,74 @@
             this.panel2.Controls.Add(this.DeleteButton);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.tagOfCurrentFilePanel);
-            this.panel2.Location = new System.Drawing.Point(12, 96);
+            this.panel2.Location = new System.Drawing.Point(13, 112);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(512, 336);
             this.panel2.TabIndex = 10;
+            // 
+            // MainMenuStripe
+            // 
+            this.MainMenuStripe.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.MainMenuStripe.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tagMenu,
+            this.aboutToolStripMenuItem});
+            this.MainMenuStripe.Location = new System.Drawing.Point(0, 0);
+            this.MainMenuStripe.Name = "MainMenuStripe";
+            this.MainMenuStripe.Padding = new System.Windows.Forms.Padding(0);
+            this.MainMenuStripe.Size = new System.Drawing.Size(538, 24);
+            this.MainMenuStripe.TabIndex = 11;
+            this.MainMenuStripe.Text = "menuStrip1";
+            // 
+            // tagMenu
+            // 
+            this.tagMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editTagsToolStripMenuItem});
+            this.tagMenu.Name = "tagMenu";
+            this.tagMenu.Size = new System.Drawing.Size(44, 24);
+            this.tagMenu.Text = "Tags";
+            // 
+            // editTagsToolStripMenuItem
+            // 
+            this.editTagsToolStripMenuItem.Name = "editTagsToolStripMenuItem";
+            this.editTagsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editTagsToolStripMenuItem.Text = "Edit tags...";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statisticsToolStripMenuItem,
+            this.AboutMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
+            this.aboutToolStripMenuItem.Text = "Options";
+            // 
+            // AboutMenuItem
+            // 
+            this.AboutMenuItem.Name = "AboutMenuItem";
+            this.AboutMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AboutMenuItem.Text = "About...";
+            // 
+            // statisticsToolStripMenuItem
+            // 
+            this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statisticsToolStripMenuItem.Text = "Statistics...";
             // 
             // FastAndFuriousImageTagger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(538, 622);
+            this.ClientSize = new System.Drawing.Size(538, 639);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.NewTagPanel);
             this.Controls.Add(this.renameBasePanel);
             this.Controls.Add(this.directoryInformationPanel);
+            this.Controls.Add(this.MainMenuStripe);
             this.KeyPreview = true;
+            this.MainMenuStrip = this.MainMenuStripe;
             this.MaximumSize = new System.Drawing.Size(1200, 1200);
             this.MinimumSize = new System.Drawing.Size(542, 582);
             this.Name = "FastAndFuriousImageTagger";
-            this.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Fast and Furious Image Tagger";
             this.Load += new System.EventHandler(this.FastAndFuriousImageTagger_Load);
@@ -351,7 +407,10 @@
             this.directoryInformationPanel.ResumeLayout(false);
             this.directoryInformationPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.MainMenuStripe.ResumeLayout(false);
+            this.MainMenuStripe.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -378,6 +437,12 @@
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button_index_rename;
+        private System.Windows.Forms.MenuStrip MainMenuStripe;
+        private System.Windows.Forms.ToolStripMenuItem tagMenu;
+        private System.Windows.Forms.ToolStripMenuItem editTagsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem statisticsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
     }
 }
 
