@@ -31,12 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FastAndFuriousImageTagger));
             this.PreviousImageButton = new System.Windows.Forms.Button();
             this.NextImageButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.NumberOfImagesInDirectoryTextbox = new System.Windows.Forms.TextBox();
             this.tagOfCurrentFilePanel = new System.Windows.Forms.Panel();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.tagsForThisFile_checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.TagBoxLabel = new System.Windows.Forms.Label();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.NewTagPanel = new System.Windows.Forms.Panel();
             this.AddTagButton = new System.Windows.Forms.Button();
             this.NewTagLabel = new System.Windows.Forms.Label();
@@ -50,18 +49,19 @@
             this.renameBase_textBox = new System.Windows.Forms.TextBox();
             this.directoryInformationPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainMenuStripe = new System.Windows.Forms.MenuStrip();
             this.tagMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.editTagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
             this.directoryInformationPanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MainMenuStripe.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,19 +85,6 @@
             this.NextImageButton.UseVisualStyleBackColor = true;
             this.NextImageButton.Click += new System.EventHandler(this.NextImageButton_click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(315, 309);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // NumberOfImagesInDirectoryTextbox
             // 
             this.NumberOfImagesInDirectoryTextbox.Location = new System.Drawing.Point(84, 7);
@@ -119,17 +106,6 @@
             this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(160, 281);
             this.tagOfCurrentFilePanel.TabIndex = 4;
             // 
-            // DeleteButton
-            // 
-            this.DeleteButton.ForeColor = System.Drawing.Color.Red;
-            this.DeleteButton.Location = new System.Drawing.Point(349, 298);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(130, 23);
-            this.DeleteButton.TabIndex = 4;
-            this.DeleteButton.Text = "DELETE IMAGE";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_clicked);
-            // 
             // tagsForThisFile_checkedListBox
             // 
             this.tagsForThisFile_checkedListBox.FormattingEnabled = true;
@@ -148,6 +124,17 @@
             this.TagBoxLabel.TabIndex = 0;
             this.TagBoxLabel.Text = "TAGS OF THIS IMAGE";
             this.TagBoxLabel.Click += new System.EventHandler(this.TagBoxLabel_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.ForeColor = System.Drawing.Color.Red;
+            this.DeleteButton.Location = new System.Drawing.Point(349, 298);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(130, 23);
+            this.DeleteButton.TabIndex = 4;
+            this.DeleteButton.Text = "DELETE IMAGE";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_clicked);
             // 
             // NewTagPanel
             // 
@@ -330,6 +317,19 @@
             this.panel2.Size = new System.Drawing.Size(512, 336);
             this.panel2.TabIndex = 10;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(16, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(315, 309);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // MainMenuStripe
             // 
             this.MainMenuStripe.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -354,8 +354,9 @@
             // editTagsToolStripMenuItem
             // 
             this.editTagsToolStripMenuItem.Name = "editTagsToolStripMenuItem";
-            this.editTagsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editTagsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.editTagsToolStripMenuItem.Text = "Edit tags...";
+            this.editTagsToolStripMenuItem.Click += new System.EventHandler(this.EditTagsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -366,17 +367,17 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
             this.aboutToolStripMenuItem.Text = "Options";
             // 
-            // AboutMenuItem
-            // 
-            this.AboutMenuItem.Name = "AboutMenuItem";
-            this.AboutMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.AboutMenuItem.Text = "About...";
-            // 
             // statisticsToolStripMenuItem
             // 
             this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
-            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.statisticsToolStripMenuItem.Text = "Statistics...";
+            // 
+            // AboutMenuItem
+            // 
+            this.AboutMenuItem.Name = "AboutMenuItem";
+            this.AboutMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.AboutMenuItem.Text = "About...";
             // 
             // FastAndFuriousImageTagger
             // 
@@ -397,7 +398,6 @@
             this.Text = "Fast and Furious Image Tagger";
             this.Load += new System.EventHandler(this.FastAndFuriousImageTagger_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown_Event);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tagOfCurrentFilePanel.ResumeLayout(false);
             this.tagOfCurrentFilePanel.PerformLayout();
             this.NewTagPanel.ResumeLayout(false);
@@ -407,6 +407,7 @@
             this.directoryInformationPanel.ResumeLayout(false);
             this.directoryInformationPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MainMenuStripe.ResumeLayout(false);
             this.MainMenuStripe.PerformLayout();
             this.ResumeLayout(false);

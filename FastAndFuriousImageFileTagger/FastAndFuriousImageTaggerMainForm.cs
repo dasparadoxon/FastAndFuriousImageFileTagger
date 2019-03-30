@@ -23,7 +23,7 @@ namespace FastAndFuriousImageFileTagger
 
     public partial class FastAndFuriousImageTagger : Form
     {
-        private class ImageIndex
+        private class ImageFileNameIndex
         {
             static public void Increase()
             {
@@ -42,7 +42,6 @@ namespace FastAndFuriousImageFileTagger
             }
         
         }
-
 
         // IMAGES
 
@@ -357,6 +356,17 @@ namespace FastAndFuriousImageFileTagger
 
                 newTag_textBox.Select();            }
 
+        }
+
+        private void EditTagsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TagEditor tagEditorInstance = new TagEditor();
+
+            tagEditorInstance.TagCollection = tagAutoCompleteStringsCollection;
+
+            tagEditorInstance.InitializeTagCheckBoxListFromAutocompletionList();
+
+            tagEditorInstance.Show();
         }
 
         // DATA AND TAG HANDLING
@@ -737,7 +747,7 @@ namespace FastAndFuriousImageFileTagger
 
         private void RenameBaseFilenameToIndexedBaseFilename()
         {
-            long currentImageIndex = ImageIndex.Get();
+            long currentImageIndex = ImageFileNameIndex.Get();
 
             string extension = Path.GetExtension(currentSelectedImage.Name);
 
@@ -766,7 +776,7 @@ namespace FastAndFuriousImageFileTagger
 
             UpdateBaseNameTextBox(currentSelectedImage.Name);
 
-            ImageIndex.Increase();
+            ImageFileNameIndex.Increase();
 
         }
 
