@@ -56,6 +56,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageTagsetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
@@ -346,7 +347,8 @@
             // tagMenu
             // 
             this.tagMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editTagsToolStripMenuItem});
+            this.editTagsToolStripMenuItem,
+            this.manageTagsetsToolStripMenuItem});
             this.tagMenu.Name = "tagMenu";
             this.tagMenu.Size = new System.Drawing.Size(44, 24);
             this.tagMenu.Text = "Tags";
@@ -354,7 +356,7 @@
             // editTagsToolStripMenuItem
             // 
             this.editTagsToolStripMenuItem.Name = "editTagsToolStripMenuItem";
-            this.editTagsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.editTagsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editTagsToolStripMenuItem.Text = "Edit tags...";
             this.editTagsToolStripMenuItem.Click += new System.EventHandler(this.EditTagsToolStripMenuItem_Click);
             // 
@@ -378,6 +380,12 @@
             this.AboutMenuItem.Name = "AboutMenuItem";
             this.AboutMenuItem.Size = new System.Drawing.Size(129, 22);
             this.AboutMenuItem.Text = "About...";
+            // 
+            // manageTagsetsToolStripMenuItem
+            // 
+            this.manageTagsetsToolStripMenuItem.Name = "manageTagsetsToolStripMenuItem";
+            this.manageTagsetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageTagsetsToolStripMenuItem.Text = "Manage Tagsets...";
             // 
             // FastAndFuriousImageTagger
             // 
@@ -444,6 +452,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statisticsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageTagsetsToolStripMenuItem;
     }
 }
 
