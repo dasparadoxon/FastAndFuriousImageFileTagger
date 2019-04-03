@@ -250,26 +250,34 @@ namespace FastAndFuriousImageFileTagger
                 newTag_textBox.Select();
             }
 
-            if(e.KeyCode == Keys.Delete)
-            {
-                DeleteImage();
-            }
+
 
             if (e.KeyCode == Keys.F4)
                 CopyCurrentImageFileToDesktop();
 
-            if (e.KeyCode == Keys.Left)
+            // Only Process Those Hotkeys if neither TagBox or RenameBox is active !!
+            if(!newTag_textBox.Focused && !renameBase_textBox.Focused)
             {
-                imageIndex--;
 
-                SetUpCurrentImage(true);
-            }
+                if (e.KeyCode == Keys.Delete)
+                {
+                    DeleteImage();
+                }
 
-            if (e.KeyCode == Keys.Right)
-            {
-                imageIndex++;
+                if (e.KeyCode == Keys.Left)
+                {
+                    imageIndex--;
 
-                SetUpCurrentImage(true);
+                    SetUpCurrentImage(true);
+                }
+
+                if (e.KeyCode == Keys.Right)
+                {
+                    imageIndex++;
+
+                    SetUpCurrentImage(true);
+                }
+
             }
         }
 
