@@ -153,6 +153,20 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        private void CopyToDesktopButtonClick(object sender, EventArgs e)
+        {
+
+            CopyCurrentImageFileToDesktop();
+        }
+
+        private void CopyCurrentImageFileToDesktop()
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            File.Copy(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
+                desktopPath + Path.DirectorySeparatorChar + currentSelectedImage.Name);
+        }
+
         // Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes)
         private void NewTag_textBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -234,6 +248,9 @@ namespace FastAndFuriousImageFileTagger
             {
                 DeleteImage();
             }
+
+            if (e.KeyCode == Keys.F4)
+                CopyCurrentImageFileToDesktop();
         }
 
         private void AddTagButton_AddTag_clicked(object sender, EventArgs e)

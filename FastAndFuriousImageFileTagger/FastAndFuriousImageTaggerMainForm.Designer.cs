@@ -426,6 +426,7 @@
             this.CopyToDesktopButton.TabIndex = 4;
             this.CopyToDesktopButton.Text = "Copy to Desktop (F4)";
             this.CopyToDesktopButton.UseVisualStyleBackColor = true;
+            this.CopyToDesktopButton.Click += new System.EventHandler(this.CopyToDesktopButtonClick);
             // 
             // FastAndFuriousImageTagger
             // 
