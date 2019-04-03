@@ -159,13 +159,7 @@ namespace FastAndFuriousImageFileTagger
             CopyCurrentImageFileToDesktop();
         }
 
-        private void CopyCurrentImageFileToDesktop()
-        {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            File.Copy(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
-                desktopPath + Path.DirectorySeparatorChar + currentSelectedImage.Name);
-        }
 
         // Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes)
         private void NewTag_textBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -227,6 +221,18 @@ namespace FastAndFuriousImageFileTagger
             }
         }
 
+        // Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes)
+        private void MainForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                case Keys.Right:
+                    e.IsInputKey = true;
+                    break;
+            }
+        }
+
         private void MainForm_KeyDown_Event(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.F1)
@@ -251,6 +257,20 @@ namespace FastAndFuriousImageFileTagger
 
             if (e.KeyCode == Keys.F4)
                 CopyCurrentImageFileToDesktop();
+
+            if (e.KeyCode == Keys.Left)
+            {
+                imageIndex--;
+
+                SetUpCurrentImage(true);
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                imageIndex++;
+
+                SetUpCurrentImage(true);
+            }
         }
 
         private void AddTagButton_AddTag_clicked(object sender, EventArgs e)
@@ -847,7 +867,15 @@ namespace FastAndFuriousImageFileTagger
                 
             }
         }
-        
+
+        private void CopyCurrentImageFileToDesktop()
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            File.Copy(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
+                desktopPath + Path.DirectorySeparatorChar + currentSelectedImage.Name);
+        }
+
         // UNUSED
 
         private void NewTagLabel_Click(object sender, EventArgs e)

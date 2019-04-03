@@ -447,6 +447,7 @@
             this.Text = "Fast and Furious Image Tagger";
             this.Load += new System.EventHandler(this.FastAndFuriousImageTagger_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown_Event);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.MainForm_PreviewKeyDown);
             this.tagOfCurrentFilePanel.ResumeLayout(false);
             this.tagOfCurrentFilePanel.PerformLayout();
             this.NewTagPanel.ResumeLayout(false);
