@@ -53,10 +53,10 @@
             this.MainMenuStripe = new System.Windows.Forms.MenuStrip();
             this.tagMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.editTagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageTagsetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageTagsetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
@@ -78,6 +78,7 @@
             // 
             // NextImageButton
             // 
+            this.NextImageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NextImageButton.Location = new System.Drawing.Point(432, 7);
             this.NextImageButton.Name = "NextImageButton";
             this.NextImageButton.Size = new System.Drawing.Size(75, 23);
@@ -88,6 +89,8 @@
             // 
             // NumberOfImagesInDirectoryTextbox
             // 
+            this.NumberOfImagesInDirectoryTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NumberOfImagesInDirectoryTextbox.Location = new System.Drawing.Point(84, 7);
             this.NumberOfImagesInDirectoryTextbox.Name = "NumberOfImagesInDirectoryTextbox";
             this.NumberOfImagesInDirectoryTextbox.ReadOnly = true;
@@ -97,7 +100,8 @@
             // 
             // tagOfCurrentFilePanel
             // 
-            this.tagOfCurrentFilePanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.tagOfCurrentFilePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tagOfCurrentFilePanel.BackColor = System.Drawing.SystemColors.Control;
             this.tagOfCurrentFilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tagOfCurrentFilePanel.Controls.Add(this.tagsForThisFile_checkedListBox);
@@ -109,6 +113,8 @@
             // 
             // tagsForThisFile_checkedListBox
             // 
+            this.tagsForThisFile_checkedListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tagsForThisFile_checkedListBox.FormattingEnabled = true;
             this.tagsForThisFile_checkedListBox.Location = new System.Drawing.Point(13, 29);
             this.tagsForThisFile_checkedListBox.Name = "tagsForThisFile_checkedListBox";
@@ -128,6 +134,7 @@
             // 
             // DeleteButton
             // 
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.ForeColor = System.Drawing.Color.Red;
             this.DeleteButton.Location = new System.Drawing.Point(349, 298);
             this.DeleteButton.Name = "DeleteButton";
@@ -139,7 +146,8 @@
             // 
             // NewTagPanel
             // 
-            this.NewTagPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NewTagPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NewTagPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.NewTagPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewTagPanel.Controls.Add(this.AddTagButton);
@@ -152,6 +160,7 @@
             // 
             // AddTagButton
             // 
+            this.AddTagButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddTagButton.Location = new System.Drawing.Point(412, 22);
             this.AddTagButton.Name = "AddTagButton";
             this.AddTagButton.Size = new System.Drawing.Size(84, 23);
@@ -173,6 +182,8 @@
             // newTag_textBox
             // 
             this.newTag_textBox.AcceptsReturn = true;
+            this.newTag_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.newTag_textBox.AutoCompleteCustomSource.AddRange(new string[] {
             "animal",
             "cute",
@@ -199,6 +210,8 @@
             // 
             // DirectoryChangeButton
             // 
+            this.DirectoryChangeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DirectoryChangeButton.Location = new System.Drawing.Point(84, 36);
             this.DirectoryChangeButton.Name = "DirectoryChangeButton";
             this.DirectoryChangeButton.Size = new System.Drawing.Size(160, 23);
@@ -209,6 +222,7 @@
             // 
             // onlyShowNonTaggedImages_CheckBox
             // 
+            this.onlyShowNonTaggedImages_CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.onlyShowNonTaggedImages_CheckBox.AutoSize = true;
             this.onlyShowNonTaggedImages_CheckBox.Checked = true;
             this.onlyShowNonTaggedImages_CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -223,7 +237,8 @@
             // 
             // renameBasePanel
             // 
-            this.renameBasePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.renameBasePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.renameBasePanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.renameBasePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.renameBasePanel.Controls.Add(this.button_index_rename);
@@ -238,6 +253,7 @@
             // 
             // button_index_rename
             // 
+            this.button_index_rename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_index_rename.Location = new System.Drawing.Point(331, 55);
             this.button_index_rename.Name = "button_index_rename";
             this.button_index_rename.Size = new System.Drawing.Size(165, 23);
@@ -248,6 +264,7 @@
             // 
             // RenameBaseNameButton
             // 
+            this.RenameBaseNameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RenameBaseNameButton.Location = new System.Drawing.Point(412, 23);
             this.RenameBaseNameButton.Name = "RenameBaseNameButton";
             this.RenameBaseNameButton.Size = new System.Drawing.Size(84, 23);
@@ -268,6 +285,8 @@
             // 
             // renameBase_textBox
             // 
+            this.renameBase_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.renameBase_textBox.AutoCompleteCustomSource.AddRange(new string[] {
             "animal",
             "cute",
@@ -294,6 +313,8 @@
             // 
             // directoryInformationPanel
             // 
+            this.directoryInformationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.directoryInformationPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.directoryInformationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.directoryInformationPanel.Controls.Add(this.onlyShowNonTaggedImages_CheckBox);
@@ -308,6 +329,9 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.DeleteButton);
@@ -320,6 +344,9 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
@@ -356,9 +383,15 @@
             // editTagsToolStripMenuItem
             // 
             this.editTagsToolStripMenuItem.Name = "editTagsToolStripMenuItem";
-            this.editTagsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editTagsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.editTagsToolStripMenuItem.Text = "Edit tags...";
             this.editTagsToolStripMenuItem.Click += new System.EventHandler(this.EditTagsToolStripMenuItem_Click);
+            // 
+            // manageTagsetsToolStripMenuItem
+            // 
+            this.manageTagsetsToolStripMenuItem.Name = "manageTagsetsToolStripMenuItem";
+            this.manageTagsetsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.manageTagsetsToolStripMenuItem.Text = "Manage Tagsets...";
             // 
             // aboutToolStripMenuItem
             // 
@@ -380,12 +413,6 @@
             this.AboutMenuItem.Name = "AboutMenuItem";
             this.AboutMenuItem.Size = new System.Drawing.Size(129, 22);
             this.AboutMenuItem.Text = "About...";
-            // 
-            // manageTagsetsToolStripMenuItem
-            // 
-            this.manageTagsetsToolStripMenuItem.Name = "manageTagsetsToolStripMenuItem";
-            this.manageTagsetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.manageTagsetsToolStripMenuItem.Text = "Manage Tagsets...";
             // 
             // FastAndFuriousImageTagger
             // 
