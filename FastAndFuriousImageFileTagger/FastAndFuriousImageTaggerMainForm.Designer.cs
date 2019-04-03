@@ -108,7 +108,7 @@
             this.tagOfCurrentFilePanel.Controls.Add(this.TagBoxLabel);
             this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(335, 11);
             this.tagOfCurrentFilePanel.Name = "tagOfCurrentFilePanel";
-            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(160, 281);
+            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(172, 281);
             this.tagOfCurrentFilePanel.TabIndex = 4;
             // 
             // tagsForThisFile_checkedListBox
@@ -118,7 +118,7 @@
             this.tagsForThisFile_checkedListBox.FormattingEnabled = true;
             this.tagsForThisFile_checkedListBox.Location = new System.Drawing.Point(13, 29);
             this.tagsForThisFile_checkedListBox.Name = "tagsForThisFile_checkedListBox";
-            this.tagsForThisFile_checkedListBox.Size = new System.Drawing.Size(130, 229);
+            this.tagsForThisFile_checkedListBox.Size = new System.Drawing.Size(147, 229);
             this.tagsForThisFile_checkedListBox.TabIndex = 1;
             this.tagsForThisFile_checkedListBox.SelectedIndexChanged += new System.EventHandler(this.AssignedTagWasDeactivated_TagsForThisFileListCheckBox);
             // 
@@ -206,7 +206,8 @@
             this.newTag_textBox.Name = "newTag_textBox";
             this.newTag_textBox.Size = new System.Drawing.Size(297, 20);
             this.newTag_textBox.TabIndex = 0;
-            this.newTag_textBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxKeyUp);
+            this.newTag_textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NewTag_textBox_KeyDown);
+            this.newTag_textBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.NewTag_textBox_PreviewKeyDown);
             // 
             // DirectoryChangeButton
             // 

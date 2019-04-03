@@ -153,10 +153,37 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        // Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes)
+        private void NewTag_textBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                case Keys.Right:
+                    e.IsInputKey = true;
+                    break;
+            }
+        }
+
         // CHECKS IF IN THE NEW TAG BOX A SPACE IS PRESSED, WHICH THEN GOES TO THE NEXT IMAGE
         // CHECKS IF ENTER IN THE NEW TAG BOX IS PRESSED, AND ADS THE TAG TO THE CURRENT PICTURE
-        private void TextBoxKeyUp(object sender, KeyEventArgs e)
+        private void NewTag_textBox_KeyDown(object sender, KeyEventArgs e)
         {
+            if(e.KeyCode == Keys.Left)
+            {
+                imageIndex--;
+
+                SetUpCurrentImage(true);
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                imageIndex++;
+
+                SetUpCurrentImage(true);
+            }
+
+
             if (e.KeyCode == Keys.Enter)
             {
                 Console.WriteLine("TextBox New Tag Enter : " + newTag_textBox.Text);
@@ -201,6 +228,11 @@ namespace FastAndFuriousImageFileTagger
             if (e.KeyCode == Keys.F3)
             {
                 newTag_textBox.Select();
+            }
+
+            if(e.KeyCode == Keys.Delete)
+            {
+                DeleteImage();
             }
         }
 
@@ -798,7 +830,7 @@ namespace FastAndFuriousImageFileTagger
                 
             }
         }
-
+        
         // UNUSED
 
         private void NewTagLabel_Click(object sender, EventArgs e)
@@ -827,6 +859,11 @@ namespace FastAndFuriousImageFileTagger
         }
 
         private void onlyShowNonTaggedImages_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newTag_textBox_KeyDown(object sender, KeyEventArgs e)
         {
 
         }
