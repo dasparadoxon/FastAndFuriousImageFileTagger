@@ -57,6 +57,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyToDesktopButton = new System.Windows.Forms.Button();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
@@ -213,7 +214,7 @@
             // 
             this.DirectoryChangeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DirectoryChangeButton.Location = new System.Drawing.Point(84, 36);
+            this.DirectoryChangeButton.Location = new System.Drawing.Point(3, 36);
             this.DirectoryChangeButton.Name = "DirectoryChangeButton";
             this.DirectoryChangeButton.Size = new System.Drawing.Size(160, 23);
             this.DirectoryChangeButton.TabIndex = 6;
@@ -227,7 +228,7 @@
             this.onlyShowNonTaggedImages_CheckBox.AutoSize = true;
             this.onlyShowNonTaggedImages_CheckBox.Checked = true;
             this.onlyShowNonTaggedImages_CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.onlyShowNonTaggedImages_CheckBox.Location = new System.Drawing.Point(258, 40);
+            this.onlyShowNonTaggedImages_CheckBox.Location = new System.Drawing.Point(169, 40);
             this.onlyShowNonTaggedImages_CheckBox.Name = "onlyShowNonTaggedImages_CheckBox";
             this.onlyShowNonTaggedImages_CheckBox.Size = new System.Drawing.Size(168, 17);
             this.onlyShowNonTaggedImages_CheckBox.TabIndex = 7;
@@ -318,6 +319,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.directoryInformationPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.directoryInformationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.directoryInformationPanel.Controls.Add(this.CopyToDesktopButton);
             this.directoryInformationPanel.Controls.Add(this.onlyShowNonTaggedImages_CheckBox);
             this.directoryInformationPanel.Controls.Add(this.DirectoryChangeButton);
             this.directoryInformationPanel.Controls.Add(this.PreviousImageButton);
@@ -415,6 +417,16 @@
             this.AboutMenuItem.Size = new System.Drawing.Size(129, 22);
             this.AboutMenuItem.Text = "About...";
             // 
+            // CopyToDesktopButton
+            // 
+            this.CopyToDesktopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CopyToDesktopButton.Location = new System.Drawing.Point(335, 36);
+            this.CopyToDesktopButton.Name = "CopyToDesktopButton";
+            this.CopyToDesktopButton.Size = new System.Drawing.Size(172, 23);
+            this.CopyToDesktopButton.TabIndex = 4;
+            this.CopyToDesktopButton.Text = "Copy to Desktop (F4)";
+            this.CopyToDesktopButton.UseVisualStyleBackColor = true;
+            // 
             // FastAndFuriousImageTagger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -481,6 +493,7 @@
         private System.Windows.Forms.ToolStripMenuItem statisticsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageTagsetsToolStripMenuItem;
+        private System.Windows.Forms.Button CopyToDesktopButton;
     }
 }
 
