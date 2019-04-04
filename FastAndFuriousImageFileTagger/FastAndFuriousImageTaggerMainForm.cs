@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 
 /** FAST AND FURIOUS IMAGE FILE TAGGER 
  * 
@@ -77,7 +80,7 @@ namespace FastAndFuriousImageFileTagger
 
         public StringSplitOptions RemoveEmptyEntries { get; private set; }
 
-        // --- METHODS -------
+        //*** --- METHODS -----------------------------------------------------------------------------------
 
         public FastAndFuriousImageTagger()
         {
@@ -98,7 +101,6 @@ namespace FastAndFuriousImageFileTagger
             SetUpCurrentImage();
 
         }
-
 
         private void SetUpCurrentImage(bool scanDirectory = false)
         {
@@ -128,8 +130,7 @@ namespace FastAndFuriousImageFileTagger
             }
         }
 
-
-        // EVENT HANDLER -------
+        //*** --- EVENT HANDLER -----------------------------------------------------------------------------
 
         // CHANGES THE BASEFILENAME TO A FILENAME USING THE APP INDEX COUNTER
         private void Button_index_rename_click(object sender, EventArgs e)
@@ -158,8 +159,6 @@ namespace FastAndFuriousImageFileTagger
 
             CopyCurrentImageFileToDesktop();
         }
-
-
 
         // Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes)
         private void NewTag_textBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -205,17 +204,26 @@ namespace FastAndFuriousImageFileTagger
 
             if (e.KeyCode == Keys.Space)
             {
-                if (newTag_textBox.Text == " ")
+
+                //newTag_textBox.Text == " " ||
+                if ( newTag_textBox.Text.Length < 2 )
                 {
+                    newTag_textBox.Clear();
+
+                    e.SuppressKeyPress = true;
+                    e.Handled = true;
+
+                    //newTag_textBox.Text = Regex.Replace(newTag_textBox.Text, "(?<Text>.*)(?:[\r\n]?(?:\r\n)?)", "${Text}\r\n");
+
+                    //newTag_textBox.Text = Regex.Replace(newTag_textBox.Text, "\\s+\r\n", "\r\n");
+
                     imageIndex++;
 
                     SetUpCurrentImage(true);
 
                     // TODO : If there are no images left to process, set the initial image.
 
-                    newTag_textBox.Clear();
-
-                    e.Handled = true;
+                    
 
                 }
             }
@@ -428,10 +436,11 @@ namespace FastAndFuriousImageFileTagger
             {
                 RenameBaseNameButton_Click(sender, e);
 
-                e.Handled = true;
+                //e.Handled = true;
                 e.SuppressKeyPress = true;
 
-                newTag_textBox.Select();            }
+                newTag_textBox.Select();
+            }
 
         }
 
@@ -446,7 +455,7 @@ namespace FastAndFuriousImageFileTagger
             tagEditorInstance.Show();
         }
 
-        // DATA AND TAG HANDLING
+        // DATA AND TAG HANDLING ------------------------------------------------------------------------
 
         private void ScanDirectoryAndUpdateImageIndexTextBox()
         {
