@@ -883,14 +883,22 @@ namespace FastAndFuriousImageFileTagger
             {
                 
             }
+
+            TagBoxLabel.Focus();
         }
 
         private void CopyCurrentImageFileToDesktop()
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            File.Copy(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
-                desktopPath + Path.DirectorySeparatorChar + currentSelectedImage.Name);
+            string fileWithPath = desktopPath + Path.DirectorySeparatorChar + currentSelectedImage.Name;
+
+            if(!File.Exists(fileWithPath))
+                File.Copy(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
+                    fileWithPath);else
+                MessageBox.Show("File allready exits in that location", "Notice",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Information);
         }
 
         // UNUSED
