@@ -568,6 +568,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Fast and Furious Image Tagger";
             this.Load += new System.EventHandler(this.FastAndFuriousImageTagger_Load);
+            this.SizeChanged += new System.EventHandler(this.FastAndFuriousImageTagger_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown_Event);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.MainForm_PreviewKeyDown);
             this.tagOfCurrentFilePanel.ResumeLayout(false);

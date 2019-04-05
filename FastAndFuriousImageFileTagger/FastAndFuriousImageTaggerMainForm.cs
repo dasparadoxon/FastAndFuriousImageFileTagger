@@ -104,27 +104,27 @@ namespace FastAndFuriousImageFileTagger
 
             pictureBox1.MouseWheel += PictureBox1_WheelEvent;
 
-            originalSizeOfPictureBox = pictureBox1.Size;
-
-            pictureBoxLeftDistanceToContainingContainer = pictureBox1.Left;
-            pictureBoxTopDistanceToContainingContainer = pictureBox1.Top;
-
+            SavingPictureBoxSizeAndPosition();
 
             UserDataDirectoryHandling();
-
-            //imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
             InitializeAutoCompletionForNewTagTextBox();
 
             SetUpCurrentImage();
-
-            
 
         }
 
         #endregion
 
         #region EventHandlers
+
+        /// <summary>
+        /// Saves the new size of the PictureBox control so it nows where to reset when picture changes or MouseWheelButtonDown
+        /// </summary>
+        private void FastAndFuriousImageTagger_SizeChanged(object sender, EventArgs e)
+        {
+            SavingPictureBoxSizeAndPosition();
+        }
 
         private void Button_index_rename_click(object sender, EventArgs e)
         {
@@ -517,21 +517,29 @@ namespace FastAndFuriousImageFileTagger
         #region HandlingFunctions
 
         /// <summary>
-        /// Nice try, but doesnt work, the original size is somewhat wrong
+        /// Saves the size and the position relative to the containing container
         /// </summary>
-        /// <param name="ctrl"></param>
-        /// <returns></returns>
-        Size GetDefaultSize(Control ctrl)
+        private void SavingPictureBoxSizeAndPosition()
         {
-            PropertyInfo pi = ctrl.GetType().GetProperty("DefaultSize", BindingFlags.NonPublic | BindingFlags.Instance);
-            return (Size)pi.GetValue(ctrl, null);
+            originalSizeOfPictureBox = pictureBox1.Size;
+            pictureBoxLeftDistanceToContainingContainer = pictureBox1.Left;
+            pictureBoxTopDistanceToContainingContainer = pictureBox1.Top;
         }
 
-        private void SetUpCurrentImage(bool scanDirectory = false)
+        /// <summary>
+        /// Restores Size and Position of the PictureBox Controll
+        /// </summary>
+        private void RestoringPictureBoxSizeAndPosition()
         {
             pictureBox1.Size = originalSizeOfPictureBox;
             pictureBox1.Left = pictureBoxLeftDistanceToContainingContainer;
             pictureBox1.Top = pictureBoxTopDistanceToContainingContainer;
+        }
+
+        private void SetUpCurrentImage(bool scanDirectory = false)
+        {
+
+            RestoringPictureBoxSizeAndPosition();
 
             imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
@@ -1041,6 +1049,8 @@ namespace FastAndFuriousImageFileTagger
         {
 
         }
+
+
 
         #endregion
 
