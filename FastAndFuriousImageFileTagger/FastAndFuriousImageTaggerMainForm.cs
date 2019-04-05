@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 /** FAST AND FURIOUS IMAGE FILE TAGGER 
  * 
@@ -53,6 +54,8 @@ namespace FastAndFuriousImageFileTagger
         CurrentSelectedImageFile currentSelectedImage;
 
         private IEnumerable<string> imageFilesInCurrentDirectory;
+
+        Size originalSizeOfPictureBox;
 
         // TAGGING SETUP
 
@@ -98,6 +101,8 @@ namespace FastAndFuriousImageFileTagger
 
             pictureBox1.MouseWheel += PictureBox1_WheelEvent;
 
+            originalSizeOfPictureBox = pictureBox1.Size;
+
             UserDataDirectoryHandling();
 
             //imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
@@ -105,6 +110,8 @@ namespace FastAndFuriousImageFileTagger
             InitializeAutoCompletionForNewTagTextBox();
 
             SetUpCurrentImage();
+
+            
 
         }
 
@@ -502,8 +509,21 @@ namespace FastAndFuriousImageFileTagger
 
         #region HandlingFunctions
 
+        /// <summary>
+        /// Nice try, but doesnt work, the original size is somewhat wrong
+        /// </summary>
+        /// <param name="ctrl"></param>
+        /// <returns></returns>
+        Size GetDefaultSize(Control ctrl)
+        {
+            PropertyInfo pi = ctrl.GetType().GetProperty("DefaultSize", BindingFlags.NonPublic | BindingFlags.Instance);
+            return (Size)pi.GetValue(ctrl, null);
+        }
+
         private void SetUpCurrentImage(bool scanDirectory = false)
         {
+            pictureBox1.Size = originalSizeOfPictureBox;
+
             imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
             if (scanDirectory)
