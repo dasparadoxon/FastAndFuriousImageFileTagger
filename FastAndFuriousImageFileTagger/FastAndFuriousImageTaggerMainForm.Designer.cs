@@ -50,6 +50,7 @@
             this.directoryInformationPanel = new System.Windows.Forms.Panel();
             this.CopyToDesktopButton = new System.Windows.Forms.Button();
             this.PictureAndTagBoxPanel = new System.Windows.Forms.Panel();
+            this.PictureBoxPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainMenuStripe = new System.Windows.Forms.MenuStrip();
             this.tagMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,21 +67,20 @@
             this.TagSetButton2 = new System.Windows.Forms.Button();
             this.TagSetButton1 = new System.Windows.Forms.Button();
             this.TagSetsLabel = new System.Windows.Forms.Label();
-            this.PictureBoxPanel = new System.Windows.Forms.Panel();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
             this.directoryInformationPanel.SuspendLayout();
             this.PictureAndTagBoxPanel.SuspendLayout();
+            this.PictureBoxPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MainMenuStripe.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.PictureBoxPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousImageButton
             // 
-            this.PreviousImageButton.Location = new System.Drawing.Point(3, 7);
+            this.PreviousImageButton.Location = new System.Drawing.Point(16, 7);
             this.PreviousImageButton.Name = "PreviousImageButton";
             this.PreviousImageButton.Size = new System.Drawing.Size(75, 23);
             this.PreviousImageButton.TabIndex = 0;
@@ -91,7 +91,7 @@
             // NextImageButton
             // 
             this.NextImageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextImageButton.Location = new System.Drawing.Point(893, 7);
+            this.NextImageButton.Location = new System.Drawing.Point(882, 7);
             this.NextImageButton.Name = "NextImageButton";
             this.NextImageButton.Size = new System.Drawing.Size(75, 23);
             this.NextImageButton.TabIndex = 1;
@@ -103,10 +103,10 @@
             // 
             this.NumberOfImagesInDirectoryTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NumberOfImagesInDirectoryTextbox.Location = new System.Drawing.Point(84, 7);
+            this.NumberOfImagesInDirectoryTextbox.Location = new System.Drawing.Point(97, 7);
             this.NumberOfImagesInDirectoryTextbox.Name = "NumberOfImagesInDirectoryTextbox";
             this.NumberOfImagesInDirectoryTextbox.ReadOnly = true;
-            this.NumberOfImagesInDirectoryTextbox.Size = new System.Drawing.Size(803, 20);
+            this.NumberOfImagesInDirectoryTextbox.Size = new System.Drawing.Size(780, 20);
             this.NumberOfImagesInDirectoryTextbox.TabIndex = 3;
             this.NumberOfImagesInDirectoryTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -118,9 +118,9 @@
             this.tagOfCurrentFilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tagOfCurrentFilePanel.Controls.Add(this.tagsForThisFile_checkedListBox);
             this.tagOfCurrentFilePanel.Controls.Add(this.TagBoxLabel);
-            this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(743, 11);
+            this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(732, 11);
             this.tagOfCurrentFilePanel.Name = "tagOfCurrentFilePanel";
-            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(225, 490);
+            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(225, 521);
             this.tagOfCurrentFilePanel.TabIndex = 4;
             // 
             // tagsForThisFile_checkedListBox
@@ -131,7 +131,7 @@
             this.tagsForThisFile_checkedListBox.FormattingEnabled = true;
             this.tagsForThisFile_checkedListBox.Location = new System.Drawing.Point(13, 29);
             this.tagsForThisFile_checkedListBox.Name = "tagsForThisFile_checkedListBox";
-            this.tagsForThisFile_checkedListBox.Size = new System.Drawing.Size(200, 439);
+            this.tagsForThisFile_checkedListBox.Size = new System.Drawing.Size(200, 469);
             this.tagsForThisFile_checkedListBox.TabIndex = 1;
             this.tagsForThisFile_checkedListBox.SelectedIndexChanged += new System.EventHandler(this.AssignedTagWasDeactivated_TagsForThisFileListCheckBox);
             // 
@@ -149,7 +149,7 @@
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.ForeColor = System.Drawing.Color.Red;
-            this.DeleteButton.Location = new System.Drawing.Point(796, 507);
+            this.DeleteButton.Location = new System.Drawing.Point(659, 36);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(120, 23);
             this.DeleteButton.TabIndex = 4;
@@ -226,9 +226,9 @@
             // 
             this.DirectoryChangeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DirectoryChangeButton.Location = new System.Drawing.Point(3, 36);
+            this.DirectoryChangeButton.Location = new System.Drawing.Point(16, 36);
             this.DirectoryChangeButton.Name = "DirectoryChangeButton";
-            this.DirectoryChangeButton.Size = new System.Drawing.Size(621, 23);
+            this.DirectoryChangeButton.Size = new System.Drawing.Size(463, 23);
             this.DirectoryChangeButton.TabIndex = 6;
             this.DirectoryChangeButton.Text = "Change Directory";
             this.DirectoryChangeButton.UseVisualStyleBackColor = true;
@@ -240,7 +240,7 @@
             this.onlyShowNonTaggedImages_CheckBox.AutoSize = true;
             this.onlyShowNonTaggedImages_CheckBox.Checked = true;
             this.onlyShowNonTaggedImages_CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.onlyShowNonTaggedImages_CheckBox.Location = new System.Drawing.Point(630, 40);
+            this.onlyShowNonTaggedImages_CheckBox.Location = new System.Drawing.Point(485, 40);
             this.onlyShowNonTaggedImages_CheckBox.Name = "onlyShowNonTaggedImages_CheckBox";
             this.onlyShowNonTaggedImages_CheckBox.Size = new System.Drawing.Size(168, 17);
             this.onlyShowNonTaggedImages_CheckBox.TabIndex = 7;
@@ -332,6 +332,7 @@
             this.directoryInformationPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.directoryInformationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.directoryInformationPanel.Controls.Add(this.CopyToDesktopButton);
+            this.directoryInformationPanel.Controls.Add(this.DeleteButton);
             this.directoryInformationPanel.Controls.Add(this.onlyShowNonTaggedImages_CheckBox);
             this.directoryInformationPanel.Controls.Add(this.DirectoryChangeButton);
             this.directoryInformationPanel.Controls.Add(this.PreviousImageButton);
@@ -345,7 +346,7 @@
             // CopyToDesktopButton
             // 
             this.CopyToDesktopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CopyToDesktopButton.Location = new System.Drawing.Point(796, 36);
+            this.CopyToDesktopButton.Location = new System.Drawing.Point(785, 36);
             this.CopyToDesktopButton.Name = "CopyToDesktopButton";
             this.CopyToDesktopButton.Size = new System.Drawing.Size(172, 23);
             this.CopyToDesktopButton.TabIndex = 4;
@@ -361,12 +362,24 @@
             this.PictureAndTagBoxPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.PictureAndTagBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PictureAndTagBoxPanel.Controls.Add(this.PictureBoxPanel);
-            this.PictureAndTagBoxPanel.Controls.Add(this.DeleteButton);
             this.PictureAndTagBoxPanel.Controls.Add(this.tagOfCurrentFilePanel);
             this.PictureAndTagBoxPanel.Location = new System.Drawing.Point(13, 112);
             this.PictureAndTagBoxPanel.Name = "PictureAndTagBoxPanel";
             this.PictureAndTagBoxPanel.Size = new System.Drawing.Size(973, 545);
             this.PictureAndTagBoxPanel.TabIndex = 10;
+            // 
+            // PictureBoxPanel
+            // 
+            this.PictureBoxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PictureBoxPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.PictureBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureBoxPanel.Controls.Add(this.pictureBox1);
+            this.PictureBoxPanel.Location = new System.Drawing.Point(16, 11);
+            this.PictureBoxPanel.Name = "PictureBoxPanel";
+            this.PictureBoxPanel.Size = new System.Drawing.Size(703, 521);
+            this.PictureBoxPanel.TabIndex = 5;
             // 
             // pictureBox1
             // 
@@ -378,7 +391,7 @@
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(700, 482);
+            this.pictureBox1.Size = new System.Drawing.Size(695, 513);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -536,19 +549,6 @@
             this.TagSetsLabel.TabIndex = 1;
             this.TagSetsLabel.Text = "Tag Sets";
             // 
-            // PictureBoxPanel
-            // 
-            this.PictureBoxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PictureBoxPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.PictureBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PictureBoxPanel.Controls.Add(this.pictureBox1);
-            this.PictureBoxPanel.Location = new System.Drawing.Point(16, 11);
-            this.PictureBoxPanel.Name = "PictureBoxPanel";
-            this.PictureBoxPanel.Size = new System.Drawing.Size(708, 490);
-            this.PictureBoxPanel.TabIndex = 5;
-            // 
             // FastAndFuriousImageTagger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -579,12 +579,12 @@
             this.directoryInformationPanel.ResumeLayout(false);
             this.directoryInformationPanel.PerformLayout();
             this.PictureAndTagBoxPanel.ResumeLayout(false);
+            this.PictureBoxPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MainMenuStripe.ResumeLayout(false);
             this.MainMenuStripe.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.PictureBoxPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
