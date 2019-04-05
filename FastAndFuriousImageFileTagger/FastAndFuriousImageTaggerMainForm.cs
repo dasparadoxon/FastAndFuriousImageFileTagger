@@ -57,6 +57,9 @@ namespace FastAndFuriousImageFileTagger
 
         Size originalSizeOfPictureBox;
 
+        int pictureBoxLeftDistanceToContainingContainer;
+        int pictureBoxTopDistanceToContainingContainer;
+
         // TAGGING SETUP
 
         private string tagSeperator = "_";
@@ -102,6 +105,10 @@ namespace FastAndFuriousImageFileTagger
             pictureBox1.MouseWheel += PictureBox1_WheelEvent;
 
             originalSizeOfPictureBox = pictureBox1.Size;
+
+            pictureBoxLeftDistanceToContainingContainer = pictureBox1.Left;
+            pictureBoxTopDistanceToContainingContainer = pictureBox1.Top;
+
 
             UserDataDirectoryHandling();
 
@@ -523,6 +530,8 @@ namespace FastAndFuriousImageFileTagger
         private void SetUpCurrentImage(bool scanDirectory = false)
         {
             pictureBox1.Size = originalSizeOfPictureBox;
+            pictureBox1.Left = pictureBoxLeftDistanceToContainingContainer;
+            pictureBox1.Top = pictureBoxTopDistanceToContainingContainer;
 
             imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
 
