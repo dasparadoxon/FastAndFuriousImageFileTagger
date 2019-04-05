@@ -26,6 +26,8 @@ namespace FastAndFuriousImageFileTagger
 
     public partial class FastAndFuriousImageTagger : Form
     {
+        #region Fields
+
         private class ImageFileNameIndex
         {
             static public void Increase()
@@ -80,7 +82,9 @@ namespace FastAndFuriousImageFileTagger
 
         public StringSplitOptions RemoveEmptyEntries { get; private set; }
 
-        //*** --- METHODS -----------------------------------------------------------------------------------
+        #endregion
+
+        #region Constructors
 
         public FastAndFuriousImageTagger()
         {
@@ -92,6 +96,8 @@ namespace FastAndFuriousImageFileTagger
 
             startImage = pictureBox1.Image;
 
+            pictureBox1.MouseWheel += PictureBox1_WheelEvent;
+
             UserDataDirectoryHandling();
 
             //imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
@@ -102,37 +108,10 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
-        private void SetUpCurrentImage(bool scanDirectory = false)
-        {
-            imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
+        #endregion
 
-            if(scanDirectory)
-                ScanDirectoryAndUpdateImageIndexTextBox();
+        #region EventHandlers
 
-            if (imageFilesInCurrentDirectory.Count() != 0)
-            {
-
-                string directory = Path.GetDirectoryName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
-                string filename = Path.GetFileName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
-
-                UpdateBaseNameTextBox(filename);
-
-                ParseTagsAndPopulateTagListForImage(filename);
-
-                UpdateNumberOfImagesInDirectoryTextbox();
-
-                currentSelectedImage = new CurrentSelectedImageFile(filename, directory);
-
-                string pathAndFileName = directory + Path.DirectorySeparatorChar + filename;
-
-                SetCurrentImageToPictureBox(pathAndFileName);
-
-            }
-        }
-
-        //*** --- EVENT HANDLER -----------------------------------------------------------------------------
-
-        // CHANGES THE BASEFILENAME TO A FILENAME USING THE APP INDEX COUNTER
         private void Button_index_rename_click(object sender, EventArgs e)
         {
             RenameBaseFilenameToIndexedBaseFilename();
@@ -160,7 +139,9 @@ namespace FastAndFuriousImageFileTagger
             CopyCurrentImageFileToDesktop();
         }
 
-        // Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes)
+        /// <summary>
+        /// Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes) 
+        /// </summary>
         private void NewTag_textBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             switch (e.KeyCode)
@@ -172,8 +153,9 @@ namespace FastAndFuriousImageFileTagger
             }
         }
 
-        // CHECKS IF IN THE NEW TAG BOX A SPACE IS PRESSED, WHICH THEN GOES TO THE NEXT IMAGE
-        // CHECKS IF ENTER IN THE NEW TAG BOX IS PRESSED, AND ADS THE TAG TO THE CURRENT PICTURE
+        /// <summary>
+        /// Handles Space and Enter KeyDowns in the NewTagBox
+        /// </summary>
         private void NewTag_textBox_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Left)
@@ -229,7 +211,40 @@ namespace FastAndFuriousImageFileTagger
             }
         }
 
-        // Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes)
+        /// <summary>
+        ///   Handles MouseWheel events on the PictureBox
+        /// </summary>
+        private void PictureBox1_WheelEvent(object sender, MouseEventArgs e)
+        {
+            bool zoom = true;
+
+            if (e.Delta < 0)
+                zoom = false;
+
+            int numberOfTextLinesToMove = e.Delta * SystemInformation.MouseWheelScrollLines / 120;
+
+            //Zoom ratio by which the images will be zoomed by default
+            int zoomRatio = 10;
+            //Set the zoomed width and height
+            int widthZoom = pictureBox1.Width * zoomRatio / 100;
+            int heightZoom = pictureBox1.Height * zoomRatio / 100;
+            //zoom = true --> zoom in
+            //zoom = false --> zoom out
+            if (!zoom)
+            {
+                widthZoom *= -1;
+                heightZoom *= -1;
+            }
+            //Add the width and height to the picture box dimensions
+            pictureBox1.Width += widthZoom;
+            pictureBox1.Height += heightZoom;
+
+            // Console.WriteLine("E Delta : " + e.Delta + " / MouseWheelScrollLines : " + SystemInformation.MouseWheelScrollLines);
+        }
+
+        /// <summary>
+        /// Tampers something so that Arrow Keys are send to the KeyDown Handler (yikes) 
+        /// </summary>
         private void MainForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             switch (e.KeyCode)
@@ -239,6 +254,14 @@ namespace FastAndFuriousImageFileTagger
                     e.IsInputKey = true;
                     break;
             }
+        }
+
+        /// <summary>
+        /// Handles MouseHovering over Picture Box also enables MouseWheelEvents with Focusing the PictureBox
+        /// </summary>
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Focus();
         }
 
         private void MainForm_KeyDown_Event(object sender, KeyEventArgs e)
@@ -455,7 +478,37 @@ namespace FastAndFuriousImageFileTagger
             tagEditorInstance.Show();
         }
 
-        // DATA AND TAG HANDLING ------------------------------------------------------------------------
+        #endregion
+
+        #region HandlingFunctions
+
+        private void SetUpCurrentImage(bool scanDirectory = false)
+        {
+            imageFilesInCurrentDirectory = GetFileListFromCurrentDirectory();
+
+            if (scanDirectory)
+                ScanDirectoryAndUpdateImageIndexTextBox();
+
+            if (imageFilesInCurrentDirectory.Count() != 0)
+            {
+
+                string directory = Path.GetDirectoryName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
+                string filename = Path.GetFileName(imageFilesInCurrentDirectory.ElementAt(imageIndex));
+
+                UpdateBaseNameTextBox(filename);
+
+                ParseTagsAndPopulateTagListForImage(filename);
+
+                UpdateNumberOfImagesInDirectoryTextbox();
+
+                currentSelectedImage = new CurrentSelectedImageFile(filename, directory);
+
+                string pathAndFileName = directory + Path.DirectorySeparatorChar + filename;
+
+                SetCurrentImageToPictureBox(pathAndFileName);
+
+            }
+        }
 
         private void ScanDirectoryAndUpdateImageIndexTextBox()
         {
@@ -901,7 +954,9 @@ namespace FastAndFuriousImageFileTagger
                               MessageBoxIcon.Information);
         }
 
-        // UNUSED
+        #endregion
+
+        #region UnusedFunctions
 
         private void NewTagLabel_Click(object sender, EventArgs e)
         {
@@ -937,6 +992,8 @@ namespace FastAndFuriousImageFileTagger
         {
 
         }
+
+        #endregion
 
 
     }

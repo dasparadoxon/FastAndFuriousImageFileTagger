@@ -48,7 +48,8 @@
             this.RenameTextBoxLabel = new System.Windows.Forms.Label();
             this.renameBase_textBox = new System.Windows.Forms.TextBox();
             this.directoryInformationPanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.CopyToDesktopButton = new System.Windows.Forms.Button();
+            this.PictureAndTagBoxPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainMenuStripe = new System.Windows.Forms.MenuStrip();
             this.tagMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,23 +58,24 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CopyToDesktopButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TagSetsLabel = new System.Windows.Forms.Label();
-            this.TagSetButton1 = new System.Windows.Forms.Button();
-            this.TagSetButton2 = new System.Windows.Forms.Button();
-            this.TagSetButton3 = new System.Windows.Forms.Button();
-            this.TagSetButton4 = new System.Windows.Forms.Button();
-            this.TagSetButton5 = new System.Windows.Forms.Button();
             this.TagSetButton6 = new System.Windows.Forms.Button();
+            this.TagSetButton5 = new System.Windows.Forms.Button();
+            this.TagSetButton4 = new System.Windows.Forms.Button();
+            this.TagSetButton3 = new System.Windows.Forms.Button();
+            this.TagSetButton2 = new System.Windows.Forms.Button();
+            this.TagSetButton1 = new System.Windows.Forms.Button();
+            this.TagSetsLabel = new System.Windows.Forms.Label();
+            this.PictureBoxPanel = new System.Windows.Forms.Panel();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
             this.directoryInformationPanel.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.PictureAndTagBoxPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MainMenuStripe.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.PictureBoxPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousImageButton
@@ -340,20 +342,31 @@
             this.directoryInformationPanel.Size = new System.Drawing.Size(973, 67);
             this.directoryInformationPanel.TabIndex = 8;
             // 
-            // panel2
+            // CopyToDesktopButton
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CopyToDesktopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CopyToDesktopButton.Location = new System.Drawing.Point(796, 36);
+            this.CopyToDesktopButton.Name = "CopyToDesktopButton";
+            this.CopyToDesktopButton.Size = new System.Drawing.Size(172, 23);
+            this.CopyToDesktopButton.TabIndex = 4;
+            this.CopyToDesktopButton.Text = "Copy to Desktop (F4)";
+            this.CopyToDesktopButton.UseVisualStyleBackColor = true;
+            this.CopyToDesktopButton.Click += new System.EventHandler(this.CopyToDesktopButtonClick);
+            // 
+            // PictureAndTagBoxPanel
+            // 
+            this.PictureAndTagBoxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.DeleteButton);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.tagOfCurrentFilePanel);
-            this.panel2.Location = new System.Drawing.Point(13, 112);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(973, 545);
-            this.panel2.TabIndex = 10;
+            this.PictureAndTagBoxPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.PictureAndTagBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureAndTagBoxPanel.Controls.Add(this.PictureBoxPanel);
+            this.PictureAndTagBoxPanel.Controls.Add(this.DeleteButton);
+            this.PictureAndTagBoxPanel.Controls.Add(this.tagOfCurrentFilePanel);
+            this.PictureAndTagBoxPanel.Location = new System.Drawing.Point(13, 112);
+            this.PictureAndTagBoxPanel.Name = "PictureAndTagBoxPanel";
+            this.PictureAndTagBoxPanel.Size = new System.Drawing.Size(973, 545);
+            this.PictureAndTagBoxPanel.TabIndex = 10;
             // 
             // pictureBox1
             // 
@@ -363,13 +376,14 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(721, 518);
+            this.pictureBox1.Size = new System.Drawing.Size(700, 482);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
             // MainMenuStripe
             // 
@@ -427,17 +441,6 @@
             this.AboutMenuItem.Size = new System.Drawing.Size(129, 22);
             this.AboutMenuItem.Text = "About...";
             // 
-            // CopyToDesktopButton
-            // 
-            this.CopyToDesktopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CopyToDesktopButton.Location = new System.Drawing.Point(796, 36);
-            this.CopyToDesktopButton.Name = "CopyToDesktopButton";
-            this.CopyToDesktopButton.Size = new System.Drawing.Size(172, 23);
-            this.CopyToDesktopButton.TabIndex = 4;
-            this.CopyToDesktopButton.Text = "Copy to Desktop (F4)";
-            this.CopyToDesktopButton.UseVisualStyleBackColor = true;
-            this.CopyToDesktopButton.Click += new System.EventHandler(this.CopyToDesktopButtonClick);
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -456,58 +459,16 @@
             this.panel1.Size = new System.Drawing.Size(974, 43);
             this.panel1.TabIndex = 6;
             // 
-            // TagSetsLabel
+            // TagSetButton6
             // 
-            this.TagSetsLabel.AutoSize = true;
-            this.TagSetsLabel.Location = new System.Drawing.Point(18, 15);
-            this.TagSetsLabel.Name = "TagSetsLabel";
-            this.TagSetsLabel.Size = new System.Drawing.Size(50, 13);
-            this.TagSetsLabel.TabIndex = 1;
-            this.TagSetsLabel.Text = "Tag Sets";
-            // 
-            // TagSetButton1
-            // 
-            this.TagSetButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TagSetButton6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton1.Location = new System.Drawing.Point(98, 10);
-            this.TagSetButton1.Name = "TagSetButton1";
-            this.TagSetButton1.Size = new System.Drawing.Size(105, 23);
-            this.TagSetButton1.TabIndex = 3;
-            this.TagSetButton1.Text = "TagSet (1)";
-            this.TagSetButton1.UseVisualStyleBackColor = true;
-            // 
-            // TagSetButton2
-            // 
-            this.TagSetButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton2.Location = new System.Drawing.Point(209, 10);
-            this.TagSetButton2.Name = "TagSetButton2";
-            this.TagSetButton2.Size = new System.Drawing.Size(123, 23);
-            this.TagSetButton2.TabIndex = 4;
-            this.TagSetButton2.Text = "TagSet (2)";
-            this.TagSetButton2.UseVisualStyleBackColor = true;
-            // 
-            // TagSetButton3
-            // 
-            this.TagSetButton3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton3.Location = new System.Drawing.Point(338, 9);
-            this.TagSetButton3.Name = "TagSetButton3";
-            this.TagSetButton3.Size = new System.Drawing.Size(119, 23);
-            this.TagSetButton3.TabIndex = 5;
-            this.TagSetButton3.Text = "TagSet (3)";
-            this.TagSetButton3.UseVisualStyleBackColor = true;
-            // 
-            // TagSetButton4
-            // 
-            this.TagSetButton4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton4.Location = new System.Drawing.Point(463, 9);
-            this.TagSetButton4.Name = "TagSetButton4";
-            this.TagSetButton4.Size = new System.Drawing.Size(151, 23);
-            this.TagSetButton4.TabIndex = 6;
-            this.TagSetButton4.Text = "TagSet (4)";
-            this.TagSetButton4.UseVisualStyleBackColor = true;
+            this.TagSetButton6.Location = new System.Drawing.Point(793, 9);
+            this.TagSetButton6.Name = "TagSetButton6";
+            this.TagSetButton6.Size = new System.Drawing.Size(165, 23);
+            this.TagSetButton6.TabIndex = 8;
+            this.TagSetButton6.Text = "TagSet (6)";
+            this.TagSetButton6.UseVisualStyleBackColor = true;
             // 
             // TagSetButton5
             // 
@@ -520,16 +481,71 @@
             this.TagSetButton5.Text = "TagSet (5)";
             this.TagSetButton5.UseVisualStyleBackColor = true;
             // 
-            // TagSetButton6
+            // TagSetButton4
             // 
-            this.TagSetButton6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TagSetButton4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton6.Location = new System.Drawing.Point(793, 9);
-            this.TagSetButton6.Name = "TagSetButton6";
-            this.TagSetButton6.Size = new System.Drawing.Size(165, 23);
-            this.TagSetButton6.TabIndex = 8;
-            this.TagSetButton6.Text = "TagSet (6)";
-            this.TagSetButton6.UseVisualStyleBackColor = true;
+            this.TagSetButton4.Location = new System.Drawing.Point(463, 9);
+            this.TagSetButton4.Name = "TagSetButton4";
+            this.TagSetButton4.Size = new System.Drawing.Size(151, 23);
+            this.TagSetButton4.TabIndex = 6;
+            this.TagSetButton4.Text = "TagSet (4)";
+            this.TagSetButton4.UseVisualStyleBackColor = true;
+            // 
+            // TagSetButton3
+            // 
+            this.TagSetButton3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagSetButton3.Location = new System.Drawing.Point(338, 9);
+            this.TagSetButton3.Name = "TagSetButton3";
+            this.TagSetButton3.Size = new System.Drawing.Size(119, 23);
+            this.TagSetButton3.TabIndex = 5;
+            this.TagSetButton3.Text = "TagSet (3)";
+            this.TagSetButton3.UseVisualStyleBackColor = true;
+            // 
+            // TagSetButton2
+            // 
+            this.TagSetButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagSetButton2.Location = new System.Drawing.Point(209, 10);
+            this.TagSetButton2.Name = "TagSetButton2";
+            this.TagSetButton2.Size = new System.Drawing.Size(123, 23);
+            this.TagSetButton2.TabIndex = 4;
+            this.TagSetButton2.Text = "TagSet (2)";
+            this.TagSetButton2.UseVisualStyleBackColor = true;
+            // 
+            // TagSetButton1
+            // 
+            this.TagSetButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagSetButton1.Location = new System.Drawing.Point(98, 10);
+            this.TagSetButton1.Name = "TagSetButton1";
+            this.TagSetButton1.Size = new System.Drawing.Size(105, 23);
+            this.TagSetButton1.TabIndex = 3;
+            this.TagSetButton1.Text = "TagSet (1)";
+            this.TagSetButton1.UseVisualStyleBackColor = true;
+            // 
+            // TagSetsLabel
+            // 
+            this.TagSetsLabel.AutoSize = true;
+            this.TagSetsLabel.Location = new System.Drawing.Point(18, 15);
+            this.TagSetsLabel.Name = "TagSetsLabel";
+            this.TagSetsLabel.Size = new System.Drawing.Size(50, 13);
+            this.TagSetsLabel.TabIndex = 1;
+            this.TagSetsLabel.Text = "Tag Sets";
+            // 
+            // PictureBoxPanel
+            // 
+            this.PictureBoxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PictureBoxPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.PictureBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureBoxPanel.Controls.Add(this.pictureBox1);
+            this.PictureBoxPanel.Location = new System.Drawing.Point(16, 11);
+            this.PictureBoxPanel.Name = "PictureBoxPanel";
+            this.PictureBoxPanel.Size = new System.Drawing.Size(708, 490);
+            this.PictureBoxPanel.TabIndex = 5;
             // 
             // FastAndFuriousImageTagger
             // 
@@ -537,7 +553,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(999, 848);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.PictureAndTagBoxPanel);
             this.Controls.Add(this.NewTagPanel);
             this.Controls.Add(this.renameBasePanel);
             this.Controls.Add(this.directoryInformationPanel);
@@ -560,12 +576,13 @@
             this.renameBasePanel.PerformLayout();
             this.directoryInformationPanel.ResumeLayout(false);
             this.directoryInformationPanel.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.PictureAndTagBoxPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MainMenuStripe.ResumeLayout(false);
             this.MainMenuStripe.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.PictureBoxPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -592,7 +609,7 @@
         private System.Windows.Forms.TextBox renameBase_textBox;
         private System.Windows.Forms.Panel directoryInformationPanel;
         private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel PictureAndTagBoxPanel;
         private System.Windows.Forms.Button button_index_rename;
         private System.Windows.Forms.MenuStrip MainMenuStripe;
         private System.Windows.Forms.ToolStripMenuItem tagMenu;
@@ -610,6 +627,7 @@
         private System.Windows.Forms.Button TagSetButton3;
         private System.Windows.Forms.Button TagSetButton2;
         private System.Windows.Forms.Button TagSetButton1;
+        private System.Windows.Forms.Panel PictureBoxPanel;
     }
 }
 
