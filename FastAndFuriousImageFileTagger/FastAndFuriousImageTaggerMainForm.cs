@@ -298,24 +298,25 @@ namespace FastAndFuriousImageFileTagger
             pictureBox1.Focus();
         }
 
+        /// <summary>
+        /// Eventhandler, Handles HotKeys, up to now hardcoded
+        /// </summary>
         private void MainForm_KeyDown_Event(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F1)
+            if(e.KeyCode == Keys.F2)
             {
                 renameBase_textBox.Select();
             }
 
-            if (e.KeyCode == Keys.F2)
+            if (e.KeyCode == Keys.F3)
             {
                 RenameBaseFilenameToIndexedBaseFilename();
             }
 
-            if (e.KeyCode == Keys.F3)
+            if (e.KeyCode == Keys.F1)
             {
                 newTag_textBox.Select();
             }
-
-
 
             if (e.KeyCode == Keys.F4)
                 CopyCurrentImageFileToDesktop();
