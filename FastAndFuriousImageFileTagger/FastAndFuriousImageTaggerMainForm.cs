@@ -24,7 +24,7 @@ namespace FastAndFuriousImageFileTagger
     {
         #region Fields
 
-        private string databaseFileName = "tagDatabse.db";
+        private string databaseFileName = "FastAndFuriousImageFileTagger.db";
 
         private class ImageFileNameIndex
         {
@@ -93,7 +93,9 @@ namespace FastAndFuriousImageFileTagger
         {
             InitializeComponent();
 
-            CreateSQLITEDatabase();
+            //CreateSQLITEDatabase();
+
+            
 
             currentSelectedImage = new CurrentSelectedImageFile("", "");
 
@@ -110,6 +112,8 @@ namespace FastAndFuriousImageFileTagger
             InitializeAutoCompletionForNewTagTextBox();
 
             SetUpCurrentImage();
+
+            //ImportTagsIntoDB();
 
         }
 
@@ -514,9 +518,9 @@ namespace FastAndFuriousImageFileTagger
 
         #endregion
 
-        #region HandlingFunctions
+        #region SQLITE Functions
 
-       
+
         private void CreateSQLITEDatabase()
         {
             SQLiteConnection sqlite_conn;
@@ -535,6 +539,36 @@ namespace FastAndFuriousImageFileTagger
 
             sqlite_conn.Close();
 
+        }
+
+        private void ImportTagsIntoDB()
+        {
+            SQLiteConnection sqlite_conn;
+
+            SQLiteCommand sqlite_cmd;
+
+            sqlite_conn = new SQLiteConnection("Data Source=" + databaseFileName + ";New=True");
+
+            sqlite_conn.Open();
+
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            //sqlite_cmd.CommandText = "CREATE TABLE tags (text varchar(200),INTEGER used);";
+
+            //sqlite_cmd.ExecuteNonQuery();
+
+            List<String> tagList = LoadTagsFromTagFile();
+
+            var noDupes = tagList.Distinct().ToList();
+
+            foreach (string tag in noDupes)
+            {
+                sqlite_cmd.CommandText = "INSERT INTO tags (tag,used) VALUES ('" + tag+"',0)";
+
+                sqlite_cmd.ExecuteNonQuery();
+            }
+
+            sqlite_conn.Close();
         }
 
         /*
@@ -559,6 +593,9 @@ namespace FastAndFuriousImageFileTagger
 
         }*/
 
+        #endregion
+
+        #region HandlingFunctions
 
         /// <summary>
         /// Saves the size and the position relative to the containing container
