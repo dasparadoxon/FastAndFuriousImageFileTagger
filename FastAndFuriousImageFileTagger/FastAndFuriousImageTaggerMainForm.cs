@@ -1,18 +1,13 @@
 ﻿using System;
 //using System.Windows.Media.Imaging;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Reflection;
+using System.Data.SQLite;
 
 /** FAST AND FURIOUS IMAGE FILE TAGGER 
  * 
@@ -28,6 +23,8 @@ namespace FastAndFuriousImageFileTagger
     public partial class FastAndFuriousImageTagger : Form
     {
         #region Fields
+
+        private string databaseFileName = "tagDatabse.db";
 
         private class ImageFileNameIndex
         {
@@ -95,6 +92,8 @@ namespace FastAndFuriousImageFileTagger
         public FastAndFuriousImageTagger()
         {
             InitializeComponent();
+
+            CreateSQLITEDatabase();
 
             currentSelectedImage = new CurrentSelectedImageFile("", "");
 
@@ -516,6 +515,50 @@ namespace FastAndFuriousImageFileTagger
         #endregion
 
         #region HandlingFunctions
+
+       
+        private void CreateSQLITEDatabase()
+        {
+            SQLiteConnection sqlite_conn;
+
+            SQLiteCommand sqlite_cmd;
+
+            sqlite_conn = new SQLiteConnection("Data Source="+databaseFileName+";New=True");
+
+            sqlite_conn.Open();
+
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            sqlite_cmd.CommandText = "CREATE TABLE tags (text varchar(200),INTEGER used);";
+
+            sqlite_cmd.ExecuteNonQuery();
+
+            sqlite_conn.Close();
+
+        }
+
+        /*
+        private void WriteTagCollectionToSQLiteFile()
+        {
+
+            SQLiteConnection sqlite_conn;
+
+            SQLiteCommand sqlite_cmd;
+
+            SQLiteDataReader sqlite_datareader;
+
+            sqlite_conn = new SQLiteConnection("Data Source=database.db;Version=3;New=True;Compress=True;");
+
+            sqlite_conn.Open();
+
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            sqlite_cmd.CommandText = "CREATE TABLE tags (text varchar(200),integer used);";
+
+
+
+        }*/
+
 
         /// <summary>
         /// Saves the size and the position relative to the containing container
