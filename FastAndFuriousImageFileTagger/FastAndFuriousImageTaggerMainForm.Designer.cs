@@ -631,6 +631,8 @@
         private System.Windows.Forms.Button TagSetButton2;
         private System.Windows.Forms.Button TagSetButton1;
         private System.Windows.Forms.Panel PictureBoxPanel;
+
+        
     }
 }
 

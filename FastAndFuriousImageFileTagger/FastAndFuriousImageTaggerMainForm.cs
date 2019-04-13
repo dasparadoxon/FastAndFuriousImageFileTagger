@@ -99,7 +99,7 @@ namespace FastAndFuriousImageFileTagger
 
             //CreateSQLITEDatabase();
 
-
+            Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
 
             currentSelectedImage = new CurrentSelectedImageFile("", "");
 
@@ -124,6 +124,15 @@ namespace FastAndFuriousImageFileTagger
         #endregion
 
         #region EventHandlers
+
+        private void OnApplicationExit(object sender, EventArgs e)
+        {
+            // When the application is exiting, write the application data to the
+            // user file and close it.
+            Console.WriteLine("Closing Application.");
+
+            WriteTagCollectionToSQLiteFile();
+        }
 
         /// <summary>
         /// Saves the new size of the PictureBox control so it nows where to reset when picture changes or MouseWheelButtonDown
@@ -588,7 +597,6 @@ namespace FastAndFuriousImageFileTagger
             if (!File.Exists(tagFileLocationAndFileName))
             {
                 CreateSQLITEDatabase();
-
             }
 
             SQLiteConnection sqlite_conn;
@@ -624,21 +632,44 @@ namespace FastAndFuriousImageFileTagger
         private void WriteTagCollectionToSQLiteFile()
         {
 
+            DeleteDatabaseFile();
+
+            CreateSQLITEDatabase();
+
+            string tagDatabaseFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
+
             SQLiteConnection sqlite_conn;
 
             SQLiteCommand sqlite_cmd;
 
-            SQLiteDataReader sqlite_datareader;
-
-            sqlite_conn = new SQLiteConnection("Data Source=database.db;Version=3;New=True;Compress=True;");
+            sqlite_conn = new SQLiteConnection("Data Source=" + tagDatabaseFileLocationAndFileName + ";New=True");
 
             sqlite_conn.Open();
 
             sqlite_cmd = sqlite_conn.CreateCommand();
 
-            sqlite_cmd.CommandText = "CREATE TABLE tags (text varchar(200),integer used);";
+            string[] tags = null;
 
+            tagAutoCompleteStringsCollection.CopyTo(tags, 0);
 
+            //var noDupes = tagList.Distinct().ToList();
+
+            foreach (string tag in tags)
+            {
+                sqlite_cmd.CommandText = "INSERT INTO tags (tag,used) VALUES ('" + tag + "',0)";
+
+                sqlite_cmd.ExecuteNonQuery();
+            }
+
+            sqlite_conn.Close();
+
+        }
+
+        private void DeleteDatabaseFile()
+        {
+            string tagDatabaseFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
+
+            File.Delete(tagDatabaseFileLocationAndFileName);
 
         }
 
@@ -873,7 +904,7 @@ namespace FastAndFuriousImageFileTagger
 
                 AddTagToAutoCompleteListIfNotPresent(newTag);
 
-                AddTagToTagFile(newTag);
+                //AddTagToTagFile(newTag);
 
             }
         }

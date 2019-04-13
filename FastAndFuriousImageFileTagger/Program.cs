@@ -14,10 +14,14 @@ namespace FastAndFuriousImageFileTagger
         [STAThread]
         static void Main()
         {
+            //Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FastAndFuriousImageTagger());
         }
+
+
     }
 
     public class CurrentSelectedImageFile
@@ -34,4 +38,7 @@ namespace FastAndFuriousImageFileTagger
         public string Path { get => path; set => path = value; }
         public string Name { get => name; set => name = value; }
     }
+
+
+
 }
