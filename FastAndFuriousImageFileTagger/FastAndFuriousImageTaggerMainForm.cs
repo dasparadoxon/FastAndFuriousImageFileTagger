@@ -17,6 +17,8 @@ using System.Data.SQLite;
  * 
  */
 
+enum TagListStoringChoice { TextFile, SQLiteDatabase };
+
 namespace FastAndFuriousImageFileTagger
 {
 
@@ -37,13 +39,13 @@ namespace FastAndFuriousImageFileTagger
 
             }
 
-            static public long  Get()
+            static public long Get()
             {
                 Console.WriteLine("Setting:" + Properties.Settings.Default["imageIndex"]);
 
                 return (long)Properties.Settings.Default["imageIndex"];
             }
-        
+
         }
 
         // IMAGES
@@ -58,6 +60,8 @@ namespace FastAndFuriousImageFileTagger
         int pictureBoxTopDistanceToContainingContainer;
 
         // TAGGING SETUP
+
+        private TagListStoringChoice tagListStoringChoice = TagListStoringChoice.SQLiteDatabase;
 
         private string tagSeperator = "_";
 
@@ -95,7 +99,7 @@ namespace FastAndFuriousImageFileTagger
 
             //CreateSQLITEDatabase();
 
-            
+
 
             currentSelectedImage = new CurrentSelectedImageFile("", "");
 
@@ -175,7 +179,7 @@ namespace FastAndFuriousImageFileTagger
         /// </summary>
         private void NewTag_textBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.Left)
             {
                 imageIndex--;
 
@@ -205,7 +209,7 @@ namespace FastAndFuriousImageFileTagger
             {
 
                 //newTag_textBox.Text == " " ||
-                if ( newTag_textBox.Text.Length < 2 )
+                if (newTag_textBox.Text.Length < 2)
                 {
                     newTag_textBox.Clear();
 
@@ -222,7 +226,7 @@ namespace FastAndFuriousImageFileTagger
 
                     // TODO : If there are no images left to process, set the initial image.
 
-                    
+
 
                 }
             }
@@ -306,7 +310,7 @@ namespace FastAndFuriousImageFileTagger
         /// </summary>
         private void MainForm_KeyDown_Event(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F2)
+            if (e.KeyCode == Keys.F2)
             {
                 renameBase_textBox.Select();
             }
@@ -325,7 +329,7 @@ namespace FastAndFuriousImageFileTagger
                 CopyCurrentImageFileToDesktop();
 
             // Only Process Those Hotkeys if neither TagBox or RenameBox is active !!
-            if(!newTag_textBox.Focused && !renameBase_textBox.Focused)
+            if (!newTag_textBox.Focused && !renameBase_textBox.Focused)
             {
 
                 if (e.KeyCode == Keys.Delete)
@@ -527,13 +531,13 @@ namespace FastAndFuriousImageFileTagger
 
             SQLiteCommand sqlite_cmd;
 
-            sqlite_conn = new SQLiteConnection("Data Source="+databaseFileName+";New=True");
+            sqlite_conn = new SQLiteConnection("Data Source=" + databaseFileName + ";New=True");
 
             sqlite_conn.Open();
 
             sqlite_cmd = sqlite_conn.CreateCommand();
 
-            sqlite_cmd.CommandText = "CREATE TABLE tags (text varchar(200),INTEGER used);";
+            sqlite_cmd.CommandText = "CREATE TABLE 'tags' ('tag' TEXT,'used' INTEGER);";
 
             sqlite_cmd.ExecuteNonQuery();
 
@@ -563,7 +567,7 @@ namespace FastAndFuriousImageFileTagger
 
             foreach (string tag in noDupes)
             {
-                sqlite_cmd.CommandText = "INSERT INTO tags (tag,used) VALUES ('" + tag+"',0)";
+                sqlite_cmd.CommandText = "INSERT INTO tags (tag,used) VALUES ('" + tag + "',0)";
 
                 sqlite_cmd.ExecuteNonQuery();
             }
@@ -571,7 +575,54 @@ namespace FastAndFuriousImageFileTagger
             sqlite_conn.Close();
         }
 
-        /*
+        private List<String> LoadTagsFromSQLiteDatabaseFile()
+        {
+            List<String> tagList = new List<string>();
+
+            tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
+
+            Console.WriteLine("Loading Tags from SQLite Database at : " + tagFileLocationAndFileName);
+
+            if (!File.Exists(tagFileLocationAndFileName))
+            {
+                // TODO ! Create new dbfile
+
+            }
+
+            SQLiteConnection sqlite_conn;
+
+            SQLiteCommand sqlite_cmd;
+
+            sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True");
+
+            sqlite_conn.Open();
+
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            string sqlString = "SELECT * from tags";
+
+            sqlite_cmd.CommandText = sqlString;
+
+            sqlite_cmd.ExecuteNonQuery();
+
+            using (SQLiteDataReader rdr = sqlite_cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    tagList.Add(Convert.ToString(rdr.GetString(0)));
+
+                    //Console.WriteLine(rdr.GetInt32(0) + " "
+                    //      + rdr.GetString(1) + " " + rdr.GetInt32(2));
+                }
+            }
+
+
+            sqlite_conn.Close();
+
+            return tagList;
+
+        }
+
         private void WriteTagCollectionToSQLiteFile()
         {
 
@@ -591,7 +642,7 @@ namespace FastAndFuriousImageFileTagger
 
 
 
-        }*/
+        }
 
         #endregion
 
@@ -666,7 +717,15 @@ namespace FastAndFuriousImageFileTagger
         {
             tagAutoCompleteStringsCollection = new AutoCompleteStringCollection();
 
-            List<String> tagList = LoadTagsFromTagFile();
+            List<String> tagList = null;
+
+            Console.WriteLine("Tag Storage Mode is : " + tagListStoringChoice.ToString());
+
+            if (tagListStoringChoice == TagListStoringChoice.TextFile)
+                tagList = LoadTagsFromTagFile();
+
+            if (tagListStoringChoice == TagListStoringChoice.SQLiteDatabase)
+                tagList = LoadTagsFromSQLiteDatabaseFile();
 
             foreach (string tag in tagList)
             {
@@ -716,35 +775,7 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
-        private List<String> LoadTagsFromTagFile()
-        {
-            List<String> tagList = new List<string>();
 
-            tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + tagFileName;
-
-            Console.WriteLine("Loading Tags from : " + tagFileLocationAndFileName);
-
-            if (!File.Exists(tagFileLocationAndFileName))
-            {
-                using (StreamWriter w = File.AppendText(tagFileLocationAndFileName)) { }
-
-            }
-
-            StreamReader inFile = new StreamReader(tagFileLocationAndFileName);
-
-            string tag;
-
-            while ((tag = inFile.ReadLine()) != null)
-            {
-
-                tagList.Add(Convert.ToString(tag));
-
-            }
-
-            inFile.Close();
-
-            return tagList;
-        }
 
         private void AddTagToAutoCompleteListIfNotPresent(string tagToAdd)
         {
@@ -752,11 +783,6 @@ namespace FastAndFuriousImageFileTagger
             {
                 tagAutoCompleteStringsCollection.Add(tagToAdd);
             }
-        }
-
-        private void SaveTagToTagFileIfNotPresent()
-        {
-
         }
 
         private void SetCurrentImageToPictureBox(string pathAndFileName)
@@ -835,7 +861,8 @@ namespace FastAndFuriousImageFileTagger
 
         private void AddTagToImageTagCheckBox(string newTag)
         {
-            if(newTag.Length > 1) { 
+            if (newTag.Length > 1)
+            {
 
                 string[] newTagWTF = new string[1];
 
@@ -850,18 +877,6 @@ namespace FastAndFuriousImageFileTagger
 
                 AddTagToTagFile(newTag);
 
-            }
-        }
-
-        private void AddTagToTagFile(string newTag)
-        {
-
-
-            Console.WriteLine("Writing Tag to Tag File in : " + tagFileLocationAndFileName);
-
-            using (var writer = new StreamWriter(tagFileLocationAndFileName, true))
-            {
-                writer.WriteLine(newTag);
             }
         }
 
@@ -1072,7 +1087,7 @@ namespace FastAndFuriousImageFileTagger
             }
             else
             {
-                
+
             }
 
             TagBoxLabel.Focus();
@@ -1084,12 +1099,58 @@ namespace FastAndFuriousImageFileTagger
 
             string fileWithPath = desktopPath + Path.DirectorySeparatorChar + currentSelectedImage.Name;
 
-            if(!File.Exists(fileWithPath))
+            if (!File.Exists(fileWithPath))
                 File.Copy(currentSelectedImage.Path + Path.DirectorySeparatorChar + currentSelectedImage.Name,
-                    fileWithPath);else
+                    fileWithPath);
+            else
                 MessageBox.Show("File allready exits in that location", "Notice",
                               MessageBoxButtons.OK,
                               MessageBoxIcon.Information);
+        }
+
+        #endregion
+
+        #region TagTextFileFunctions
+
+        private void AddTagToTagFile(string newTag)
+        {
+
+            Console.WriteLine("Writing Tag to Tag File in : " + tagFileLocationAndFileName);
+
+            using (var writer = new StreamWriter(tagFileLocationAndFileName, true))
+            {
+                writer.WriteLine(newTag);
+            }
+        }
+
+        private List<String> LoadTagsFromTagFile()
+        {
+            List<String> tagList = new List<string>();
+
+            tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + tagFileName;
+
+            Console.WriteLine("Loading Tags from : " + tagFileLocationAndFileName);
+
+            if (!File.Exists(tagFileLocationAndFileName))
+            {
+                using (StreamWriter w = File.AppendText(tagFileLocationAndFileName)) { }
+
+            }
+
+            StreamReader inFile = new StreamReader(tagFileLocationAndFileName);
+
+            string tag;
+
+            while ((tag = inFile.ReadLine()) != null)
+            {
+
+                tagList.Add(Convert.ToString(tag));
+
+            }
+
+            inFile.Close();
+
+            return tagList;
         }
 
         #endregion
