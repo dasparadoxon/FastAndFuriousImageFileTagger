@@ -531,7 +531,9 @@ namespace FastAndFuriousImageFileTagger
 
             SQLiteCommand sqlite_cmd;
 
-            sqlite_conn = new SQLiteConnection("Data Source=" + databaseFileName + ";New=True");
+            tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
+
+            sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True");
 
             sqlite_conn.Open();
 
@@ -585,7 +587,7 @@ namespace FastAndFuriousImageFileTagger
 
             if (!File.Exists(tagFileLocationAndFileName))
             {
-                // TODO ! Create new dbfile
+                CreateSQLITEDatabase();
 
             }
 
@@ -610,12 +612,8 @@ namespace FastAndFuriousImageFileTagger
                 while (rdr.Read())
                 {
                     tagList.Add(Convert.ToString(rdr.GetString(0)));
-
-                    //Console.WriteLine(rdr.GetInt32(0) + " "
-                    //      + rdr.GetString(1) + " " + rdr.GetInt32(2));
                 }
             }
-
 
             sqlite_conn.Close();
 
