@@ -34,6 +34,24 @@ namespace FastAndFuriousImageFileTagger
             userDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
             dataGridView1.DataSource = CreateTagList();
+
+            //int numberOfRows = dataGridView1.ColumnCount;
+
+            //for(int i = 0; i < numberOfRows; i++)
+            //{
+
+            var col4 = new DataGridViewButtonColumn();
+
+            col4.HeaderText = "Delete Tag";
+            col4.Name = "Delete";
+            col4.Text = "Delete Tag";
+            col4.UseColumnTextForButtonValue = true;
+
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { col4 });
+
+            //}
+
+            
         }
 
         public void InitializeTagCheckBoxListFromAutocompletionList()
@@ -161,6 +179,11 @@ namespace FastAndFuriousImageFileTagger
                 adapter.Fill(table);*/
 
                 return null;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
