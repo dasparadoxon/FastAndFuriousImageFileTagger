@@ -533,26 +533,22 @@ namespace FastAndFuriousImageFileTagger
 
         #region SQLITE Functions
 
-
         private void CreateSQLITEDatabase()
         {
-            SQLiteConnection sqlite_conn;
 
-            SQLiteCommand sqlite_cmd;
+            using (SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True"))
+            {
+                sqlite_conn.Open();
 
-            tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
+                using (SQLiteCommand sqlite_cmd = sqlite_conn.CreateCommand())
+                {
+                    sqlite_cmd.CommandText = "CREATE TABLE 'tags' ('tag' TEXT,'used' INTEGER);";
 
-            sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True");
+                    sqlite_cmd.ExecuteNonQuery();
+                }
 
-            sqlite_conn.Open();
-
-            sqlite_cmd = sqlite_conn.CreateCommand();
-
-            sqlite_cmd.CommandText = "CREATE TABLE 'tags' ('tag' TEXT,'used' INTEGER);";
-
-            sqlite_cmd.ExecuteNonQuery();
-
-            sqlite_conn.Close();
+                sqlite_conn.Close();
+            }
 
         }
 
@@ -588,6 +584,7 @@ namespace FastAndFuriousImageFileTagger
 
         private List<String> LoadTagsFromSQLiteDatabaseFile()
         {
+
             List<String> tagList = new List<string>();
 
             tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
@@ -599,31 +596,33 @@ namespace FastAndFuriousImageFileTagger
                 CreateSQLITEDatabase();
             }
 
-            SQLiteConnection sqlite_conn;
 
-            SQLiteCommand sqlite_cmd;
 
-            sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True");
-
-            sqlite_conn.Open();
-
-            sqlite_cmd = sqlite_conn.CreateCommand();
-
-            string sqlString = "SELECT * from tags";
-
-            sqlite_cmd.CommandText = sqlString;
-
-            sqlite_cmd.ExecuteNonQuery();
-
-            using (SQLiteDataReader rdr = sqlite_cmd.ExecuteReader())
+            using (SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True"))
             {
-                while (rdr.Read())
-                {
-                    tagList.Add(Convert.ToString(rdr.GetString(0)));
-                }
-            }
+                sqlite_conn.Open();
 
-            sqlite_conn.Close();
+                using (SQLiteCommand sqlite_cmd = sqlite_conn.CreateCommand())
+                {
+
+                    string sqlString = "SELECT * from tags";
+
+                    sqlite_cmd.CommandText = sqlString;
+
+                    sqlite_cmd.ExecuteNonQuery();
+
+                    using (SQLiteDataReader rdr = sqlite_cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            tagList.Add(Convert.ToString(rdr.GetString(0)));
+                        }
+                    }
+
+                }
+
+                sqlite_conn.Close();
+            }
 
             return tagList;
 
@@ -636,32 +635,30 @@ namespace FastAndFuriousImageFileTagger
 
             CreateSQLITEDatabase();
 
-            string tagDatabaseFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
-
-            SQLiteConnection sqlite_conn;
-
-            SQLiteCommand sqlite_cmd;
-
-            sqlite_conn = new SQLiteConnection("Data Source=" + tagDatabaseFileLocationAndFileName + ";New=True");
-
-            sqlite_conn.Open();
-
-            sqlite_cmd = sqlite_conn.CreateCommand();
-
-            string[] tags = null;
-
-            tagAutoCompleteStringsCollection.CopyTo(tags, 0);
-
-            //var noDupes = tagList.Distinct().ToList();
-
-            foreach (string tag in tags)
+            using (SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True"))
             {
-                sqlite_cmd.CommandText = "INSERT INTO tags (tag,used) VALUES ('" + tag + "',0)";
+                sqlite_conn.Open();
 
-                sqlite_cmd.ExecuteNonQuery();
+                using (SQLiteCommand sqlite_cmd = sqlite_conn.CreateCommand())
+                {
+
+                    string[] tags = new string[tagAutoCompleteStringsCollection.Count];
+
+                    tagAutoCompleteStringsCollection.CopyTo(tags, 0);
+
+                    
+
+                    foreach (string tag in tags)
+                    {
+                        sqlite_cmd.CommandText = "INSERT INTO tags (tag,used) VALUES ('" + tag + "',0)";
+
+                        sqlite_cmd.ExecuteNonQuery();
+                    }
+
+                }
+
+                sqlite_conn.Close();
             }
-
-            sqlite_conn.Close();
 
         }
 
