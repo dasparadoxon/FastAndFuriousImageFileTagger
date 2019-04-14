@@ -322,17 +322,17 @@ namespace FastAndFuriousImageFileTagger
         /// </summary>
         private void MainForm_KeyDown_Event(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F2)
+            if (e.KeyCode == Keys.F1)
             {
                 renameBase_textBox.Select();
             }
 
-            if (e.KeyCode == Keys.F3)
+            if (e.KeyCode == Keys.F2)
             {
                 RenameBaseFilenameToIndexedBaseFilename();
             }
 
-            if (e.KeyCode == Keys.F1)
+            if (e.KeyCode == Keys.F3)
             {
                 newTag_textBox.Select();
             }
