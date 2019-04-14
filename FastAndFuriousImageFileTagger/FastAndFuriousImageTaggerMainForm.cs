@@ -13,7 +13,10 @@ using System.Data.SQLite;
  * 
  * Quickly add tags to your image filename
  * 
- * Done in 2019 in a few hours by dasparadoxon, programming by Tom Trottel
+ * 2019 Tom Trottel, dasparadoxon
+ * 
+ * Public Domain or whatever license is good for you, but keeps this programm free as in freedom.
+ * 
  * 
  */
 
@@ -522,9 +525,9 @@ namespace FastAndFuriousImageFileTagger
         {
             TagEditor tagEditorInstance = new TagEditor();
 
-            tagEditorInstance.TagCollection = tagAutoCompleteStringsCollection;
+            //tagEditorInstance.TagCollection = tagAutoCompleteStringsCollection;
 
-            tagEditorInstance.InitializeTagCheckBoxListFromAutocompletionList();
+            //tagEditorInstance.InitializeTagCheckBoxListFromAutocompletionList();
 
             tagEditorInstance.Show();
         }
@@ -837,10 +840,25 @@ namespace FastAndFuriousImageFileTagger
 
         private Bitmap LoadBitmapUnlocked(string file_name)
         {
-            using (Bitmap bm = new Bitmap(file_name))
+
+            Bitmap bitmapToUse = null;
+
+            try
             {
-                return new Bitmap(bm);
+                using (Bitmap bm = new Bitmap(file_name))
+                {
+                    bitmapToUse =  new Bitmap(bm);
+                }
             }
+            catch (Exception)
+            {
+
+
+                //throw;
+            }
+
+            return bitmapToUse;
+
         }
 
         private void UpdateNumberOfImagesInDirectoryTextbox()
@@ -1054,7 +1072,20 @@ namespace FastAndFuriousImageFileTagger
 
             if (showOnlyNotTaggedFiles)
                 filesWithEnum = Directory.EnumerateFiles(workingDirectory, "*.*", SearchOption.TopDirectoryOnly)
-                .Where(s => (s.EndsWith(".jpg") && !s.Contains(tagStringFromBaseFileNameSeperator)) || (s.EndsWith(".png") && !s.Contains("__")));
+                .Where(s => (
+                s.EndsWith(".jpg") && !s.Contains(tagStringFromBaseFileNameSeperator)) 
+                || 
+                (s.EndsWith(".png") && !s.Contains(tagStringFromBaseFileNameSeperator))
+                ||
+                (s.EndsWith(".jpeg") && !s.Contains(tagStringFromBaseFileNameSeperator))
+                ||
+                (s.EndsWith(".avi") && !s.Contains(tagStringFromBaseFileNameSeperator))
+                ||
+                (s.EndsWith(".mpg") && !s.Contains(tagStringFromBaseFileNameSeperator))
+                ||
+                (s.EndsWith(".mp4") && !s.Contains(tagStringFromBaseFileNameSeperator))
+
+                );
             else
                 filesWithEnum = Directory.EnumerateFiles(workingDirectory, "*.*", SearchOption.TopDirectoryOnly)
                .Where(s => s.EndsWith(".jpg") || s.EndsWith(".png"));

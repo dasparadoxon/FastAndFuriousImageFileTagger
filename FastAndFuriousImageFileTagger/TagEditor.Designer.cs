@@ -28,21 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox_Tags = new System.Windows.Forms.CheckedListBox();
             this.button_tagDialogDone = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // checkedListBox_Tags
-            // 
-            this.checkedListBox_Tags.FormattingEnabled = true;
-            this.checkedListBox_Tags.Location = new System.Drawing.Point(12, 12);
-            this.checkedListBox_Tags.Name = "checkedListBox_Tags";
-            this.checkedListBox_Tags.Size = new System.Drawing.Size(776, 424);
-            this.checkedListBox_Tags.TabIndex = 0;
             // 
             // button_tagDialogDone
             // 
-            this.button_tagDialogDone.Location = new System.Drawing.Point(621, 445);
+            this.button_tagDialogDone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_tagDialogDone.Location = new System.Drawing.Point(872, 627);
             this.button_tagDialogDone.Name = "button_tagDialogDone";
             this.button_tagDialogDone.Size = new System.Drawing.Size(167, 23);
             this.button_tagDialogDone.TabIndex = 1;
@@ -50,22 +44,30 @@
             this.button_tagDialogDone.UseVisualStyleBackColor = true;
             this.button_tagDialogDone.Click += new System.EventHandler(this.Button_tagDialogDone_click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1027, 599);
+            this.dataGridView1.TabIndex = 2;
+            // 
             // TagEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 480);
+            this.ClientSize = new System.Drawing.Size(1051, 662);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_tagDialogDone);
-            this.Controls.Add(this.checkedListBox_Tags);
             this.Name = "TagEditor";
-            this.Text = "TagEditor";
+            this.Text = "Tag Editor";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox checkedListBox_Tags;
         private System.Windows.Forms.Button button_tagDialogDone;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
