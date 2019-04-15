@@ -536,6 +536,10 @@ namespace FastAndFuriousImageFileTagger
 
         #region SQLITE Functions
 
+        /// <summary>
+        /// Adds new tag to the database
+        /// </summary>
+        /// <param name="tagToAdd">new tag string</param>
         private void AddTagToSQLiteDatabase(string tagToAdd)
         {
 
@@ -692,6 +696,28 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        private void UpdateUsedCounterForTag(string tag)
+        {
+            string sqlUpdateCommand = "UPDATE tags SET used = used + 1 WHERE tag='"+tag+"';";
+
+            Console.Write("Updating used counter for tag " + tag + " with sql-statment : '" + sqlUpdateCommand+"'");
+
+            using (SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True"))
+            {
+                sqlite_conn.Open();
+
+                using (SQLiteCommand sqlite_cmd = sqlite_conn.CreateCommand())
+                {
+
+                    sqlite_cmd.CommandText = sqlUpdateCommand;
+
+                    sqlite_cmd.ExecuteNonQuery();
+                }
+
+                sqlite_conn.Close();
+            }
+        }
+
         #endregion
 
         #region HandlingFunctions
@@ -842,9 +868,15 @@ namespace FastAndFuriousImageFileTagger
                 tagAutoCompleteStringsCollection.Add(tagToAdd);
 
                 AddTagToSQLiteDatabase(tagToAdd);
+
+                UpdateUsedCounterForTag(tagToAdd);
             }
             else
+            { 
                 Console.WriteLine("Tag "+tagToAdd+" is allready in TagAutoCompleteCollection.");
+
+                UpdateUsedCounterForTag(tagToAdd);
+            }
         }
 
         private void SetCurrentImageToPictureBox(string pathAndFileName)
