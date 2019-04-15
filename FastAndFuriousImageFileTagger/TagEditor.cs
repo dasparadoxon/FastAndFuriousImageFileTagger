@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
 using System.Collections.Generic;
+using System.ComponentModel;
+using MySqlLite;
 
 namespace FastAndFuriousImageFileTagger
 {
@@ -23,7 +25,7 @@ namespace FastAndFuriousImageFileTagger
 
         private string databaseFileName = "FastAndFuriousImageFileTagger.db";
 
-
+        private System.Data.DataSet dataSet;
 
         #endregion
 
@@ -31,57 +33,28 @@ namespace FastAndFuriousImageFileTagger
         {
             InitializeComponent();
 
-            userDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            InitializeDatabasePath();
 
-            dataGridView1.DataSource = CreateTagList();
-
-            //int numberOfRows = dataGridView1.ColumnCount;
-
-            //for(int i = 0; i < numberOfRows; i++)
-            //{
-
-            var col4 = new DataGridViewButtonColumn();
-
-            col4.HeaderText = "Delete Tag";
-            col4.Name = "Delete";
-            col4.Text = "Delete Tag";
-            col4.UseColumnTextForButtonValue = true;
-
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { col4 });
-
-            //}
-
+            dataSet = new DataSet();
             
-        }
+            DataClass tagDataClass = new DataClass(tagFileLocationAndFileName);
 
-        public void InitializeTagCheckBoxListFromAutocompletionList()
+            BindingSource bindingSourceForDataViewGrid = new BindingSource();
+
+            DataTable tagDataTable = tagDataClass.selectQuery("SELECT * from tags");
+
+            bindingSourceForDataViewGrid.DataSource = tagDataTable;
+
+            dataGridView1.DataSource = bindingSourceForDataViewGrid;
+
+            AddButtonColumn();
+
+
+         }
+
+        private void InitializeDatabasePath()
         {
-            /*
-            List<string> tags = new List<string>();
-
-            //string[] tagArray = tags.ToArray();
-
-            string[] tagArray = new string[TagCollection.Count];
-
-            // TODO : Sorting of the elements, Array.Sort(tagArray) is resulting in strange entries ??
-
-            TagCollection.CopyTo(tagArray, 0);
-
-            checkedListBox_Tags.Items.AddRange(tagArray);
-
-            for (int i = 0; i < checkedListBox_Tags.Items.Count; i++)
-                checkedListBox_Tags.SetItemCheckState(i, CheckState.Checked);
-            */
-        }
-
-        private void Button_tagDialogDone_click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private List<TagEntry> CreateTagList()
-        {
-            List < TagEntry > tagListToReturn = new List<TagEntry>();
+            userDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
             string fastAndFuriousImageFileTaggerDirectory = "FastAndFuriousImageFileTagger";
 
@@ -90,97 +63,31 @@ namespace FastAndFuriousImageFileTagger
             userDataDirectory = fullPathToUserDirectory;
 
             tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
-
-            Console.WriteLine("Reading SQL Database at : " + tagFileLocationAndFileName + " to fill TagEditor");
-
-            using (SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName+";" ))
-            {
-                sqlite_conn.Open();
-
-                using (SQLiteCommand sqlite_cmd = sqlite_conn.CreateCommand())
-                {
-
-                    string sqlString = "SELECT * from tags";
-
-                    sqlite_cmd.CommandText = sqlString;
-
-                    sqlite_cmd.ExecuteNonQuery();
-
-                    using (SQLiteDataReader rdr = sqlite_cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            TagEntry tagToAdd = new TagEntry();
-
-                            tagToAdd.Tag = Convert.ToString(rdr.GetString(0));
-                            tagToAdd.Used = Convert.ToInt32(rdr.GetInt32(1));
-
-                            tagListToReturn.Add(tagToAdd);
-
-                        }
-                    }
-
-                }
-
-                sqlite_conn.Close();
-
-            }
-
-            return tagListToReturn;
-
-
         }
 
-        private DataTable GetData(string sqlCommand)
+        private void AddButtonColumn()
         {
-            tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
+            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
 
-            using (SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True"))
-            {
-                sqlite_conn.Open();
+            deleteButtonColumn.HeaderText = "Delete Tag";
+            deleteButtonColumn.Name = "Delete";
+            deleteButtonColumn.Text = "Delete Tag";
+            deleteButtonColumn.UseColumnTextForButtonValue = true;
 
-                using (SQLiteCommand sqlite_cmd = sqlite_conn.CreateCommand())
-                {
 
-                    string sqlString = "SELECT * from tags";
-
-                    sqlite_cmd.CommandText = sqlString;
-
-                    sqlite_cmd.ExecuteNonQuery();
-
-                    using (SQLiteDataReader rdr = sqlite_cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            //tagList.Add(Convert.ToString(rdr.GetString(0)));
-                        }
-                    }
-
-                }
-
-                sqlite_conn.Close();
-
-            }
-
-                /*
-
-                    string connectionString = "Integrated Security=SSPI;" +
-                    "Persist Security Info=False;" +
-                    "Initial Catalog=Northwind;Data Source=localhost";
-
-                SqlConnection northwindConnection = new SqlConnection(connectionString);
-
-                SqlCommand command = new SqlCommand(sqlCommand, northwindConnection);
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
-
-                DataTable table = new DataTable();
-                table.Locale = System.Globalization.CultureInfo.InvariantCulture;
-                adapter.Fill(table);*/
-
-                return null;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { deleteButtonColumn });
         }
 
+        private void FillDataGridView(List<TagEntry> TagList)
+        {
+
+        }
+        
+        private void Button_tagDialogDone_click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -196,4 +103,45 @@ class TagEntry
 
     public string Tag { get => tag; set => tag = value; }
     public int Used { get => used; set => used = value; }
+}
+
+/// <summary>
+/// Small Class for ADO sqlite, thanks to kux
+/// </summary>
+namespace MySqlLite
+{
+    class DataClass
+    {
+        private SQLiteConnection sqlite;
+
+        public DataClass(string pathToDB)
+        {
+            //This part killed me in the beginning.  I was specifying "DataSource"
+            //instead of "Data Source"
+            sqlite = new SQLiteConnection("Data Source="+ pathToDB);
+
+        }
+
+        public DataTable selectQuery(string query)
+        {
+            SQLiteDataAdapter ad;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                SQLiteCommand cmd;
+                sqlite.Open();  //Initiate connection to the db
+                cmd = sqlite.CreateCommand();
+                cmd.CommandText = query;  //set the passed query
+                ad = new SQLiteDataAdapter(cmd);
+                ad.Fill(dt); //fill the datasource
+            }
+            catch (SQLiteException ex)
+            {
+                //Add your exception code here.
+            }
+            sqlite.Close();
+            return dt;
+        }
+    }
 }

@@ -536,6 +536,25 @@ namespace FastAndFuriousImageFileTagger
 
         #region SQLITE Functions
 
+        private void AddTagToSQLiteDatabase(string tagToAdd)
+        {
+
+            using (SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True"))
+            {
+                sqlite_conn.Open();
+
+                using (SQLiteCommand sqlite_cmd = sqlite_conn.CreateCommand())
+                {
+
+                        sqlite_cmd.CommandText = "INSERT INTO tags (tag,used) VALUES ('" + tagToAdd + "',0)";
+
+                        sqlite_cmd.ExecuteNonQuery();
+                }
+
+                sqlite_conn.Close();
+            }
+        }
+
         private void CreateSQLITEDatabase()
         {
 
@@ -633,7 +652,7 @@ namespace FastAndFuriousImageFileTagger
 
         private void WriteTagCollectionToSQLiteFile()
         {
-
+            /* NO
             DeleteDatabaseFile();
 
             CreateSQLITEDatabase();
@@ -661,7 +680,7 @@ namespace FastAndFuriousImageFileTagger
                 }
 
                 sqlite_conn.Close();
-            }
+            }*/
 
         }
 
@@ -805,13 +824,27 @@ namespace FastAndFuriousImageFileTagger
         }
 
 
-
+        /// <summary>
+        /// Adds Tag to TagAutoCompleteCollection if not allready present in it.
+        /// Also Inserts Tag if new into Database or Tagfile
+        /// Also checks if Tag is bigger than only one char, cause then its probably the space shortcut to go 
+        /// to next image.
+        /// </summary>
+        /// <param name="tagToAdd">string of Tag to add</param>
         private void AddTagToAutoCompleteListIfNotPresent(string tagToAdd)
         {
+
             if (!tagAutoCompleteStringsCollection.Contains(tagToAdd) && tagToAdd.Length > 1)
             {
+
+                Console.WriteLine("Tag " + tagToAdd + " is new, adding it.");
+
                 tagAutoCompleteStringsCollection.Add(tagToAdd);
+
+                AddTagToSQLiteDatabase(tagToAdd);
             }
+            else
+                Console.WriteLine("Tag "+tagToAdd+" is allready in TagAutoCompleteCollection.");
         }
 
         private void SetCurrentImageToPictureBox(string pathAndFileName)
