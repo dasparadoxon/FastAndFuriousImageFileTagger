@@ -525,6 +525,8 @@ namespace FastAndFuriousImageFileTagger
         {
             TagEditor tagEditorInstance = new TagEditor();
 
+            tagEditorInstance.mainForm = this;
+
             //tagEditorInstance.TagCollection = tagAutoCompleteStringsCollection;
 
             //tagEditorInstance.InitializeTagCheckBoxListFromAutocompletionList();
@@ -787,7 +789,7 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
-        private void InitializeAutoCompletionForNewTagTextBox()
+        public void InitializeAutoCompletionForNewTagTextBox()
         {
             tagAutoCompleteStringsCollection = new AutoCompleteStringCollection();
 

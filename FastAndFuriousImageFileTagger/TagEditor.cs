@@ -27,6 +27,8 @@ namespace FastAndFuriousImageFileTagger
 
         private System.Data.DataSet dataSet;
 
+        public FastAndFuriousImageTagger mainForm;
+
         #endregion
 
         public TagEditor()
@@ -36,21 +38,21 @@ namespace FastAndFuriousImageFileTagger
             InitializeDatabasePath();
 
             dataSet = new DataSet();
-            
+
             DataClass tagDataClass = new DataClass(tagFileLocationAndFileName);
 
             BindingSource bindingSourceForDataViewGrid = new BindingSource();
 
             DataTable tagDataTable = tagDataClass.selectQuery("SELECT * from tags");
 
+            tagDataTable.RowDeleted += new DataRowChangeEventHandler(tagDataClass.Row_Deleted);
+
             bindingSourceForDataViewGrid.DataSource = tagDataTable;
 
             dataGridView1.DataSource = bindingSourceForDataViewGrid;
 
-            AddButtonColumn();
-
-
-         }
+   
+        }
 
         private void InitializeDatabasePath()
         {
@@ -65,7 +67,7 @@ namespace FastAndFuriousImageFileTagger
             tagFileLocationAndFileName = userDataDirectory + Path.DirectorySeparatorChar + databaseFileName;
         }
 
-        private void AddButtonColumn()
+        private void AddDeleteButtonColumn()
         {
             DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
 
@@ -82,12 +84,14 @@ namespace FastAndFuriousImageFileTagger
         {
 
         }
-        
+
         private void Button_tagDialogDone_click(object sender, EventArgs e)
         {
+            mainForm.InitializeAutoCompletionForNewTagTextBox();
+
             this.Close();
         }
-        
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -118,7 +122,7 @@ namespace MySqlLite
         {
             //This part killed me in the beginning.  I was specifying "DataSource"
             //instead of "Data Source"
-            sqlite = new SQLiteConnection("Data Source="+ pathToDB);
+            sqlite = new SQLiteConnection("Data Source=" + pathToDB);
 
         }
 
@@ -143,5 +147,42 @@ namespace MySqlLite
             sqlite.Close();
             return dt;
         }
+
+        public void Row_Deleted(object sender, DataRowChangeEventArgs e)
+        {
+            Console.WriteLine("Row_Deleted Event: name={0}; action={1}",
+                e.Row["tag", DataRowVersion.Original], e.Action);
+
+            DeleteTag(e.Row["tag", DataRowVersion.Original].ToString());
+
+        }
+
+        private void DeleteTag(string tag)
+        {
+            string deleteSQLstring = "DELETE FROM tags WHERE tag='" + tag + "';";
+
+            selectQuery(deleteSQLstring);
+
+            try
+            {
+                SQLiteCommand cmd;
+                sqlite.Open();  //Initiate connection to the db
+                cmd = sqlite.CreateCommand();
+                cmd.CommandText = deleteSQLstring;  //set the passed query
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SQLiteException ex)
+            {
+                //Add your exception code here.
+            }
+
+            sqlite.Close();
+
+
+
+        }
     }
+
+
 }
