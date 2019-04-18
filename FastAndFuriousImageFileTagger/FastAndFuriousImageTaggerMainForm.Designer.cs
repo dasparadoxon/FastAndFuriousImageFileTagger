@@ -67,6 +67,20 @@
             this.TagSetButton2 = new System.Windows.Forms.Button();
             this.TagSetButton1 = new System.Windows.Forms.Button();
             this.TagSetsLabel = new System.Windows.Forms.Label();
+            this.MostUsedTagsQuickBoxPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
@@ -76,11 +90,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MainMenuStripe.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.MostUsedTagsQuickBoxPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousImageButton
             // 
-            this.PreviousImageButton.Location = new System.Drawing.Point(16, 7);
+            this.PreviousImageButton.Location = new System.Drawing.Point(9, 7);
             this.PreviousImageButton.Name = "PreviousImageButton";
             this.PreviousImageButton.Size = new System.Drawing.Size(75, 23);
             this.PreviousImageButton.TabIndex = 0;
@@ -91,7 +106,7 @@
             // NextImageButton
             // 
             this.NextImageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextImageButton.Location = new System.Drawing.Point(882, 7);
+            this.NextImageButton.Location = new System.Drawing.Point(865, 7);
             this.NextImageButton.Name = "NextImageButton";
             this.NextImageButton.Size = new System.Drawing.Size(75, 23);
             this.NextImageButton.TabIndex = 1;
@@ -106,7 +121,7 @@
             this.NumberOfImagesInDirectoryTextbox.Location = new System.Drawing.Point(97, 7);
             this.NumberOfImagesInDirectoryTextbox.Name = "NumberOfImagesInDirectoryTextbox";
             this.NumberOfImagesInDirectoryTextbox.ReadOnly = true;
-            this.NumberOfImagesInDirectoryTextbox.Size = new System.Drawing.Size(780, 20);
+            this.NumberOfImagesInDirectoryTextbox.Size = new System.Drawing.Size(761, 20);
             this.NumberOfImagesInDirectoryTextbox.TabIndex = 3;
             this.NumberOfImagesInDirectoryTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -118,9 +133,9 @@
             this.tagOfCurrentFilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tagOfCurrentFilePanel.Controls.Add(this.tagsForThisFile_checkedListBox);
             this.tagOfCurrentFilePanel.Controls.Add(this.TagBoxLabel);
-            this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(732, 11);
+            this.tagOfCurrentFilePanel.Location = new System.Drawing.Point(715, 11);
             this.tagOfCurrentFilePanel.Name = "tagOfCurrentFilePanel";
-            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(225, 521);
+            this.tagOfCurrentFilePanel.Size = new System.Drawing.Size(225, 509);
             this.tagOfCurrentFilePanel.TabIndex = 4;
             // 
             // tagsForThisFile_checkedListBox
@@ -147,9 +162,9 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.ForeColor = System.Drawing.Color.Red;
-            this.DeleteButton.Location = new System.Drawing.Point(659, 36);
+            this.DeleteButton.Location = new System.Drawing.Point(652, 36);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(120, 23);
             this.DeleteButton.TabIndex = 4;
@@ -166,15 +181,15 @@
             this.NewTagPanel.Controls.Add(this.AddTagButton);
             this.NewTagPanel.Controls.Add(this.NewTagLabel);
             this.NewTagPanel.Controls.Add(this.newTag_textBox);
-            this.NewTagPanel.Location = new System.Drawing.Point(13, 662);
+            this.NewTagPanel.Location = new System.Drawing.Point(16, 656);
             this.NewTagPanel.Name = "NewTagPanel";
-            this.NewTagPanel.Size = new System.Drawing.Size(974, 64);
+            this.NewTagPanel.Size = new System.Drawing.Size(1154, 64);
             this.NewTagPanel.TabIndex = 5;
             // 
             // AddTagButton
             // 
             this.AddTagButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddTagButton.Location = new System.Drawing.Point(862, 19);
+            this.AddTagButton.Location = new System.Drawing.Point(1051, 19);
             this.AddTagButton.Name = "AddTagButton";
             this.AddTagButton.Size = new System.Drawing.Size(95, 23);
             this.AddTagButton.TabIndex = 2;
@@ -217,7 +232,7 @@
             "horizon"});
             this.newTag_textBox.Location = new System.Drawing.Point(98, 22);
             this.newTag_textBox.Name = "newTag_textBox";
-            this.newTag_textBox.Size = new System.Drawing.Size(758, 20);
+            this.newTag_textBox.Size = new System.Drawing.Size(949, 20);
             this.newTag_textBox.TabIndex = 0;
             this.newTag_textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NewTag_textBox_KeyDown);
             this.newTag_textBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.NewTag_textBox_PreviewKeyDown);
@@ -226,9 +241,9 @@
             // 
             this.DirectoryChangeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DirectoryChangeButton.Location = new System.Drawing.Point(16, 36);
+            this.DirectoryChangeButton.Location = new System.Drawing.Point(9, 36);
             this.DirectoryChangeButton.Name = "DirectoryChangeButton";
-            this.DirectoryChangeButton.Size = new System.Drawing.Size(463, 23);
+            this.DirectoryChangeButton.Size = new System.Drawing.Size(456, 23);
             this.DirectoryChangeButton.TabIndex = 6;
             this.DirectoryChangeButton.Text = "Change Directory";
             this.DirectoryChangeButton.UseVisualStyleBackColor = true;
@@ -240,7 +255,7 @@
             this.onlyShowNonTaggedImages_CheckBox.AutoSize = true;
             this.onlyShowNonTaggedImages_CheckBox.Checked = true;
             this.onlyShowNonTaggedImages_CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.onlyShowNonTaggedImages_CheckBox.Location = new System.Drawing.Point(485, 40);
+            this.onlyShowNonTaggedImages_CheckBox.Location = new System.Drawing.Point(478, 40);
             this.onlyShowNonTaggedImages_CheckBox.Name = "onlyShowNonTaggedImages_CheckBox";
             this.onlyShowNonTaggedImages_CheckBox.Size = new System.Drawing.Size(168, 17);
             this.onlyShowNonTaggedImages_CheckBox.TabIndex = 7;
@@ -259,16 +274,16 @@
             this.renameBasePanel.Controls.Add(this.RenameBaseNameButton);
             this.renameBasePanel.Controls.Add(this.RenameTextBoxLabel);
             this.renameBasePanel.Controls.Add(this.renameBase_textBox);
-            this.renameBasePanel.Location = new System.Drawing.Point(13, 781);
+            this.renameBasePanel.Location = new System.Drawing.Point(17, 726);
             this.renameBasePanel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.renameBasePanel.Name = "renameBasePanel";
-            this.renameBasePanel.Size = new System.Drawing.Size(973, 61);
+            this.renameBasePanel.Size = new System.Drawing.Size(1153, 61);
             this.renameBasePanel.TabIndex = 6;
             // 
             // button_index_rename
             // 
             this.button_index_rename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_index_rename.Location = new System.Drawing.Point(847, 15);
+            this.button_index_rename.Location = new System.Drawing.Point(1035, 16);
             this.button_index_rename.Name = "button_index_rename";
             this.button_index_rename.Size = new System.Drawing.Size(110, 23);
             this.button_index_rename.TabIndex = 3;
@@ -279,7 +294,7 @@
             // RenameBaseNameButton
             // 
             this.RenameBaseNameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RenameBaseNameButton.Location = new System.Drawing.Point(761, 16);
+            this.RenameBaseNameButton.Location = new System.Drawing.Point(949, 16);
             this.RenameBaseNameButton.Name = "RenameBaseNameButton";
             this.RenameBaseNameButton.Size = new System.Drawing.Size(80, 23);
             this.RenameBaseNameButton.TabIndex = 2;
@@ -321,7 +336,7 @@
             "horizon"});
             this.renameBase_textBox.Location = new System.Drawing.Point(97, 18);
             this.renameBase_textBox.Name = "renameBase_textBox";
-            this.renameBase_textBox.Size = new System.Drawing.Size(658, 20);
+            this.renameBase_textBox.Size = new System.Drawing.Size(843, 20);
             this.renameBase_textBox.TabIndex = 0;
             this.renameBase_textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Event_RenameBaseFile_KeyDown);
             // 
@@ -338,17 +353,17 @@
             this.directoryInformationPanel.Controls.Add(this.PreviousImageButton);
             this.directoryInformationPanel.Controls.Add(this.NumberOfImagesInDirectoryTextbox);
             this.directoryInformationPanel.Controls.Add(this.NextImageButton);
-            this.directoryInformationPanel.Location = new System.Drawing.Point(13, 39);
+            this.directoryInformationPanel.Location = new System.Drawing.Point(17, 39);
             this.directoryInformationPanel.Name = "directoryInformationPanel";
-            this.directoryInformationPanel.Size = new System.Drawing.Size(973, 67);
+            this.directoryInformationPanel.Size = new System.Drawing.Size(951, 67);
             this.directoryInformationPanel.TabIndex = 8;
             // 
             // CopyToDesktopButton
             // 
             this.CopyToDesktopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CopyToDesktopButton.Location = new System.Drawing.Point(785, 36);
+            this.CopyToDesktopButton.Location = new System.Drawing.Point(789, 34);
             this.CopyToDesktopButton.Name = "CopyToDesktopButton";
-            this.CopyToDesktopButton.Size = new System.Drawing.Size(172, 23);
+            this.CopyToDesktopButton.Size = new System.Drawing.Size(151, 23);
             this.CopyToDesktopButton.TabIndex = 4;
             this.CopyToDesktopButton.Text = "Copy to Desktop (F4)";
             this.CopyToDesktopButton.UseVisualStyleBackColor = true;
@@ -363,9 +378,9 @@
             this.PictureAndTagBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PictureAndTagBoxPanel.Controls.Add(this.PictureBoxPanel);
             this.PictureAndTagBoxPanel.Controls.Add(this.tagOfCurrentFilePanel);
-            this.PictureAndTagBoxPanel.Location = new System.Drawing.Point(13, 112);
+            this.PictureAndTagBoxPanel.Location = new System.Drawing.Point(17, 112);
             this.PictureAndTagBoxPanel.Name = "PictureAndTagBoxPanel";
-            this.PictureAndTagBoxPanel.Size = new System.Drawing.Size(973, 545);
+            this.PictureAndTagBoxPanel.Size = new System.Drawing.Size(951, 538);
             this.PictureAndTagBoxPanel.TabIndex = 10;
             // 
             // PictureBoxPanel
@@ -378,7 +393,7 @@
             this.PictureBoxPanel.Controls.Add(this.pictureBox1);
             this.PictureBoxPanel.Location = new System.Drawing.Point(16, 11);
             this.PictureBoxPanel.Name = "PictureBoxPanel";
-            this.PictureBoxPanel.Size = new System.Drawing.Size(703, 521);
+            this.PictureBoxPanel.Size = new System.Drawing.Size(686, 509);
             this.PictureBoxPanel.TabIndex = 5;
             // 
             // pictureBox1
@@ -391,7 +406,7 @@
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(695, 513);
+            this.pictureBox1.Size = new System.Drawing.Size(678, 501);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -409,7 +424,7 @@
             this.MainMenuStripe.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStripe.Name = "MainMenuStripe";
             this.MainMenuStripe.Padding = new System.Windows.Forms.Padding(0);
-            this.MainMenuStripe.Size = new System.Drawing.Size(999, 24);
+            this.MainMenuStripe.Size = new System.Drawing.Size(1182, 24);
             this.MainMenuStripe.TabIndex = 11;
             this.MainMenuStripe.Text = "menuStrip1";
             // 
@@ -458,10 +473,11 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button12);
             this.panel1.Controls.Add(this.TagSetButton6);
             this.panel1.Controls.Add(this.TagSetButton5);
             this.panel1.Controls.Add(this.TagSetButton4);
@@ -469,73 +485,61 @@
             this.panel1.Controls.Add(this.TagSetButton2);
             this.panel1.Controls.Add(this.TagSetButton1);
             this.panel1.Controls.Add(this.TagSetsLabel);
-            this.panel1.Location = new System.Drawing.Point(12, 732);
+            this.panel1.Location = new System.Drawing.Point(979, 411);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(974, 43);
+            this.panel1.Size = new System.Drawing.Size(191, 239);
             this.panel1.TabIndex = 6;
             // 
             // TagSetButton6
             // 
-            this.TagSetButton6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton6.Location = new System.Drawing.Point(793, 9);
+            this.TagSetButton6.Location = new System.Drawing.Point(5, 172);
             this.TagSetButton6.Name = "TagSetButton6";
-            this.TagSetButton6.Size = new System.Drawing.Size(165, 23);
+            this.TagSetButton6.Size = new System.Drawing.Size(178, 23);
             this.TagSetButton6.TabIndex = 8;
             this.TagSetButton6.Text = "TagSet (6)";
             this.TagSetButton6.UseVisualStyleBackColor = true;
             // 
             // TagSetButton5
             // 
-            this.TagSetButton5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton5.Location = new System.Drawing.Point(620, 9);
+            this.TagSetButton5.Location = new System.Drawing.Point(5, 143);
             this.TagSetButton5.Name = "TagSetButton5";
-            this.TagSetButton5.Size = new System.Drawing.Size(167, 23);
+            this.TagSetButton5.Size = new System.Drawing.Size(178, 23);
             this.TagSetButton5.TabIndex = 7;
             this.TagSetButton5.Text = "TagSet (5)";
             this.TagSetButton5.UseVisualStyleBackColor = true;
             // 
             // TagSetButton4
             // 
-            this.TagSetButton4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton4.Location = new System.Drawing.Point(463, 9);
+            this.TagSetButton4.Location = new System.Drawing.Point(6, 114);
             this.TagSetButton4.Name = "TagSetButton4";
-            this.TagSetButton4.Size = new System.Drawing.Size(151, 23);
+            this.TagSetButton4.Size = new System.Drawing.Size(178, 23);
             this.TagSetButton4.TabIndex = 6;
             this.TagSetButton4.Text = "TagSet (4)";
             this.TagSetButton4.UseVisualStyleBackColor = true;
             // 
             // TagSetButton3
             // 
-            this.TagSetButton3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton3.Location = new System.Drawing.Point(338, 9);
+            this.TagSetButton3.Location = new System.Drawing.Point(6, 85);
             this.TagSetButton3.Name = "TagSetButton3";
-            this.TagSetButton3.Size = new System.Drawing.Size(119, 23);
+            this.TagSetButton3.Size = new System.Drawing.Size(178, 23);
             this.TagSetButton3.TabIndex = 5;
             this.TagSetButton3.Text = "TagSet (3)";
             this.TagSetButton3.UseVisualStyleBackColor = true;
             // 
             // TagSetButton2
             // 
-            this.TagSetButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton2.Location = new System.Drawing.Point(209, 10);
+            this.TagSetButton2.Location = new System.Drawing.Point(5, 56);
             this.TagSetButton2.Name = "TagSetButton2";
-            this.TagSetButton2.Size = new System.Drawing.Size(123, 23);
+            this.TagSetButton2.Size = new System.Drawing.Size(178, 23);
             this.TagSetButton2.TabIndex = 4;
             this.TagSetButton2.Text = "TagSet (2)";
             this.TagSetButton2.UseVisualStyleBackColor = true;
             // 
             // TagSetButton1
             // 
-            this.TagSetButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TagSetButton1.Location = new System.Drawing.Point(98, 10);
+            this.TagSetButton1.Location = new System.Drawing.Point(6, 27);
             this.TagSetButton1.Name = "TagSetButton1";
-            this.TagSetButton1.Size = new System.Drawing.Size(105, 23);
+            this.TagSetButton1.Size = new System.Drawing.Size(178, 23);
             this.TagSetButton1.TabIndex = 3;
             this.TagSetButton1.Text = "TagSet (1)";
             this.TagSetButton1.UseVisualStyleBackColor = true;
@@ -543,17 +547,157 @@
             // TagSetsLabel
             // 
             this.TagSetsLabel.AutoSize = true;
-            this.TagSetsLabel.Location = new System.Drawing.Point(18, 15);
+            this.TagSetsLabel.Location = new System.Drawing.Point(3, 11);
             this.TagSetsLabel.Name = "TagSetsLabel";
             this.TagSetsLabel.Size = new System.Drawing.Size(50, 13);
             this.TagSetsLabel.TabIndex = 1;
             this.TagSetsLabel.Text = "Tag Sets";
             // 
+            // MostUsedTagsQuickBoxPanel
+            // 
+            this.MostUsedTagsQuickBoxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MostUsedTagsQuickBoxPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.MostUsedTagsQuickBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button11);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button10);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button9);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button8);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button7);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button1);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button2);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button3);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button4);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button5);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.button6);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.label1);
+            this.MostUsedTagsQuickBoxPanel.Location = new System.Drawing.Point(979, 39);
+            this.MostUsedTagsQuickBoxPanel.Name = "MostUsedTagsQuickBoxPanel";
+            this.MostUsedTagsQuickBoxPanel.Size = new System.Drawing.Size(191, 366);
+            this.MostUsedTagsQuickBoxPanel.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(5, 184);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Quick Tag";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 155);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(178, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Quick Tag";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 126);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(178, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Quick Tag";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 97);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(178, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Quick Tag";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(6, 68);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(178, 23);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Quick Tag";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 39);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(178, 23);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "Quick Tag";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Most used tags";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(6, 213);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(178, 23);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Quick Tag";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(5, 242);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(178, 23);
+            this.button8.TabIndex = 10;
+            this.button8.Text = "Quick Tag";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(6, 271);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(178, 23);
+            this.button9.TabIndex = 11;
+            this.button9.Text = "Quick Tag";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(6, 300);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(178, 23);
+            this.button10.TabIndex = 12;
+            this.button10.Text = "Quick Tag";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(6, 329);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(178, 23);
+            this.button11.TabIndex = 13;
+            this.button11.Text = "Quick Tag";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(6, 201);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(178, 23);
+            this.button12.TabIndex = 9;
+            this.button12.Text = "TagSet (6)";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
             // FastAndFuriousImageTagger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(999, 848);
+            this.ClientSize = new System.Drawing.Size(1182, 800);
+            this.Controls.Add(this.MostUsedTagsQuickBoxPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PictureAndTagBoxPanel);
             this.Controls.Add(this.NewTagPanel);
@@ -586,6 +730,8 @@
             this.MainMenuStripe.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.MostUsedTagsQuickBoxPanel.ResumeLayout(false);
+            this.MostUsedTagsQuickBoxPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,8 +777,20 @@
         private System.Windows.Forms.Button TagSetButton2;
         private System.Windows.Forms.Button TagSetButton1;
         private System.Windows.Forms.Panel PictureBoxPanel;
-
-        
+        private System.Windows.Forms.Panel MostUsedTagsQuickBoxPanel;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button12;
     }
 }
 
