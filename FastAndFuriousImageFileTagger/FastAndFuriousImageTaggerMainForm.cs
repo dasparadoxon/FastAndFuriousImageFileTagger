@@ -217,6 +217,19 @@ namespace FastAndFuriousImageFileTagger
                 e.Handled = true;
             }
 
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (newTag_textBox.Text.Length < 2)
+                {
+                    e.SuppressKeyPress = true;
+                    e.Handled = true;
+
+                    DeleteImage();
+
+                    newTag_textBox.Focus();
+                }
+            }
+
             if (e.KeyCode == Keys.Space)
             {
 
@@ -237,9 +250,6 @@ namespace FastAndFuriousImageFileTagger
                     SetUpCurrentImage(true);
 
                     // TODO : If there are no images left to process, set the initial image.
-
-
-
                 }
             }
         }
@@ -276,7 +286,6 @@ namespace FastAndFuriousImageFileTagger
         }
 
         private Point MouseDownLocation;
-
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
