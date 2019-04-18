@@ -977,6 +977,8 @@ namespace FastAndFuriousImageFileTagger
 
         private void AddTagToImageTagCheckBox(string newTag)
         {
+            newTag = newTag.ToLower();
+
             if (newTag.Length > 1)
             {
 
