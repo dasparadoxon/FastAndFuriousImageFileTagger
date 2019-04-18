@@ -245,7 +245,7 @@
             this.DirectoryChangeButton.Name = "DirectoryChangeButton";
             this.DirectoryChangeButton.Size = new System.Drawing.Size(456, 23);
             this.DirectoryChangeButton.TabIndex = 6;
-            this.DirectoryChangeButton.Text = "Change Directory";
+            this.DirectoryChangeButton.Text = "Change Directory (F5)";
             this.DirectoryChangeButton.UseVisualStyleBackColor = true;
             this.DirectoryChangeButton.Click += new System.EventHandler(this.DirectoryChangeButton_clicked);
             // 

@@ -349,6 +349,9 @@ namespace FastAndFuriousImageFileTagger
             if (e.KeyCode == Keys.F4)
                 CopyCurrentImageFileToDesktop();
 
+            if (e.KeyCode == Keys.F5)
+                ChangeDirectory();
+
             // Only Process Those Hotkeys if neither TagBox or RenameBox is active !!
             if (!newTag_textBox.Focused && !renameBase_textBox.Focused)
             {
@@ -382,14 +385,7 @@ namespace FastAndFuriousImageFileTagger
 
         private void DirectoryChangeButton_clicked(object sender, EventArgs e)
         {
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                Console.WriteLine("Setting working directory to : " + folderBrowserDialog1.SelectedPath);
-                workingDirectory = folderBrowserDialog1.SelectedPath;
-
-                SetUpCurrentImage(true);
-            }
+            ChangeDirectory();
         }
 
         private void RenameBaseNameButton_Click(object sender, EventArgs e)
@@ -1239,6 +1235,18 @@ namespace FastAndFuriousImageFileTagger
                 MessageBox.Show("File allready exits in that location", "Notice",
                               MessageBoxButtons.OK,
                               MessageBoxIcon.Information);
+        }
+
+        private void ChangeDirectory()
+        {
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Console.WriteLine("Setting working directory to : " + folderBrowserDialog1.SelectedPath);
+                workingDirectory = folderBrowserDialog1.SelectedPath;
+
+                SetUpCurrentImage(true);
+            }
         }
 
         #endregion
