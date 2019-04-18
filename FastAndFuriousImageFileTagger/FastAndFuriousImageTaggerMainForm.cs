@@ -381,6 +381,8 @@ namespace FastAndFuriousImageFileTagger
         private void AddTagButton_AddTag_clicked(object sender, EventArgs e)
         {
             AddTagToImageTagCheckBox(newTag_textBox.Text);
+
+            AddTagToImageFile(newTag_textBox.Text, currentSelectedImage.Name);
         }
 
         private void DirectoryChangeButton_clicked(object sender, EventArgs e)
@@ -1000,8 +1002,6 @@ namespace FastAndFuriousImageFileTagger
                     AddTagToAutoCompleteListIfNotPresent(newTag);
 
                 }
-
-                //AddTagToTagFile(newTag);
 
             }
         }
