@@ -17,7 +17,7 @@ using System.Data.SQLite;
  * 
  * Public Domain or whatever license is good for you, but keeps this programm free as in freedom.
  * 
- * Version 0.1.2 (18.04.2019)
+ * Version 0.1.2 (18.04.2019) [VERIFIED GITHUB TEST]
  * 
  */
 
