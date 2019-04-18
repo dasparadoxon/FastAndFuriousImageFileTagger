@@ -975,6 +975,10 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        /// <summary>
+        /// Adds Tag to Image Tag Check Box if not allready assigned , also gives it to the AutoCompletion
+        /// </summary>
+        /// <param name="newTag"></param>
         private void AddTagToImageTagCheckBox(string newTag)
         {
             newTag = newTag.ToLower();
@@ -982,16 +986,20 @@ namespace FastAndFuriousImageFileTagger
             if (newTag.Length > 1)
             {
 
-                string[] newTagWTF = new string[1];
+                if (!tagsForThisFile_checkedListBox.Items.Contains(newTag)) { 
 
-                newTagWTF[0] = newTag;
+                    string[] newTagWTF = new string[1];
 
-                tagsForThisFile_checkedListBox.Items.AddRange(newTagWTF);
+                    newTagWTF[0] = newTag;
 
-                for (int i = 0; i < tagsForThisFile_checkedListBox.Items.Count; i++)
-                    tagsForThisFile_checkedListBox.SetItemCheckState(i, CheckState.Checked);
+                    tagsForThisFile_checkedListBox.Items.AddRange(newTagWTF);
 
-                AddTagToAutoCompleteListIfNotPresent(newTag);
+                    for (int i = 0; i < tagsForThisFile_checkedListBox.Items.Count; i++)
+                        tagsForThisFile_checkedListBox.SetItemCheckState(i, CheckState.Checked);
+
+                    AddTagToAutoCompleteListIfNotPresent(newTag);
+
+                }
 
                 //AddTagToTagFile(newTag);
 
