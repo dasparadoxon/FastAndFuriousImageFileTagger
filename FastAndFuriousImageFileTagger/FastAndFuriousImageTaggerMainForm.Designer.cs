@@ -80,7 +80,7 @@
             this.QuickTagPos3 = new System.Windows.Forms.Button();
             this.QuickTagPos2 = new System.Windows.Forms.Button();
             this.QuickTagPos1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.MostUsedTagsPanelLabel = new System.Windows.Forms.Label();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
@@ -578,7 +578,7 @@
             this.MostUsedTagsQuickBoxPanel.Controls.Add(this.QuickTagPos3);
             this.MostUsedTagsQuickBoxPanel.Controls.Add(this.QuickTagPos2);
             this.MostUsedTagsQuickBoxPanel.Controls.Add(this.QuickTagPos1);
-            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.label1);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.MostUsedTagsPanelLabel);
             this.MostUsedTagsQuickBoxPanel.Location = new System.Drawing.Point(979, 39);
             this.MostUsedTagsQuickBoxPanel.Name = "MostUsedTagsQuickBoxPanel";
             this.MostUsedTagsQuickBoxPanel.Size = new System.Drawing.Size(191, 366);
@@ -683,14 +683,14 @@
             this.QuickTagPos1.Text = "Quick Tag";
             this.QuickTagPos1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // MostUsedTagsPanelLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Most used tags";
+            this.MostUsedTagsPanelLabel.AutoSize = true;
+            this.MostUsedTagsPanelLabel.Location = new System.Drawing.Point(5, 7);
+            this.MostUsedTagsPanelLabel.Name = "MostUsedTagsPanelLabel";
+            this.MostUsedTagsPanelLabel.Size = new System.Drawing.Size(79, 13);
+            this.MostUsedTagsPanelLabel.TabIndex = 1;
+            this.MostUsedTagsPanelLabel.Text = "Most used tags";
             // 
             // FastAndFuriousImageTagger
             // 
@@ -787,7 +787,7 @@
         private System.Windows.Forms.Button QuickTagPos3;
         private System.Windows.Forms.Button QuickTagPos2;
         private System.Windows.Forms.Button QuickTagPos1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label MostUsedTagsPanelLabel;
         private System.Windows.Forms.Button QuickTagPos11;
         private System.Windows.Forms.Button QuickTagPos10;
         private System.Windows.Forms.Button button12;

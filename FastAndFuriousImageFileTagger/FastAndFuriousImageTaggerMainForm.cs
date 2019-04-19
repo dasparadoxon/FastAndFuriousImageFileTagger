@@ -52,6 +52,10 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        List<Control> mostUsedTagsButtons = new List<Control>();
+
+        List<String> mostUsedTags = new List<string>();
+
         // IMAGES
 
         CurrentSelectedImageFile currentSelectedImage;
@@ -123,12 +127,9 @@ namespace FastAndFuriousImageFileTagger
 
             //ImportTagsIntoDB();
 
-            IEnumerable<Control> QuickTagControls = GetAllControls(MostUsedTagsQuickBoxPanel);
+            InitMostUsedTagButtonList();
 
-            foreach(Control control in QuickTagControls)
-            {
-                Console.WriteLine(control.Name);
-            }
+            SetNameOfMostUsedTagButtons(GetMostUsedTags(11));
         }
 
         #endregion
@@ -553,6 +554,40 @@ namespace FastAndFuriousImageFileTagger
         #region SQLITE Functions
 
         /// <summary>
+        /// Retrievs the top 10 most used tags from the database 
+        /// </summary>
+        /// <returns>List<string></returns>
+        private List<string> GetMostUsedTags(int numberOfTags)
+        {
+            List<string> mostUsedTags = new List<string>();
+
+            using (SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=" + tagFileLocationAndFileName + ";New=True"))
+            {
+                sqlite_conn.Open();
+
+                using (SQLiteCommand sqlite_cmd = sqlite_conn.CreateCommand())
+                {
+                    sqlite_cmd.CommandText = "SELECT tag FROM tags ORDER BY used DESC LIMIT "+ numberOfTags.ToString();
+
+                    sqlite_cmd.ExecuteNonQuery();
+
+                    using (SQLiteDataReader rdr = sqlite_cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            Console.WriteLine(Convert.ToString(rdr.GetString(0)));
+                            mostUsedTags.Add(Convert.ToString(rdr.GetString(0)));
+                        }
+                    }
+                }
+
+                sqlite_conn.Close();
+            }
+
+            return mostUsedTags;
+        }
+
+        /// <summary>
         /// Adds new tag to the database
         /// </summary>
         /// <param name="tagToAdd">new tag string</param>
@@ -737,6 +772,41 @@ namespace FastAndFuriousImageFileTagger
         #endregion
 
         #region HandlingFunctions
+
+        /// <summary>
+        /// Initializes the List Containing the Quick Most Used Tag Controls
+        /// </summary>
+        private void InitMostUsedTagButtonList()
+        {
+            IEnumerable<Control> QuickTagControls = GetAllControls(MostUsedTagsQuickBoxPanel);
+
+            foreach (Control control in QuickTagControls)
+            {
+                Console.WriteLine(control.Name);
+
+                if (control.Text == "Quick Tag")
+                    mostUsedTagsButtons.Add(control);
+            }
+        }
+
+        private void SetNameOfMostUsedTagButtons(List<string> mostUsedTagsStringList)
+        {
+            int i = mostUsedTagsStringList.Count;
+
+            foreach (Control control in mostUsedTagsButtons)
+            {
+                i--;
+
+                Console.WriteLine(i);
+
+                string tag = mostUsedTagsStringList[i];
+
+                control.Text = tag;
+               
+
+               
+            }
+        }
 
         /// <summary>
         /// Saves the size and the position relative to the containing container
