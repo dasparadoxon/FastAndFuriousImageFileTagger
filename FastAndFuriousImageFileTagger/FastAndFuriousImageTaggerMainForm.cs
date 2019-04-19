@@ -123,6 +123,12 @@ namespace FastAndFuriousImageFileTagger
 
             //ImportTagsIntoDB();
 
+            IEnumerable<Control> QuickTagControls = GetAllControls(MostUsedTagsQuickBoxPanel);
+
+            foreach(Control control in QuickTagControls)
+            {
+                Console.WriteLine(control.Name);
+            }
         }
 
         #endregion
@@ -1175,6 +1181,18 @@ namespace FastAndFuriousImageFileTagger
 
             return filesWithEnum;
 
+        }
+
+        public IEnumerable<Control> GetAllControls(Control root)
+        {
+            foreach (Control control in root.Controls)
+            {
+                foreach (Control child in GetAllControls(control))
+                {
+                    yield return child;
+                }
+            }
+            yield return root;
         }
 
         private void RenameBaseFilenameToIndexedBaseFilename()
