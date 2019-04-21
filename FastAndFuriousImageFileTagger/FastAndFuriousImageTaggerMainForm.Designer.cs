@@ -69,7 +69,6 @@
             this.TagSetButton1 = new System.Windows.Forms.Button();
             this.TagSetsLabel = new System.Windows.Forms.Label();
             this.MostUsedTagsQuickBoxPanel = new System.Windows.Forms.Panel();
-            this.QuickTagPos11 = new System.Windows.Forms.Button();
             this.QuickTagPos10 = new System.Windows.Forms.Button();
             this.QuickTagPos9 = new System.Windows.Forms.Button();
             this.QuickTagPos8 = new System.Windows.Forms.Button();
@@ -81,6 +80,8 @@
             this.QuickTagPos2 = new System.Windows.Forms.Button();
             this.QuickTagPos1 = new System.Windows.Forms.Button();
             this.MostUsedTagsPanelLabel = new System.Windows.Forms.Label();
+            this.MostUsedQuickTagActiveCheckbox = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tagOfCurrentFilePanel.SuspendLayout();
             this.NewTagPanel.SuspendLayout();
             this.renameBasePanel.SuspendLayout();
@@ -91,6 +92,7 @@
             this.MainMenuStripe.SuspendLayout();
             this.panel1.SuspendLayout();
             this.MostUsedTagsQuickBoxPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousImageButton
@@ -567,7 +569,7 @@
             this.MostUsedTagsQuickBoxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MostUsedTagsQuickBoxPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.MostUsedTagsQuickBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.QuickTagPos11);
+            this.MostUsedTagsQuickBoxPanel.Controls.Add(this.panel2);
             this.MostUsedTagsQuickBoxPanel.Controls.Add(this.QuickTagPos10);
             this.MostUsedTagsQuickBoxPanel.Controls.Add(this.QuickTagPos9);
             this.MostUsedTagsQuickBoxPanel.Controls.Add(this.QuickTagPos8);
@@ -584,15 +586,6 @@
             this.MostUsedTagsQuickBoxPanel.Size = new System.Drawing.Size(191, 366);
             this.MostUsedTagsQuickBoxPanel.TabIndex = 9;
             // 
-            // QuickTagPos11
-            // 
-            this.QuickTagPos11.Location = new System.Drawing.Point(6, 329);
-            this.QuickTagPos11.Name = "QuickTagPos11";
-            this.QuickTagPos11.Size = new System.Drawing.Size(178, 23);
-            this.QuickTagPos11.TabIndex = 13;
-            this.QuickTagPos11.Text = "Quick Tag";
-            this.QuickTagPos11.UseVisualStyleBackColor = true;
-            // 
             // QuickTagPos10
             // 
             this.QuickTagPos10.Location = new System.Drawing.Point(6, 300);
@@ -601,6 +594,7 @@
             this.QuickTagPos10.TabIndex = 12;
             this.QuickTagPos10.Text = "Quick Tag";
             this.QuickTagPos10.UseVisualStyleBackColor = true;
+            this.QuickTagPos10.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos9
             // 
@@ -610,6 +604,7 @@
             this.QuickTagPos9.TabIndex = 11;
             this.QuickTagPos9.Text = "Quick Tag";
             this.QuickTagPos9.UseVisualStyleBackColor = true;
+            this.QuickTagPos9.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos8
             // 
@@ -619,6 +614,7 @@
             this.QuickTagPos8.TabIndex = 10;
             this.QuickTagPos8.Text = "Quick Tag";
             this.QuickTagPos8.UseVisualStyleBackColor = true;
+            this.QuickTagPos8.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos7
             // 
@@ -628,6 +624,7 @@
             this.QuickTagPos7.TabIndex = 9;
             this.QuickTagPos7.Text = "Quick Tag";
             this.QuickTagPos7.UseVisualStyleBackColor = true;
+            this.QuickTagPos7.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos6
             // 
@@ -637,6 +634,7 @@
             this.QuickTagPos6.TabIndex = 8;
             this.QuickTagPos6.Text = "Quick Tag";
             this.QuickTagPos6.UseVisualStyleBackColor = true;
+            this.QuickTagPos6.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos5
             // 
@@ -646,6 +644,7 @@
             this.QuickTagPos5.TabIndex = 7;
             this.QuickTagPos5.Text = "Quick Tag";
             this.QuickTagPos5.UseVisualStyleBackColor = true;
+            this.QuickTagPos5.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos4
             // 
@@ -655,6 +654,7 @@
             this.QuickTagPos4.TabIndex = 6;
             this.QuickTagPos4.Text = "Quick Tag";
             this.QuickTagPos4.UseVisualStyleBackColor = true;
+            this.QuickTagPos4.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos3
             // 
@@ -664,6 +664,7 @@
             this.QuickTagPos3.TabIndex = 5;
             this.QuickTagPos3.Text = "Quick Tag";
             this.QuickTagPos3.UseVisualStyleBackColor = true;
+            this.QuickTagPos3.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos2
             // 
@@ -673,6 +674,7 @@
             this.QuickTagPos2.TabIndex = 4;
             this.QuickTagPos2.Text = "Quick Tag";
             this.QuickTagPos2.UseVisualStyleBackColor = true;
+            this.QuickTagPos2.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // QuickTagPos1
             // 
@@ -682,15 +684,34 @@
             this.QuickTagPos1.TabIndex = 3;
             this.QuickTagPos1.Text = "Quick Tag";
             this.QuickTagPos1.UseVisualStyleBackColor = true;
+            this.QuickTagPos1.Click += new System.EventHandler(this.MostUsedQuickTagButtonClicked);
             // 
             // MostUsedTagsPanelLabel
             // 
             this.MostUsedTagsPanelLabel.AutoSize = true;
             this.MostUsedTagsPanelLabel.Location = new System.Drawing.Point(5, 7);
             this.MostUsedTagsPanelLabel.Name = "MostUsedTagsPanelLabel";
-            this.MostUsedTagsPanelLabel.Size = new System.Drawing.Size(79, 13);
+            this.MostUsedTagsPanelLabel.Size = new System.Drawing.Size(109, 13);
             this.MostUsedTagsPanelLabel.TabIndex = 1;
-            this.MostUsedTagsPanelLabel.Text = "Most used tags";
+            this.MostUsedTagsPanelLabel.Text = "Most used tags (1-10)";
+            // 
+            // MostUsedQuickTagActiveCheckbox
+            // 
+            this.MostUsedQuickTagActiveCheckbox.AutoSize = true;
+            this.MostUsedQuickTagActiveCheckbox.Location = new System.Drawing.Point(14, 3);
+            this.MostUsedQuickTagActiveCheckbox.Name = "MostUsedQuickTagActiveCheckbox";
+            this.MostUsedQuickTagActiveCheckbox.Size = new System.Drawing.Size(149, 17);
+            this.MostUsedQuickTagActiveCheckbox.TabIndex = 13;
+            this.MostUsedQuickTagActiveCheckbox.Text = "Most used Tagging active";
+            this.MostUsedQuickTagActiveCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.MostUsedQuickTagActiveCheckbox);
+            this.panel2.Location = new System.Drawing.Point(8, 329);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(175, 31);
+            this.panel2.TabIndex = 14;
             // 
             // FastAndFuriousImageTagger
             // 
@@ -732,6 +753,8 @@
             this.panel1.PerformLayout();
             this.MostUsedTagsQuickBoxPanel.ResumeLayout(false);
             this.MostUsedTagsQuickBoxPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -788,9 +811,10 @@
         private System.Windows.Forms.Button QuickTagPos2;
         private System.Windows.Forms.Button QuickTagPos1;
         private System.Windows.Forms.Label MostUsedTagsPanelLabel;
-        private System.Windows.Forms.Button QuickTagPos11;
         private System.Windows.Forms.Button QuickTagPos10;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.CheckBox MostUsedQuickTagActiveCheckbox;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

@@ -105,8 +105,6 @@ namespace FastAndFuriousImageFileTagger
         {
             InitializeComponent();
 
-            //CreateSQLITEDatabase();
-
             Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
 
             currentSelectedImage = new CurrentSelectedImageFile("", "");
@@ -125,8 +123,6 @@ namespace FastAndFuriousImageFileTagger
 
             SetUpCurrentImage();
 
-            //ImportTagsIntoDB();
-
             InitMostUsedTagButtonList();
 
             SetNameOfMostUsedTagButtons(GetMostUsedTags(11));
@@ -135,6 +131,11 @@ namespace FastAndFuriousImageFileTagger
         #endregion
 
         #region EventHandlers
+
+        private void MostUsedQuickTagButtonClicked(object sender, EventArgs e)
+        {
+
+        }
 
         private void OnApplicationExit(object sender, EventArgs e)
         {
@@ -802,8 +803,6 @@ namespace FastAndFuriousImageFileTagger
                 string tag = mostUsedTagsStringList[i];
 
                 control.Text = tag;
-               
-
                
             }
         }
