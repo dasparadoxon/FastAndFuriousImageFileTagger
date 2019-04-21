@@ -698,6 +698,8 @@
             // MostUsedQuickTagActiveCheckbox
             // 
             this.MostUsedQuickTagActiveCheckbox.AutoSize = true;
+            this.MostUsedQuickTagActiveCheckbox.Checked = true;
+            this.MostUsedQuickTagActiveCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.MostUsedQuickTagActiveCheckbox.Location = new System.Drawing.Point(14, 3);
             this.MostUsedQuickTagActiveCheckbox.Name = "MostUsedQuickTagActiveCheckbox";
             this.MostUsedQuickTagActiveCheckbox.Size = new System.Drawing.Size(149, 17);

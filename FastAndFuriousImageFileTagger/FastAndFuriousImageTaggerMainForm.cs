@@ -125,7 +125,7 @@ namespace FastAndFuriousImageFileTagger
 
             InitMostUsedTagButtonList();
 
-            SetNameOfMostUsedTagButtons(GetMostUsedTags(11));
+            SetNameOfMostUsedTagButtons(GetMostUsedTags(10));
         }
 
         #endregion
@@ -134,6 +134,13 @@ namespace FastAndFuriousImageFileTagger
 
         private void MostUsedQuickTagButtonClicked(object sender, EventArgs e)
         {
+            var tagButton = sender as Button;
+
+            Console.WriteLine("Most Used QuickTagButton Clicked with tag : " + tagButton.Text);
+
+            AddTagToImageTagCheckBox(tagButton.Text);
+
+            AddTagToImageFile(tagButton.Text, currentSelectedImage.Name);
 
         }
 
@@ -391,6 +398,8 @@ namespace FastAndFuriousImageFileTagger
         {
             AddTagToImageTagCheckBox(newTag_textBox.Text);
 
+
+            // TODO ehm, the tag still gets added even if its allready in the image file tag !!!!
             AddTagToImageFile(newTag_textBox.Text, currentSelectedImage.Name);
         }
 
@@ -1059,12 +1068,19 @@ namespace FastAndFuriousImageFileTagger
         /// <param name="newTag"></param>
         private void AddTagToImageTagCheckBox(string newTag)
         {
+
+            Console.WriteLine("Trying to Add Tag to Image Tag Check Box : " + newTag);
+
             newTag = newTag.ToLower();
 
             if (newTag.Length > 1)
             {
 
+                Console.WriteLine("Tag Length is bigger than one." + newTag);
+
                 if (!tagsForThisFile_checkedListBox.Items.Contains(newTag)) { 
+
+                                        
 
                     string[] newTagWTF = new string[1];
 
