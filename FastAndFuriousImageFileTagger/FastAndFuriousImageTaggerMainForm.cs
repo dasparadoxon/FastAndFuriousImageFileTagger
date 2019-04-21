@@ -144,6 +144,30 @@ namespace FastAndFuriousImageFileTagger
 
         }
 
+        private void ActivateDeactivateMostUsedQuickTagButtonsCheckBoxClicked(object sender, EventArgs e)
+        {
+
+            CheckBox cb = sender as CheckBox;
+
+            if(cb.Checked)
+                {
+                    foreach (Control control in mostUsedTagsButtons)
+                    {
+                    control.Enabled = true;
+
+                    }
+            }else
+            {
+                foreach (Control control in mostUsedTagsButtons)
+                {
+                    control.Enabled = false;
+
+                }
+
+            }
+
+        }
+
         private void OnApplicationExit(object sender, EventArgs e)
         {
             // When the application is exiting, write the application data to the
@@ -1068,19 +1092,11 @@ namespace FastAndFuriousImageFileTagger
         /// <param name="newTag"></param>
         private void AddTagToImageTagCheckBox(string newTag)
         {
-
-            Console.WriteLine("Trying to Add Tag to Image Tag Check Box : " + newTag);
-
             newTag = newTag.ToLower();
 
             if (newTag.Length > 1)
             {
-
-                Console.WriteLine("Tag Length is bigger than one." + newTag);
-
-                if (!tagsForThisFile_checkedListBox.Items.Contains(newTag)) { 
-
-                                        
+                if (!tagsForThisFile_checkedListBox.Items.Contains(newTag)) {
 
                     string[] newTagWTF = new string[1];
 

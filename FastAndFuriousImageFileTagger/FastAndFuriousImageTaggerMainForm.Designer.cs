@@ -706,6 +706,7 @@
             this.MostUsedQuickTagActiveCheckbox.TabIndex = 13;
             this.MostUsedQuickTagActiveCheckbox.Text = "Most used Tagging active";
             this.MostUsedQuickTagActiveCheckbox.UseVisualStyleBackColor = true;
+            this.MostUsedQuickTagActiveCheckbox.CheckedChanged += new System.EventHandler(this.ActivateDeactivateMostUsedQuickTagButtonsCheckBoxClicked);
             // 
             // panel2
             // 
