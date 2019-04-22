@@ -30,6 +30,8 @@ namespace FastAndFuriousImageFileTagger
     {
         #region Fields
 
+        private bool useMostUsedQuickTagging = true;
+
         private string databaseFileName = "FastAndFuriousImageFileTagger.db";
 
         private class ImageFileNameIndex
@@ -154,6 +156,7 @@ namespace FastAndFuriousImageFileTagger
                     foreach (Control control in mostUsedTagsButtons)
                     {
                     control.Enabled = true;
+                    useMostUsedQuickTagging = true;
 
                     }
             }else
@@ -161,7 +164,7 @@ namespace FastAndFuriousImageFileTagger
                 foreach (Control control in mostUsedTagsButtons)
                 {
                     control.Enabled = false;
-
+                    useMostUsedQuickTagging = false;
                 }
 
             }
@@ -231,6 +234,36 @@ namespace FastAndFuriousImageFileTagger
         /// </summary>
         private void NewTag_textBox_KeyDown(object sender, KeyEventArgs e)
         {
+            if(e.KeyCode == Keys.D1)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos1.Text, e);
+
+            if (e.KeyCode == Keys.D2)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos2.Text, e);
+
+            if (e.KeyCode == Keys.D3)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos3.Text, e);
+
+            if (e.KeyCode == Keys.D4)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos4.Text, e);
+
+            if (e.KeyCode == Keys.D5)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos5.Text, e);
+
+            if (e.KeyCode == Keys.D6)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos6.Text, e);
+
+            if (e.KeyCode == Keys.D7)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos7.Text, e);
+
+            if (e.KeyCode == Keys.D8)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos8.Text, e);
+
+            if (e.KeyCode == Keys.D9)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos9.Text, e);
+
+            if (e.KeyCode == Keys.D0)
+                e = MostUsedQuickTagKeyPressed(QuickTagPos10.Text, e);
+
             if (e.KeyCode == Keys.Left)
             {
                 imageIndex--;
@@ -806,6 +839,21 @@ namespace FastAndFuriousImageFileTagger
         #endregion
 
         #region HandlingFunctions
+
+        private KeyEventArgs MostUsedQuickTagKeyPressed(string tag, KeyEventArgs e)
+        {
+            if (useMostUsedQuickTagging)
+            {
+
+                AddTagToImageTagCheckBox(tag);
+                AddTagToImageFile(tag, currentSelectedImage.Name);
+
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+
+            return e;
+        }
 
         /// <summary>
         /// Initializes the List Containing the Quick Most Used Tag Controls
