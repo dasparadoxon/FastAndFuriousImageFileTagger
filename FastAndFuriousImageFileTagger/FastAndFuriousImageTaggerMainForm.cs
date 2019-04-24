@@ -140,9 +140,13 @@ namespace FastAndFuriousImageFileTagger
 
             Console.WriteLine("Most Used QuickTagButton Clicked with tag : " + tagButton.Text);
 
-            AddTagToImageTagCheckBox(tagButton.Text);
+            if (newTag_textBox.Text.Count() == 0)
+            { 
 
-            AddTagToImageFile(tagButton.Text, currentSelectedImage.Name);
+                AddTagToImageTagCheckBox(tagButton.Text);
+
+                AddTagToImageFile(tagButton.Text, currentSelectedImage.Name);
+            }
 
         }
 
@@ -168,6 +172,8 @@ namespace FastAndFuriousImageFileTagger
                 }
 
             }
+
+            newTag_textBox.Focus();
 
         }
 
@@ -845,11 +851,15 @@ namespace FastAndFuriousImageFileTagger
             if (useMostUsedQuickTagging)
             {
 
-                AddTagToImageTagCheckBox(tag);
-                AddTagToImageFile(tag, currentSelectedImage.Name);
+                if(newTag_textBox.Text.Count() == 0) { 
 
-                e.SuppressKeyPress = true;
-                e.Handled = true;
+                    AddTagToImageTagCheckBox(tag);
+                    AddTagToImageFile(tag, currentSelectedImage.Name);
+
+                    e.SuppressKeyPress = true;
+                    e.Handled = true;
+
+                }
             }
 
             return e;
