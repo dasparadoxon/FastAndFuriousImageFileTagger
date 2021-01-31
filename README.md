@@ -7,7 +7,7 @@ You will need to install SQLITE.
 
 I recommend the NuGet Package from https://www.nuget.org/packages/System.Data.SQLite .
 
-<img src="http://dasparadoxon.de/dp_fastAndFuriousImageTagger_12.jpg">
+<img src="https://raw.githubusercontent.com/dasparadoxon/FastAndFuriousImageFileTagger/master/dp_gitScreenShot_fastAndFuriousImageTagger_2021.jpg">
 
 For more information have a look at the wiki.
 
