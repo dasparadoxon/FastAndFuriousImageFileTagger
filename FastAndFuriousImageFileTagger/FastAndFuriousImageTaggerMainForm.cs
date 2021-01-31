@@ -891,7 +891,10 @@ namespace FastAndFuriousImageFileTagger
 
                 Console.WriteLine(i);
 
-                string tag = mostUsedTagsStringList[i];
+                string tag = "";
+
+                if (mostUsedTagsStringList.Count != 0)
+                     tag = mostUsedTagsStringList[i];
 
                 control.Text = tag;
                
