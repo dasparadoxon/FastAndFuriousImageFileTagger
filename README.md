@@ -1,6 +1,8 @@
 # Fast And Furious Image File Tagger
 Windows Forms Application, that lets you quickly tag image files using their filenames to store the tags.
 
+NOTICE : At the moment I do not provide binaries. You will have to compile it yourself with Visual Studio.
+
 It also creates a tag database from your tags. Also it has autocompletion for tags from the tag database.
 
 You can also see which tags you used the most and use hotkeys to apply often used tags.
