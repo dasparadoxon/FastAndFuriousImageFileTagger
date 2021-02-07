@@ -891,10 +891,7 @@ namespace FastAndFuriousImageFileTagger
 
                 Console.WriteLine(i);
 
-                string tag = "";
-
-                if (mostUsedTagsStringList.Count != 0)
-                     tag = mostUsedTagsStringList[i];
+                string tag = mostUsedTagsStringList[i];
 
                 control.Text = tag;
                
@@ -1330,11 +1327,17 @@ namespace FastAndFuriousImageFileTagger
                 ||
                 (s.EndsWith(".jpeg") && !s.Contains(tagStringFromBaseFileNameSeperator))
                 ||
+                (s.EndsWith(".gif") && !s.Contains(tagStringFromBaseFileNameSeperator))
+                /*
+                ||
+                 (s.EndsWith(".webp") && !s.Contains(tagStringFromBaseFileNameSeperator))
+                
                 (s.EndsWith(".avi") && !s.Contains(tagStringFromBaseFileNameSeperator))
                 ||
                 (s.EndsWith(".mpg") && !s.Contains(tagStringFromBaseFileNameSeperator))
                 ||
                 (s.EndsWith(".mp4") && !s.Contains(tagStringFromBaseFileNameSeperator))
+                */
 
                 );
             else
