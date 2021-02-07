@@ -11,9 +11,10 @@ There are also tag-sets you can create and use for photos.
 
 Focus is also on being able to use a 100% keyboard workflow for maximum comfort and speed.
 
-You will need to install SQLITE. 
+Dependencies : 
 
-I recommend the NuGet Package from https://www.nuget.org/packages/System.Data.SQLite .
+1) SQLITE (https://www.nuget.org/packages/System.Data.SQLite + dlls)
+2) for webp support (not optional yet) you need https://github.com/imazen/libwebp-net (the nuget package and the dll)
 
 <img src="https://raw.githubusercontent.com/dasparadoxon/FastAndFuriousImageFileTagger/master/dp_gitScreenShot_fastAndFuriousImageTagger_2021.jpg">
 
