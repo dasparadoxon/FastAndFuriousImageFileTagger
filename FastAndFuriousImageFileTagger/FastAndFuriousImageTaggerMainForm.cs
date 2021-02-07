@@ -1344,6 +1344,8 @@ namespace FastAndFuriousImageFileTagger
                 
                 ||
                  (s.EndsWith(".webp") && !s.Contains(tagStringFromBaseFileNameSeperator))
+                                 ||
+                 (s.EndsWith(".tif") && !s.Contains(tagStringFromBaseFileNameSeperator))
                 /*
                 (s.EndsWith(".avi") && !s.Contains(tagStringFromBaseFileNameSeperator))
                 ||
