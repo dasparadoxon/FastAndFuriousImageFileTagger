@@ -1058,6 +1058,7 @@ namespace FastAndFuriousImageFileTagger
         private void SetCurrentImageToPictureBox(string pathAndFileName)
         {
 
+            
             Bitmap MyImage = LoadBitmapUnlocked(pathAndFileName);
 
 
@@ -1083,6 +1084,18 @@ namespace FastAndFuriousImageFileTagger
         {
 
             Bitmap bitmapToUse = null;
+
+            string upperFileName = file_name.ToUpper();
+
+            if (upperFileName.Contains(".WEBP")) { 
+                Console.WriteLine("Found WEBP :" + upperFileName);
+
+                Imazen.WebP.SimpleDecoder decoder = new Imazen.WebP.SimpleDecoder();
+                var bytes = File.ReadAllBytes(file_name);
+                var bitmap = decoder.DecodeFromBytes(bytes, bytes.Length);
+                return bitmap;
+            }
+
 
             try
             {
@@ -1328,10 +1341,10 @@ namespace FastAndFuriousImageFileTagger
                 (s.EndsWith(".jpeg") && !s.Contains(tagStringFromBaseFileNameSeperator))
                 ||
                 (s.EndsWith(".gif") && !s.Contains(tagStringFromBaseFileNameSeperator))
-                /*
+                
                 ||
                  (s.EndsWith(".webp") && !s.Contains(tagStringFromBaseFileNameSeperator))
-                
+                /*
                 (s.EndsWith(".avi") && !s.Contains(tagStringFromBaseFileNameSeperator))
                 ||
                 (s.EndsWith(".mpg") && !s.Contains(tagStringFromBaseFileNameSeperator))
